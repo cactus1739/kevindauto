@@ -6,7 +6,7 @@
   "description": "Website thương hiệu mô hình đồ chơi cao cấp KEVIN ĐẦU TO",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint ."
   },
