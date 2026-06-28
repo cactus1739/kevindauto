@@ -17,6 +17,9 @@ dist-ssr
 import/
 scripts/_preview/
 
+# File nén deploy tạm
+*.zip
+
 # Logs
 logs
 *.log
