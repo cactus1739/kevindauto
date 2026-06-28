@@ -16,8 +16,8 @@ export const site = {
 
   // --- Mạng xã hội / kênh đặt hàng (THAY BẰNG LINK THẬT) ---
   zalo: 'https://zalo.me/0909180098',
-  messenger: 'https://m.me/kevindauto',
-  facebook: 'https://facebook.com/kevindauto',
+  messenger: 'https://m.me/cactus1739',
+  facebook: 'https://facebook.com/cactus1739',
   instagram: 'https://instagram.com/kevindauto',
   tiktok: 'https://tiktok.com/@kevindauto',
   youtube: 'https://youtube.com/@kevindauto',
