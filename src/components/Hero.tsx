@@ -102,6 +102,7 @@ export default function Hero() {
                   accent={featured.accent}
                   category={featured.category}
                   series={featured.series}
+                  image={featured.image}
                   name={featured.name}
                 />
               </div>

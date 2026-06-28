@@ -5,6 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: './',
   plugins: [react()],
+  server: {
+    // Ưu tiên cổng do công cụ preview cấp qua PORT; không có thì dùng 5173
+    port: process.env.PORT ? Number(process.env.PORT) : 5173,
+    strictPort: false,
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
