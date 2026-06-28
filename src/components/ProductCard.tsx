@@ -1,9 +1,9 @@
-import { MessageCircle, Eye } from 'lucide-react'
+import { Plus, Check, Eye } from 'lucide-react'
 import ProductImage from './ProductImage'
 import StarRating from './StarRating'
 import { useUI } from '../context/ui'
 import { categoryLabel, type Product } from '../data/products'
-import { formatVND, site } from '../data/site'
+import { formatVND } from '../data/site'
 
 const badgeStyle: Record<NonNullable<Product['badge']>, string> = {
   'Best Seller': 'bg-gold-400 text-ink-950',
@@ -13,7 +13,8 @@ const badgeStyle: Record<NonNullable<Product['badge']>, string> = {
 }
 
 export default function ProductCard({ product }: { product: Product }) {
-  const { openProduct } = useUI()
+  const { openProduct, addToQuote, inQuote } = useUI()
+  const added = inQuote(product.id)
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-card">
@@ -80,14 +81,19 @@ export default function ProductCard({ product }: { product: Product }) {
 
         {/* Nút hành động */}
         <div className="mt-4 flex items-center gap-2 pt-0">
-          <a
-            href={site.zalo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-brand-500 px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-400"
+          <button
+            type="button"
+            onClick={() => addToQuote(product.id)}
+            aria-pressed={added}
+            className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-sm font-semibold transition-colors ${
+              added
+                ? 'bg-cyan2-400/15 text-cyan2-300 ring-1 ring-inset ring-cyan2-400/40'
+                : 'bg-brand-500 text-white hover:bg-brand-400'
+            }`}
           >
-            <MessageCircle className="h-4 w-4" /> Đặt ngay
-          </a>
+            {added ? <Check className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+            {added ? 'Đã thêm' : 'Thêm vào list'}
+          </button>
           <button
             type="button"
             onClick={() => openProduct(product)}

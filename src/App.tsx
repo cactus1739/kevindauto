@@ -14,6 +14,7 @@ import ContactCTA from './components/ContactCTA'
 import Footer from './components/Footer'
 import FloatingActions from './components/FloatingActions'
 import ProductModal from './components/ProductModal'
+import QuoteDrawer from './components/QuoteDrawer'
 
 export default function App() {
   return (
@@ -45,6 +46,7 @@ export default function App() {
         <Footer />
         <FloatingActions />
         <ProductModal />
+        <QuoteDrawer />
       </UIProvider>
     </MotionConfig>
   )

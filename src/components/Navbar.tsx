@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, MessageCircle } from 'lucide-react'
+import { Menu, X, MessageCircle, ClipboardList } from 'lucide-react'
 import Logo from './Logo'
 import { site } from '../data/site'
+import { useUI } from '../context/ui'
 
 const links = [
   { href: '#collections', label: 'Bộ sưu tập' },
@@ -15,6 +16,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { quoteCount, openQuoteDrawer } = useUI()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -58,21 +60,44 @@ export default function Navbar() {
           <a href={`tel:+${site.phoneRaw}`} className="text-sm font-semibold text-slate-300 transition-colors hover:text-white">
             {site.phone}
           </a>
-          <a href={site.zalo} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
-            <MessageCircle className="h-4 w-4" /> Đặt qua Zalo
+          <a href={site.zalo} target="_blank" rel="noopener noreferrer" className="btn-ghost text-sm">
+            <MessageCircle className="h-4 w-4" /> Zalo
           </a>
+          <button type="button" onClick={openQuoteDrawer} className="btn-primary relative text-sm">
+            <ClipboardList className="h-4 w-4" /> List báo giá
+            {quoteCount > 0 && (
+              <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-gold-400 px-1 text-[11px] font-bold text-ink-950">
+                {quoteCount}
+              </span>
+            )}
+          </button>
         </div>
 
-        {/* Nút mobile */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5 text-white lg:hidden"
-          aria-label={open ? 'Đóng menu' : 'Mở menu'}
-          aria-expanded={open}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        {/* Nút mobile: list + menu */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            type="button"
+            onClick={openQuoteDrawer}
+            className="relative grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5 text-white"
+            aria-label="Danh sách báo giá"
+          >
+            <ClipboardList className="h-5 w-5" />
+            {quoteCount > 0 && (
+              <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold-400 px-1 text-[11px] font-bold text-ink-950">
+                {quoteCount}
+              </span>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5 text-white"
+            aria-label={open ? 'Đóng menu' : 'Mở menu'}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       {/* Drawer mobile */}

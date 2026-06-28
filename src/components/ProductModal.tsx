@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, MessageCircle, Check, ShieldCheck, Truck, Phone } from 'lucide-react'
+import { X, MessageCircle, Check, ShieldCheck, Truck, Phone, ListPlus } from 'lucide-react'
 import ProductImage from './ProductImage'
 import StarRating from './StarRating'
 import { useUI } from '../context/ui'
@@ -8,7 +8,7 @@ import { categoryLabel } from '../data/products'
 import { formatVND, site } from '../data/site'
 
 export default function ProductModal() {
-  const { activeProduct, closeProduct } = useUI()
+  const { activeProduct, closeProduct, addToQuote, inQuote } = useUI()
 
   // Đóng bằng phím ESC + khoá cuộn nền
   useEffect(() => {
@@ -134,27 +134,39 @@ export default function ProductModal() {
                 </ul>
 
                 {/* Nút đặt hàng */}
-                <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
-                  <a
-                    href={site.zalo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary flex-1"
-                  >
-                    <MessageCircle className="h-4 w-4" /> Đặt qua Zalo
+                {/* Thêm vào danh sách báo giá */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    addToQuote(activeProduct.id)
+                    closeProduct()
+                  }}
+                  className="btn-primary mt-6 w-full"
+                >
+                  {inQuote(activeProduct.id) ? (
+                    <>
+                      <Check className="h-4 w-4" /> Đã có trong list — thêm nữa
+                    </>
+                  ) : (
+                    <>
+                      <ListPlus className="h-4 w-4" /> Thêm vào list báo giá
+                    </>
+                  )}
+                </button>
+
+                {/* Hoặc liên hệ trực tiếp */}
+                <p className="mt-4 mb-2 text-center text-xs text-slate-500">Hoặc liên hệ trực tiếp</p>
+                <div className="flex gap-2.5">
+                  <a href={site.zalo} target="_blank" rel="noopener noreferrer" className="btn-ghost flex-1">
+                    <MessageCircle className="h-4 w-4" /> Zalo
                   </a>
-                  <a
-                    href={site.messenger}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-ghost flex-1"
-                  >
+                  <a href={site.messenger} target="_blank" rel="noopener noreferrer" className="btn-ghost flex-1">
                     <MessageCircle className="h-4 w-4" /> Messenger
                   </a>
                   <a
                     href={`tel:+${site.phoneRaw}`}
-                    className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/10 sm:w-12"
-                    aria-label="Gọi điện đặt hàng"
+                    className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/10"
+                    aria-label="Gọi điện"
                   >
                     <Phone className="h-5 w-5" />
                   </a>
