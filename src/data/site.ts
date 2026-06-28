@@ -9,13 +9,13 @@ export const site = {
   slogan: 'Sưu tầm chất — Chơi tới bến',
 
   // --- Liên hệ (THAY BẰNG THÔNG TIN THẬT) ---
-  phone: '0900 000 000',
-  phoneRaw: '84900000000', // dùng cho link tel: và wa.me (không có số 0 đầu, có mã quốc gia)
+  phone: '0909 180 098',
+  phoneRaw: '84909180098', // dùng cho link tel: và wa.me (không có số 0 đầu, có mã quốc gia)
   email: 'kevindauto.shop@gmail.com',
   address: '123 Đường Mô Hình, Quận 1, TP. Hồ Chí Minh',
 
   // --- Mạng xã hội / kênh đặt hàng (THAY BẰNG LINK THẬT) ---
-  zalo: 'https://zalo.me/0900000000',
+  zalo: 'https://zalo.me/0909180098',
   messenger: 'https://m.me/kevindauto',
   facebook: 'https://facebook.com/kevindauto',
   instagram: 'https://instagram.com/kevindauto',
