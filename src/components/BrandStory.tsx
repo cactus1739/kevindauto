@@ -3,7 +3,7 @@ import { Quote, Boxes, HandHeart, Trophy } from 'lucide-react'
 import Reveal from './Reveal'
 
 const pillars = [
-  { icon: Boxes, label: 'Kho hàng tuyển', value: '500+ mẫu' },
+  { icon: Boxes, label: 'Kho hàng tuyển', value: '5000+ mẫu' },
   { icon: HandHeart, label: 'Phục vụ tận tâm', value: '7 ngày/tuần' },
   { icon: Trophy, label: 'Cộng đồng', value: '1.2K+ thành viên' },
 ]

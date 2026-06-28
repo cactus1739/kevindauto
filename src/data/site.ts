@@ -23,7 +23,7 @@ export const site = {
   youtube: 'https://youtube.com/@kevindauto',
 
   // --- Giờ mở cửa ---
-  hours: '09:00 – 21:00 (T2 – CN)',
+  hours: '24/7 — tất cả các ngày',
 
   // Google Maps embed (thay bằng địa chỉ thật nếu muốn hiển thị bản đồ)
   mapsQuery: '124 Lê Văn Chí, Phường Linh Xuân, TP.HCM',
