@@ -108,11 +108,6 @@ export default function ProductModal() {
                   <span className="font-display text-3xl font-extrabold text-gradient tabular">
                     {formatVND(activeProduct.price)}
                   </span>
-                  {activeProduct.oldPrice && (
-                    <span className="mb-1 text-base text-slate-500 line-through tabular">
-                      {formatVND(activeProduct.oldPrice)}
-                    </span>
-                  )}
                 </div>
 
                 <p className="mt-4 text-sm leading-relaxed text-slate-300">{activeProduct.description}</p>
@@ -120,12 +115,12 @@ export default function ProductModal() {
                 {/* Thông số */}
                 <dl className="mt-5 grid grid-cols-2 gap-3">
                   <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3">
-                    <dt className="text-xs text-slate-400">Tỉ lệ</dt>
-                    <dd className="font-semibold text-white">{activeProduct.scale}</dd>
+                    <dt className="text-xs text-slate-400">Mã sản phẩm</dt>
+                    <dd className="font-semibold text-white tabular">{activeProduct.code}</dd>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3">
-                    <dt className="text-xs text-slate-400">Kích thước</dt>
-                    <dd className="font-semibold text-white">{activeProduct.height}</dd>
+                    <dt className="text-xs text-slate-400">Chất liệu</dt>
+                    <dd className="font-semibold text-white">{activeProduct.material}</dd>
                   </div>
                 </dl>
 

@@ -4,7 +4,7 @@ import ProductImage from './ProductImage'
 import { products } from '../data/products'
 import { formatVND, site } from '../data/site'
 
-const featured = products.find((p) => p.id === 'rx78-2-pg')!
+const featured = products.find((p) => p.id === 'sp-4451')!
 
 export default function Hero() {
   return (
@@ -50,8 +50,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.12 }}
             className="mt-5 max-w-xl text-base text-slate-300 sm:text-lg"
           >
-            <span className="font-semibold text-white">KEVIN ĐẦU TO</span> — thế giới Gunpla, action figure,
-            mô hình anime &amp; xe die-cast cao cấp. Hàng thật, chi tiết thật, đặt nhanh qua Zalo &amp; Messenger.
+            <span className="font-semibold text-white">KEVIN ĐẦU TO</span> — thế giới mô hình figure người &amp;
+            phụ kiện diorama cao cấp. Hàng thật, chi tiết thật, đặt nhanh qua Zalo &amp; Messenger.
           </motion.p>
 
           <motion.div
@@ -108,7 +108,7 @@ export default function Hero() {
               <div className="flex items-center justify-between gap-3 border-t border-white/10 bg-ink-900/60 p-4">
                 <div className="min-w-0">
                   <p className="truncate font-semibold text-white">{featured.name}</p>
-                  <p className="text-xs text-slate-400">Tỉ lệ {featured.scale} · {featured.height}</p>
+                  <p className="text-xs text-slate-400">Mã {featured.code} · {featured.material}</p>
                 </div>
                 <span className="shrink-0 font-display text-lg font-bold text-gradient">{formatVND(featured.price)}</span>
               </div>

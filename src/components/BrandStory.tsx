@@ -30,7 +30,7 @@ export default function BrandStory() {
                 <div className="relative flex h-full flex-col items-center justify-center p-8 text-center">
                   <span className="font-display text-6xl font-black text-gradient">KĐT</span>
                   <p className="mt-3 max-w-xs text-sm text-slate-300">
-                    Từ một góc bàn đầy Gunpla đến cửa hàng mô hình được dân sưu tầm tin tưởng.
+                    Từ niềm mê figure &amp; diorama đến cửa hàng mô hình được dân sưu tầm tin tưởng.
                   </p>
                 </div>
               </div>
@@ -62,8 +62,8 @@ export default function BrandStory() {
             <div className="mt-5 space-y-4 text-base leading-relaxed text-slate-300">
               <p>
                 <span className="font-semibold text-white">KEVIN ĐẦU TO</span> bắt đầu từ chính niềm đam mê
-                lắp ráp Gunpla và sưu tầm figure. Chúng tôi hiểu cảm giác hồi hộp khi mở box, và cả nỗi lo
-                khi mua phải hàng dựng, hàng lỗi.
+                sưu tầm figure người và làm diorama. Chúng tôi hiểu cảm giác hồi hộp khi mở hộp, và cả nỗi lo
+                khi mua phải hàng lỗi, sai mô tả.
               </p>
               <p>
                 Vì vậy, mỗi sản phẩm tại đây đều được tuyển chọn, kiểm tra kỹ và đóng gói cẩn thận như thể

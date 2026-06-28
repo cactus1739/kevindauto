@@ -1,4 +1,4 @@
-import { Bot, Swords, Sparkles, Car, Crown, ArrowUpRight } from 'lucide-react'
+import { User, UserRound, Users, PersonStanding, Dumbbell, Landmark, PawPrint, Sailboat, ArrowUpRight } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 import { products, type Category } from '../data/products'
@@ -7,55 +7,82 @@ const cards: {
   id: Category
   label: string
   desc: string
-  icon: typeof Bot
+  icon: typeof User
   accentText: string
   accentBg: string
   ring: string
 }[] = [
   {
-    id: 'gunpla',
-    label: 'Gunpla',
-    desc: 'RG · MG · PG · Perfect Grade chính hãng Bandai',
-    icon: Bot,
-    accentText: 'text-brand-300',
-    accentBg: 'bg-brand-500/15',
-    ring: 'hover:shadow-glow',
-  },
-  {
-    id: 'figure',
-    label: 'Action Figure',
-    desc: 'S.H.Figuarts, Figuarts ZERO khớp động linh hoạt',
-    icon: Swords,
+    id: 'nam',
+    label: 'Nam giới',
+    desc: 'Figure nam đa phong cách: công sở, streetwear, đời thường',
+    icon: User,
     accentText: 'text-cyan2-400',
     accentBg: 'bg-cyan2-400/15',
     ring: 'hover:shadow-glow-cyan',
   },
   {
-    id: 'anime',
-    label: 'Mô hình Anime',
-    desc: 'Scale figure 1/7 · 1/6 sơn phủ tinh xảo',
-    icon: Sparkles,
-    accentText: 'text-violet2-400',
-    accentBg: 'bg-violet2-500/15',
-    ring: 'hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.45)]',
+    id: 'nu',
+    label: 'Nữ giới',
+    desc: 'Figure nữ thanh lịch, cá tính, gợi cảm và năng động',
+    icon: UserRound,
+    accentText: 'text-brand-300',
+    accentBg: 'bg-brand-500/15',
+    ring: 'hover:shadow-glow',
   },
   {
-    id: 'xe',
-    label: 'Xe mô hình',
-    desc: 'Die-cast 1/18 kim loại, mở cửa, chi tiết thật',
-    icon: Car,
+    id: 'giadinh',
+    label: 'Cặp đôi & Gia đình',
+    desc: 'Cặp đôi, trẻ em — khoảnh khắc gia đình ấm áp',
+    icon: Users,
     accentText: 'text-gold-400',
     accentBg: 'bg-gold-400/15',
     ring: 'hover:shadow-glow-gold',
   },
   {
-    id: 'limited',
-    label: 'Limited Edition',
-    desc: 'Statue & phiên bản giới hạn, đánh số sưu tầm',
-    icon: Crown,
+    id: 'caotuoi',
+    label: 'Người cao tuổi',
+    desc: 'Hình mẫu ông bà, người thợ lành nghề đáng kính',
+    icon: PersonStanding,
+    accentText: 'text-violet2-400',
+    accentBg: 'bg-violet2-500/15',
+    ring: 'hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.45)]',
+  },
+  {
+    id: 'thethao',
+    label: 'Thể thao',
+    desc: 'Cầu thủ, vận động viên đầy năng lượng',
+    icon: Dumbbell,
+    accentText: 'text-cyan2-400',
+    accentBg: 'bg-cyan2-400/15',
+    ring: 'hover:shadow-glow-cyan',
+  },
+  {
+    id: 'tuong',
+    label: 'Tượng & Nghệ thuật',
+    desc: 'Tượng điêu khắc, thiên thần — tác phẩm trưng bày',
+    icon: Landmark,
+    accentText: 'text-gold-400',
+    accentBg: 'bg-gold-400/15',
+    ring: 'hover:shadow-glow-gold',
+  },
+  {
+    id: 'dongvat',
+    label: 'Động vật & Chibi',
+    desc: 'Gấu, khủng long, mascot dễ thương cho mọi lứa tuổi',
+    icon: PawPrint,
     accentText: 'text-brand-300',
     accentBg: 'bg-brand-500/15',
     ring: 'hover:shadow-glow',
+  },
+  {
+    id: 'phukien',
+    label: 'Phụ kiện & Bối cảnh',
+    desc: 'Thuyền, đạo cụ tạo bối cảnh diorama sống động',
+    icon: Sailboat,
+    accentText: 'text-violet2-400',
+    accentBg: 'bg-violet2-500/15',
+    ring: 'hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.45)]',
   },
 ]
 
@@ -68,12 +95,12 @@ export default function Collections() {
         <SectionHeading
           label="Bộ sưu tập"
           title={<>Chọn “gu” của bạn</>}
-          description="Năm dòng sản phẩm tuyển chọn — từ Gunpla huyền thoại đến statue giới hạn cho dân chơi thứ thiệt."
+          description="Tám nhóm figure tuyển chọn — từ nhân vật đời thường, thể thao đến tượng nghệ thuật và phụ kiện diorama."
         />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {cards.map((c, i) => (
-            <Reveal key={c.id} delay={i * 0.06}>
+            <Reveal key={c.id} delay={i * 0.05}>
               <a
                 href="#catalog"
                 className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 ${c.ring}`}
@@ -94,20 +121,6 @@ export default function Collections() {
               </a>
             </Reveal>
           ))}
-
-          {/* Card CTA cuối */}
-          <Reveal delay={cards.length * 0.06}>
-            <a
-              href="#catalog"
-              className="border-gradient group relative flex h-full min-h-[210px] flex-col justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600/30 via-ink-850 to-ink-900 p-6 text-center transition-transform duration-300 hover:-translate-y-1"
-            >
-              <p className="font-display text-2xl font-extrabold text-white">Xem tất cả</p>
-              <p className="mt-2 text-sm text-slate-300">Hơn {products.length} mẫu đang có sẵn &amp; pre-order</p>
-              <span className="mx-auto mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-300">
-                Vào cửa hàng <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </span>
-            </a>
-          </Reveal>
         </div>
       </div>
     </section>

@@ -10,14 +10,10 @@ const badgeStyle: Record<NonNullable<Product['badge']>, string> = {
   Mới: 'bg-cyan2-400 text-ink-950',
   Limited: 'bg-violet2-500 text-white',
   'Pre-order': 'bg-white/15 text-white backdrop-blur',
-  Sale: 'bg-brand-500 text-white',
 }
 
 export default function ProductCard({ product }: { product: Product }) {
   const { openProduct } = useUI()
-  const discount = product.oldPrice
-    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
-    : 0
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-card">
@@ -43,9 +39,6 @@ export default function ProductCard({ product }: { product: Product }) {
             <span className={`rounded-full px-2.5 py-1 text-[11px] font-bold ${badgeStyle[product.badge]}`}>
               {product.badge}
             </span>
-          )}
-          {discount > 0 && (
-            <span className="rounded-full bg-brand-600 px-2.5 py-1 text-[11px] font-bold text-white">-{discount}%</span>
           )}
         </div>
 
@@ -77,15 +70,12 @@ export default function ProductCard({ product }: { product: Product }) {
           </button>
         </h3>
         <p className="mt-1 text-xs text-slate-400">
-          {product.series} · Tỉ lệ {product.scale}
+          {product.series} · Mã {product.code}
         </p>
 
         {/* Giá */}
         <div className="mt-3 flex items-end gap-2">
           <span className="font-display text-lg font-bold text-white tabular">{formatVND(product.price)}</span>
-          {product.oldPrice && (
-            <span className="mb-0.5 text-sm text-slate-500 line-through tabular">{formatVND(product.oldPrice)}</span>
-          )}
         </div>
 
         {/* Nút hành động */}

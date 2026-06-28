@@ -13,6 +13,10 @@ dist-ssr
 /vite.config.js
 /vite.config.d.ts
 
+# Ảnh nguồn / thư mục làm việc (rất nặng — không đẩy lên repo)
+import/
+scripts/_preview/
+
 # Logs
 logs
 *.log

@@ -1,16 +1,16 @@
 const items = [
-  'Bandai',
-  'Gundam',
-  'One Piece',
-  'Dragon Ball',
-  'Jujutsu Kaisen',
-  'Demon Slayer',
-  'Good Smile',
-  'S.H.Figuarts',
-  'Hot Toys',
-  'Ferrari',
-  'Lamborghini',
-  'Evangelion',
+  'Figure Người',
+  'Diorama',
+  'Resin 3D',
+  'Streetwear',
+  'Công Sở',
+  'Thể Thao',
+  'Tượng Nghệ Thuật',
+  'Chibi',
+  'Phụ Kiện',
+  'Sưu Tầm',
+  'Cao Cấp',
+  'Chính Hãng',
 ]
 
 export default function BrandMarquee() {

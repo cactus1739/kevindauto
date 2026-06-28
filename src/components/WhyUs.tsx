@@ -6,7 +6,7 @@ const features = [
   {
     icon: BadgeCheck,
     title: 'Chính hãng 100%',
-    desc: 'Nguồn nhập chính ngạch từ Bandai, Good Smile, Hot Toys. Cam kết hoàn tiền nếu phát hiện hàng giả.',
+    desc: 'Mô hình resin in 3D độ phân giải cao, tuyển chọn kỹ từng mẫu. Cam kết hoàn tiền nếu sai mô tả.',
     color: 'text-cyan2-400',
     bg: 'bg-cyan2-400/15',
   },

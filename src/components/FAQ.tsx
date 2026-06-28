@@ -7,7 +7,7 @@ import SectionHeading from './SectionHeading'
 const faqs = [
   {
     q: 'Sản phẩm có phải hàng chính hãng không?',
-    a: 'Có. Tất cả mô hình tại KEVIN ĐẦU TO đều là hàng chính hãng, nhập chính ngạch từ Bandai, Good Smile, Hot Toys... Bạn được kiểm tra hàng trước khi thanh toán và shop cam kết hoàn tiền nếu phát hiện hàng giả/hàng dựng.',
+    a: 'Mô hình tại KEVIN ĐẦU TO là figure resin in 3D độ phân giải cao, được tuyển chọn và kiểm tra kỹ nước in/chi tiết trước khi giao. Bạn được kiểm tra hàng trước khi thanh toán và shop cam kết hoàn tiền nếu sản phẩm sai mô tả.',
   },
   {
     q: 'Làm sao để đặt hàng?',

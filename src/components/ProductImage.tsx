@@ -1,4 +1,4 @@
-import { Bot, Swords, Sparkles, Car, Crown } from 'lucide-react'
+import { User, UserRound, Users, PersonStanding, Dumbbell, Landmark, PawPrint, Sailboat } from 'lucide-react'
 import type { Accent, Category } from '../data/products'
 
 const accentGradient: Record<Accent, string> = {
@@ -15,12 +15,15 @@ const accentGlow: Record<Accent, string> = {
   violet: 'bg-violet2-500/30',
 }
 
-const categoryIcon: Record<Category, typeof Bot> = {
-  gunpla: Bot,
-  figure: Swords,
-  anime: Sparkles,
-  xe: Car,
-  limited: Crown,
+const categoryIcon: Record<Category, typeof User> = {
+  nam: User,
+  nu: UserRound,
+  giadinh: Users,
+  caotuoi: PersonStanding,
+  thethao: Dumbbell,
+  tuong: Landmark,
+  dongvat: PawPrint,
+  phukien: Sailboat,
 }
 
 interface Props {
