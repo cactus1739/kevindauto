@@ -4,7 +4,7 @@ import { mkdirSync } from 'node:fs'
 
 const COLS = 13
 const ROWS = 4
-const START = 4400
+const START = parseInt(process.env.START || '4400', 10)
 const CW = 150
 const CH = 205
 const LH = 26

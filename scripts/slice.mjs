@@ -6,10 +6,10 @@
 import sharp from 'sharp'
 import { mkdirSync } from 'node:fs'
 
-const SRC = 'import/4400/4400-4451 color_.jpg'
+const SRC = process.env.SRC || 'import/4400/4400-4451 color_.jpg'
 const COLS = 13
 const ROWS = 4
-const START = 4400
+const START = parseInt(process.env.START || '4400', 10)
 
 const mode = process.argv[2] || 'calibrate'
 // Mặc định GIỮ NGUYÊN ô: không cắt viền, không cắt nhãn số (full cell)
