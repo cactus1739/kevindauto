@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Thay bằng tên miền thật của bạn sau khi deploy:
+# Sitemap: https://kevindauto.com/sitemap.xml

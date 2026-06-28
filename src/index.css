@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ink-950 text-slate-200 font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 15% -10%, rgba(255, 45, 120, 0.12), transparent 40%),
+      radial-gradient(circle at 90% 5%, rgba(34, 211, 238, 0.1), transparent 38%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-brand-500 text-white;
+  }
+
+  /* Thanh cuộn tuỳ biến */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ink-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-600 rounded-full border-2 border-solid border-ink-900;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-600;
+  }
+
+  /* Focus ring rõ ràng cho accessibility */
+  :focus-visible {
+    outline: 2px solid theme('colors.cyan2.400');
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  /* Chữ gradient thương hiệu */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, #ff7aae 0%, #ff2d78 35%, #ffb020 100%);
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, #5ef2ff 0%, #22d3ee 50%, #8b5cf6 100%);
+  }
+
+  /* Nút chính */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full
+      bg-brand-500 px-6 py-3 font-semibold text-white shadow-glow
+      transition-all duration-200 hover:bg-brand-400 hover:shadow-[0_0_55px_-6px_rgba(255,45,120,0.7)]
+      active:scale-[0.97] focus-visible:outline-offset-4;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15
+      bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur
+      transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-[0.97];
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+      bg-gradient-to-r from-gold-400 to-gold-500 px-6 py-3 font-bold text-ink-950 shadow-glow-gold
+      transition-all duration-200 hover:brightness-105 active:scale-[0.97];
+  }
+
+  /* Thẻ kính (glass) */
+  .card-glass {
+    @apply rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10
+      bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300;
+  }
+
+  /* Viền gradient (dùng cho card nổi bật) */
+  .border-gradient {
+    position: relative;
+  }
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(130deg, rgba(255, 45, 120, 0.6), rgba(34, 211, 238, 0.5), rgba(255, 176, 32, 0.55));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .section-label {
+    @apply mb-3 inline-flex items-center gap-2 rounded-full border border-white/10
+      bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-brand-300;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+}
