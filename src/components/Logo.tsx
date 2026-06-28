@@ -36,7 +36,7 @@ export default function Logo({ className = '', showText = true }: Props) {
             KEVIN <span className="text-gradient">ĐẦU TO</span>
           </span>
           <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-400">
-            Premium Model Store
+            3D Resin model figure store
           </span>
         </span>
       )}

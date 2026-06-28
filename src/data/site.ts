@@ -11,8 +11,8 @@ export const site = {
   // --- Liên hệ (THAY BẰNG THÔNG TIN THẬT) ---
   phone: '0909 180 098',
   phoneRaw: '84909180098', // dùng cho link tel: và wa.me (không có số 0 đầu, có mã quốc gia)
-  email: 'kevindauto.shop@gmail.com',
-  address: '123 Đường Mô Hình, Quận 1, TP. Hồ Chí Minh',
+  email: 'cactus1739@gmail.com',
+  address: '124 Lê Văn Chí, Phường Linh Xuân, TP.HCM',
 
   // --- Mạng xã hội / kênh đặt hàng (THAY BẰNG LINK THẬT) ---
   zalo: 'https://zalo.me/0909180098',
@@ -26,7 +26,7 @@ export const site = {
   hours: '09:00 – 21:00 (T2 – CN)',
 
   // Google Maps embed (thay bằng địa chỉ thật nếu muốn hiển thị bản đồ)
-  mapsQuery: 'mô hình đồ chơi quận 1 hồ chí minh',
+  mapsQuery: '124 Lê Văn Chí, Phường Linh Xuân, TP.HCM',
 } as const
 
 /** Tạo link đặt hàng nhanh qua Zalo kèm tên sản phẩm */
