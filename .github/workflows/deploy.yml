@@ -34,6 +34,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          timeout: 60000
           local-dir: ./dist/
           server-dir: /public_html/
           # Xoá file cũ không còn trong dist (giữ web sạch). Bỏ nếu không muốn.
