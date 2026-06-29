@@ -1,7 +1,7 @@
 // ============================================================================
 //  FILE TỰ ĐỘNG SINH từ WooCommerce — đừng sửa tay.
 //  Tạo lại bằng: npx -y tsx scripts/woo-sync.ts
-//  Cập nhật lần cuối: 2026-06-29T15:24:36.582Z — 90 sản phẩm.
+//  Cập nhật lần cuối: 2026-06-29T15:39:25.907Z — 90 sản phẩm.
 // ============================================================================
 import type { Product } from './products'
 
@@ -18,7 +18,7 @@ export const generatedProducts: Product[] = [
     "reviews": 120,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4400.webp",
+    "image": "./products/sp-4400.webp",
     "tags": [
       "ba lô",
       "đời thường",
@@ -47,7 +47,7 @@ export const generatedProducts: Product[] = [
     "reviews": 121,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4401.webp",
+    "image": "./products/sp-4401.webp",
     "tags": [
       "dạo phố",
       "denim",
@@ -75,7 +75,7 @@ export const generatedProducts: Product[] = [
     "reviews": 122,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4402.webp",
+    "image": "./products/sp-4402.webp",
     "tags": [
       "đời thường",
       "kính",
@@ -102,7 +102,7 @@ export const generatedProducts: Product[] = [
     "reviews": 123,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4403.webp",
+    "image": "./products/sp-4403.webp",
     "tags": [
       "áo khoác",
       "mùa đông",
@@ -129,7 +129,7 @@ export const generatedProducts: Product[] = [
     "reviews": 124,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4404.webp",
+    "image": "./products/sp-4404.webp",
     "tags": [
       "công sở",
       "doanh nhân",
@@ -158,7 +158,7 @@ export const generatedProducts: Product[] = [
     "reviews": 125,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4405.webp",
+    "image": "./products/sp-4405.webp",
     "tags": [
       "bóng rổ",
       "jersey",
@@ -185,7 +185,7 @@ export const generatedProducts: Product[] = [
     "reviews": 126,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4406.webp",
+    "image": "./products/sp-4406.webp",
     "tags": [
       "áo đỏ",
       "đời thường",
@@ -212,7 +212,7 @@ export const generatedProducts: Product[] = [
     "reviews": 127,
     "inStock": true,
     "accent": "gold",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4407.webp",
+    "image": "./products/sp-4407.webp",
     "tags": [
       "cặp đôi",
       "đôi",
@@ -242,7 +242,7 @@ export const generatedProducts: Product[] = [
     "reviews": 128,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4408.webp",
+    "image": "./products/sp-4408.webp",
     "tags": [
       "casual",
       "đời thường",
@@ -269,7 +269,7 @@ export const generatedProducts: Product[] = [
     "reviews": 129,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4409.webp",
+    "image": "./products/sp-4409.webp",
     "tags": [
       "ba lô",
       "đi bộ",
@@ -297,7 +297,7 @@ export const generatedProducts: Product[] = [
     "reviews": 130,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4410.webp",
+    "image": "./products/sp-4410.webp",
     "tags": [
       "biker",
       "bikini",
@@ -325,7 +325,7 @@ export const generatedProducts: Product[] = [
     "reviews": 131,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4411.webp",
+    "image": "./products/sp-4411.webp",
     "tags": [
       "cao gót",
       "gợi cảm",
@@ -352,7 +352,7 @@ export const generatedProducts: Product[] = [
     "reviews": 132,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4412.webp",
+    "image": "./products/sp-4412.webp",
     "tags": [
       "boots",
       "măng tô",
@@ -379,7 +379,7 @@ export const generatedProducts: Product[] = [
     "reviews": 133,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4413.webp",
+    "image": "./products/sp-4413.webp",
     "tags": [
       "cao tuổi",
       "lịch lãm",
@@ -406,7 +406,7 @@ export const generatedProducts: Product[] = [
     "reviews": 134,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4414.webp",
+    "image": "./products/sp-4414.webp",
     "tags": [
       "cao tuổi",
       "đầu bếp",
@@ -434,7 +434,7 @@ export const generatedProducts: Product[] = [
     "reviews": 135,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4415.webp",
+    "image": "./products/sp-4415.webp",
     "tags": [
       "cao tuổi",
       "đi bộ",
@@ -461,7 +461,7 @@ export const generatedProducts: Product[] = [
     "reviews": 136,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4416.webp",
+    "image": "./products/sp-4416.webp",
     "tags": [
       "denim",
       "điện thoại",
@@ -488,7 +488,7 @@ export const generatedProducts: Product[] = [
     "reviews": 137,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4417.webp",
+    "image": "./products/sp-4417.webp",
     "tags": [
       "bí ẩn",
       "bóng đen",
@@ -516,7 +516,7 @@ export const generatedProducts: Product[] = [
     "reviews": 138,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4418.webp",
+    "image": "./products/sp-4418.webp",
     "tags": [
       "áo choàng",
       "độc đáo",
@@ -544,7 +544,7 @@ export const generatedProducts: Product[] = [
     "reviews": 139,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4419.webp",
+    "image": "./products/sp-4419.webp",
     "tags": [
       "ấn tượng",
       "áo liền quần",
@@ -573,7 +573,7 @@ export const generatedProducts: Product[] = [
     "reviews": 140,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4420.webp",
+    "image": "./products/sp-4420.webp",
     "tags": [
       "cao tuổi",
       "điện thoại",
@@ -600,7 +600,7 @@ export const generatedProducts: Product[] = [
     "reviews": 141,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4421.webp",
+    "image": "./products/sp-4421.webp",
     "tags": [
       "áo choàng",
       "bí ẩn",
@@ -628,7 +628,7 @@ export const generatedProducts: Product[] = [
     "reviews": 142,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4422.webp",
+    "image": "./products/sp-4422.webp",
     "tags": [
       "doanh nhân",
       "nam",
@@ -655,7 +655,7 @@ export const generatedProducts: Product[] = [
     "reviews": 143,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4423.webp",
+    "image": "./products/sp-4423.webp",
     "tags": [
       "ba lô",
       "gile",
@@ -683,7 +683,7 @@ export const generatedProducts: Product[] = [
     "reviews": 144,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4424.webp",
+    "image": "./products/sp-4424.webp",
     "tags": [
       "đen",
       "gợi cảm",
@@ -710,7 +710,7 @@ export const generatedProducts: Product[] = [
     "reviews": 145,
     "inStock": true,
     "accent": "gold",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4425.webp",
+    "image": "./products/sp-4425.webp",
     "tags": [
       "cổ điển",
       "điêu khắc",
@@ -738,7 +738,7 @@ export const generatedProducts: Product[] = [
     "reviews": 146,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4426.webp",
+    "image": "./products/sp-4426.webp",
     "tags": [
       "hoodie",
       "ngồi",
@@ -766,7 +766,7 @@ export const generatedProducts: Product[] = [
     "reviews": 147,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4427.webp",
+    "image": "./products/sp-4427.webp",
     "tags": [
       "áo khoác xanh",
       "cá tính",
@@ -794,7 +794,7 @@ export const generatedProducts: Product[] = [
     "reviews": 148,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4428.webp",
+    "image": "./products/sp-4428.webp",
     "tags": [
       "dạ hội",
       "đầm đỏ",
@@ -821,7 +821,7 @@ export const generatedProducts: Product[] = [
     "reviews": 149,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4429.webp",
+    "image": "./products/sp-4429.webp",
     "tags": [
       "chưa sơn",
       "điện thoại",
@@ -848,7 +848,7 @@ export const generatedProducts: Product[] = [
     "reviews": 150,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4430.webp",
+    "image": "./products/sp-4430.webp",
     "tags": [
       "điện thoại",
       "đời thường",
@@ -874,7 +874,7 @@ export const generatedProducts: Product[] = [
     "reviews": 151,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4431.webp",
+    "image": "./products/sp-4431.webp",
     "tags": [
       "cô dâu",
       "cưới",
@@ -903,7 +903,7 @@ export const generatedProducts: Product[] = [
     "reviews": 152,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4432.webp",
+    "image": "./products/sp-4432.webp",
     "tags": [
       "ấn tượng",
       "anime",
@@ -933,7 +933,7 @@ export const generatedProducts: Product[] = [
     "reviews": 153,
     "inStock": true,
     "accent": "gold",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4433.webp",
+    "image": "./products/sp-4433.webp",
     "tags": [
       "cổ điển",
       "điêu khắc",
@@ -961,7 +961,7 @@ export const generatedProducts: Product[] = [
     "reviews": 154,
     "inStock": true,
     "accent": "gold",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4434.webp",
+    "image": "./products/sp-4434.webp",
     "tags": [
       "điêu khắc",
       "nghệ thuật",
@@ -988,7 +988,7 @@ export const generatedProducts: Product[] = [
     "reviews": 155,
     "inStock": true,
     "accent": "gold",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4435.webp",
+    "image": "./products/sp-4435.webp",
     "tags": [
       "cánh",
       "điêu khắc",
@@ -1017,7 +1017,7 @@ export const generatedProducts: Product[] = [
     "reviews": 156,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4436.webp",
+    "image": "./products/sp-4436.webp",
     "tags": [
       "điện thoại",
       "đời thường",
@@ -1044,7 +1044,7 @@ export const generatedProducts: Product[] = [
     "reviews": 157,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4437.webp",
+    "image": "./products/sp-4437.webp",
     "tags": [
       "hoodie",
       "mũ",
@@ -1071,7 +1071,7 @@ export const generatedProducts: Product[] = [
     "reviews": 158,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4438.webp",
+    "image": "./products/sp-4438.webp",
     "tags": [
       "beanie",
       "denim",
@@ -1099,7 +1099,7 @@ export const generatedProducts: Product[] = [
     "reviews": 159,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4439.webp",
+    "image": "./products/sp-4439.webp",
     "tags": [
       "đời thường",
       "giao hàng",
@@ -1129,7 +1129,7 @@ export const generatedProducts: Product[] = [
     "reviews": 160,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4440.webp",
+    "image": "./products/sp-4440.webp",
     "tags": [
       "chibi",
       "dễ thương",
@@ -1158,7 +1158,7 @@ export const generatedProducts: Product[] = [
     "reviews": 161,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4441.webp",
+    "image": "./products/sp-4441.webp",
     "tags": [
       "dinosaur",
       "động vật",
@@ -1185,7 +1185,7 @@ export const generatedProducts: Product[] = [
     "reviews": 162,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4442.webp",
+    "image": "./products/sp-4442.webp",
     "tags": [
       "chibi",
       "dễ thương",
@@ -1213,7 +1213,7 @@ export const generatedProducts: Product[] = [
     "reviews": 163,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4443.webp",
+    "image": "./products/sp-4443.webp",
     "tags": [
       "chibi",
       "dễ thương",
@@ -1241,7 +1241,7 @@ export const generatedProducts: Product[] = [
     "reviews": 164,
     "inStock": true,
     "accent": "gold",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4444.webp",
+    "image": "./products/sp-4444.webp",
     "tags": [
       "bé trai",
       "dễ thương",
@@ -1269,7 +1269,7 @@ export const generatedProducts: Product[] = [
     "reviews": 165,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4445.webp",
+    "image": "./products/sp-4445.webp",
     "tags": [
       "ăn mừng",
       "bóng đá",
@@ -1298,7 +1298,7 @@ export const generatedProducts: Product[] = [
     "reviews": 166,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4446.webp",
+    "image": "./products/sp-4446.webp",
     "tags": [
       "đời thường",
       "ghế",
@@ -1325,7 +1325,7 @@ export const generatedProducts: Product[] = [
     "reviews": 167,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4447.webp",
+    "image": "./products/sp-4447.webp",
     "tags": [
       "công sở",
       "doanh nhân",
@@ -1352,7 +1352,7 @@ export const generatedProducts: Product[] = [
     "reviews": 168,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4448.webp",
+    "image": "./products/sp-4448.webp",
     "tags": [
       "công sở",
       "lịch lãm",
@@ -1380,7 +1380,7 @@ export const generatedProducts: Product[] = [
     "reviews": 169,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4449.webp",
+    "image": "./products/sp-4449.webp",
     "tags": [
       "bối cảnh",
       "ca nô",
@@ -1408,7 +1408,7 @@ export const generatedProducts: Product[] = [
     "reviews": 170,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4450.webp",
+    "image": "./products/sp-4450.webp",
     "tags": [
       "bối cảnh",
       "nước",
@@ -1435,7 +1435,7 @@ export const generatedProducts: Product[] = [
     "reviews": 171,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4451.webp",
+    "image": "./products/sp-4451.webp",
     "tags": [
       "beanie",
       "cá tính",
@@ -1464,7 +1464,7 @@ export const generatedProducts: Product[] = [
     "reviews": 72,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4352.webp",
+    "image": "./products/sp-4352.webp",
     "tags": [
       "cà vạt",
       "công sở",
@@ -1492,7 +1492,7 @@ export const generatedProducts: Product[] = [
     "reviews": 73,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4353.webp",
+    "image": "./products/sp-4353.webp",
     "tags": [
       "áo khoác",
       "cá tính",
@@ -1519,7 +1519,7 @@ export const generatedProducts: Product[] = [
     "reviews": 74,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4354.webp",
+    "image": "./products/sp-4354.webp",
     "tags": [
       "áo khoác da",
       "cá tính",
@@ -1545,7 +1545,7 @@ export const generatedProducts: Product[] = [
     "reviews": 75,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4355.webp",
+    "image": "./products/sp-4355.webp",
     "tags": [
       "ba lô",
       "điện thoại",
@@ -1574,7 +1574,7 @@ export const generatedProducts: Product[] = [
     "reviews": 76,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4356.webp",
+    "image": "./products/sp-4356.webp",
     "tags": [
       "áo choàng",
       "đời thường",
@@ -1601,7 +1601,7 @@ export const generatedProducts: Product[] = [
     "reviews": 77,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4357.webp",
+    "image": "./products/sp-4357.webp",
     "tags": [
       "điện thoại",
       "đời thường",
@@ -1628,7 +1628,7 @@ export const generatedProducts: Product[] = [
     "reviews": 78,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4358.webp",
+    "image": "./products/sp-4358.webp",
     "tags": [
       "đời thường",
       "mũ",
@@ -1655,7 +1655,7 @@ export const generatedProducts: Product[] = [
     "reviews": 79,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4359.webp",
+    "image": "./products/sp-4359.webp",
     "tags": [
       "mũ",
       "nữ",
@@ -1683,7 +1683,7 @@ export const generatedProducts: Product[] = [
     "reviews": 80,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4360.webp",
+    "image": "./products/sp-4360.webp",
     "tags": [
       "đời thường",
       "kẻ caro",
@@ -1709,7 +1709,7 @@ export const generatedProducts: Product[] = [
     "reviews": 81,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4361.webp",
+    "image": "./products/sp-4361.webp",
     "tags": [
       "mũ",
       "nam",
@@ -1736,7 +1736,7 @@ export const generatedProducts: Product[] = [
     "reviews": 82,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4362.webp",
+    "image": "./products/sp-4362.webp",
     "tags": [
       "áo len",
       "cá tính",
@@ -1763,7 +1763,7 @@ export const generatedProducts: Product[] = [
     "reviews": 83,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4363.webp",
+    "image": "./products/sp-4363.webp",
     "tags": [
       "đời thường",
       "ngồi",
@@ -1789,7 +1789,7 @@ export const generatedProducts: Product[] = [
     "reviews": 84,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4364.webp",
+    "image": "./products/sp-4364.webp",
     "tags": [
       "đời thường",
       "khoanh tay",
@@ -1815,7 +1815,7 @@ export const generatedProducts: Product[] = [
     "reviews": 85,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4365.webp",
+    "image": "./products/sp-4365.webp",
     "tags": [
       "denim",
       "đời thường",
@@ -1842,7 +1842,7 @@ export const generatedProducts: Product[] = [
     "reviews": 86,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4366.webp",
+    "image": "./products/sp-4366.webp",
     "tags": [
       "cá tính",
       "nam",
@@ -1868,7 +1868,7 @@ export const generatedProducts: Product[] = [
     "reviews": 87,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4367.webp",
+    "image": "./products/sp-4367.webp",
     "tags": [
       "biển",
       "bikini",
@@ -1896,7 +1896,7 @@ export const generatedProducts: Product[] = [
     "reviews": 88,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4368.webp",
+    "image": "./products/sp-4368.webp",
     "tags": [
       "cao tuổi",
       "nghề nghiệp",
@@ -1923,7 +1923,7 @@ export const generatedProducts: Product[] = [
     "reviews": 89,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4369.webp",
+    "image": "./products/sp-4369.webp",
     "tags": [
       "đầu bếp",
       "nam",
@@ -1950,7 +1950,7 @@ export const generatedProducts: Product[] = [
     "reviews": 90,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4370.webp",
+    "image": "./products/sp-4370.webp",
     "tags": [
       "áo khoác",
       "cao tuổi",
@@ -1979,7 +1979,7 @@ export const generatedProducts: Product[] = [
     "reviews": 91,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4371.webp",
+    "image": "./products/sp-4371.webp",
     "tags": [
       "biển",
       "bikini",
@@ -2007,7 +2007,7 @@ export const generatedProducts: Product[] = [
     "reviews": 92,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4372.webp",
+    "image": "./products/sp-4372.webp",
     "tags": [
       "cá tính",
       "mũ",
@@ -2034,7 +2034,7 @@ export const generatedProducts: Product[] = [
     "reviews": 95,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4375.webp",
+    "image": "./products/sp-4375.webp",
     "tags": [
       "đua xe",
       "mũ bảo hiểm",
@@ -2062,7 +2062,7 @@ export const generatedProducts: Product[] = [
     "reviews": 98,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4378.webp",
+    "image": "./products/sp-4378.webp",
     "tags": [
       "bối cảnh",
       "cổ điển",
@@ -2089,7 +2089,7 @@ export const generatedProducts: Product[] = [
     "reviews": 99,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4379.webp",
+    "image": "./products/sp-4379.webp",
     "tags": [
       "bối cảnh",
       "bưu điện",
@@ -2116,7 +2116,7 @@ export const generatedProducts: Product[] = [
     "reviews": 100,
     "inStock": true,
     "accent": "violet",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4380.webp",
+    "image": "./products/sp-4380.webp",
     "tags": [
       "bối cảnh",
       "phụ kiện",
@@ -2144,7 +2144,7 @@ export const generatedProducts: Product[] = [
     "reviews": 101,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4381.webp",
+    "image": "./products/sp-4381.webp",
     "tags": [
       "giao hàng",
       "mũ",
@@ -2172,7 +2172,7 @@ export const generatedProducts: Product[] = [
     "reviews": 102,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4382.webp",
+    "image": "./products/sp-4382.webp",
     "tags": [
       "đồng phục",
       "học đường",
@@ -2199,7 +2199,7 @@ export const generatedProducts: Product[] = [
     "reviews": 103,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4383.webp",
+    "image": "./products/sp-4383.webp",
     "tags": [
       "ăn mừng",
       "bóng đá",
@@ -2227,7 +2227,7 @@ export const generatedProducts: Product[] = [
     "reviews": 104,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4384.webp",
+    "image": "./products/sp-4384.webp",
     "tags": [
       "dạ hội",
       "đầm đen",
@@ -2254,7 +2254,7 @@ export const generatedProducts: Product[] = [
     "reviews": 111,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4391.webp",
+    "image": "./products/sp-4391.webp",
     "tags": [
       "áo khoác",
       "cargo",
@@ -2280,7 +2280,7 @@ export const generatedProducts: Product[] = [
     "reviews": 112,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4392.webp",
+    "image": "./products/sp-4392.webp",
     "tags": [
       "điện thoại",
       "đời thường",
@@ -2307,7 +2307,7 @@ export const generatedProducts: Product[] = [
     "reviews": 113,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4393.webp",
+    "image": "./products/sp-4393.webp",
     "tags": [
       "boots",
       "cá tính",
@@ -2335,7 +2335,7 @@ export const generatedProducts: Product[] = [
     "reviews": 114,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4394.webp",
+    "image": "./products/sp-4394.webp",
     "tags": [
       "áo đỏ",
       "đỏ",
@@ -2362,7 +2362,7 @@ export const generatedProducts: Product[] = [
     "reviews": 115,
     "inStock": true,
     "accent": "brand",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4395.webp",
+    "image": "./products/sp-4395.webp",
     "tags": [
       "gợi cảm",
       "ngồi",
@@ -2389,7 +2389,7 @@ export const generatedProducts: Product[] = [
     "reviews": 116,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4396.webp",
+    "image": "./products/sp-4396.webp",
     "tags": [
       "áo khoác",
       "du lịch",
@@ -2416,7 +2416,7 @@ export const generatedProducts: Product[] = [
     "reviews": 117,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4397.webp",
+    "image": "./products/sp-4397.webp",
     "tags": [
       "áo khoác",
       "denim",
@@ -2442,7 +2442,7 @@ export const generatedProducts: Product[] = [
     "reviews": 118,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4398.webp",
+    "image": "./products/sp-4398.webp",
     "tags": [
       "mũ",
       "nam",
@@ -2468,7 +2468,7 @@ export const generatedProducts: Product[] = [
     "reviews": 119,
     "inStock": true,
     "accent": "cyan",
-    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4399.webp",
+    "image": "./products/sp-4399.webp",
     "tags": [
       "cá tính",
       "denim",

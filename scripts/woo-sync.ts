@@ -50,6 +50,14 @@ function mapProduct(p: any): Product {
   try { highlights = highlightsRaw ? JSON.parse(highlightsRaw) : [] } catch { highlights = [] }
   if (!highlights.length) highlights = ['Chế tác chi tiết sắc nét', 'Sơn phủ tỉ mỉ', 'Phù hợp trưng bày & diorama']
 
+  // Ảnh: nếu tên file theo quy ước sp-<mã>.webp (đã có sẵn trên kevindauto.com/products)
+  // thì dùng đường dẫn local (nhanh, tự chứa); ảnh mới upload trên WP thì dùng URL Woo.
+  const src: string = p.images?.[0]?.src || ''
+  const base = src.split('/').pop() || ''
+  const image = /^sp-\d+\.webp$/i.test(base)
+    ? `./products/${base}`
+    : (src || `./products/sp-${code}.webp`)
+
   const badge = metaVal(p, '_kdt_badge')
   const product: Product = {
     id: `sp-${code}`,
@@ -63,7 +71,7 @@ function mapProduct(p: any): Product {
     reviews: Number(metaVal(p, '_kdt_reviews')) || 0,
     inStock: p.stock_status ? p.stock_status === 'instock' : true,
     accent: (metaVal(p, '_kdt_accent') || 'brand') as Accent,
-    image: p.images?.[0]?.src || `./products/sp-${code}.webp`,
+    image,
     tags: (p.tags || []).map((t: any) => t.name),
     description: stripHtml(p.short_description || p.description || ''),
     highlights,
