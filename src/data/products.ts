@@ -4,6 +4,8 @@
 //  Giá đang để đồng giá 30.000₫ — chỉnh tay lại trong từng dòng nếu cần.
 // ============================================================================
 
+import { generatedProducts } from './products.generated'
+
 export type Accent = 'brand' | 'cyan' | 'gold' | 'violet'
 
 export type Category =
@@ -108,7 +110,8 @@ function p(
   }
 }
 
-export const products: Product[] = [
+// Dữ liệu TĨNH gốc (viết tay) — luôn dùng làm bản dự phòng khi chưa đồng bộ từ WooCommerce.
+const staticProducts: Product[] = [
   // ---------------- Hàng 1: 4400–4412 ----------------
   p(4400, 'Chàng trai phượt chụp ảnh', 'nam', 'Du lịch', ['nam', 'phượt', 'du lịch', 'ba lô', 'nhiếp ảnh', 'máy ảnh', 'đời thường'],
     'Mô hình chàng trai đeo ba lô lớn đang đưa máy ảnh lên chụp — chất phượt thủ năng động, hợp diorama đường phố.'),
@@ -320,5 +323,9 @@ export const products: Product[] = [
   p(4399, 'Chàng trai bụi bặm denim', 'nam', 'Streetwear', ['nam', 'denim', 'streetwear', 'cá tính', 'đỏ'],
     'Chàng trai phong trần với denim phối điểm nhấn đỏ — khí chất ngầu bụi.'),
 ]
+
+// CÔNG TẮC: có dữ liệu đồng bộ từ WooCommerce thì dùng, không thì quay về dữ liệu tĩnh.
+// Sinh `products.generated.ts` bằng: npx -y tsx scripts/woo-sync.ts
+export const products: Product[] = generatedProducts.length > 0 ? generatedProducts : staticProducts
 
 export const productsById = Object.fromEntries(products.map((p) => [p.id, p]))

@@ -9,6 +9,8 @@
     "build": "tsc -p tsconfig.json --noEmit && vite build",
     "preview": "vite preview",
     "deploy": "node scripts/deploy-ftp.mjs",
+    "woo:import": "tsx scripts/woo-import.ts",
+    "woo:sync": "tsx scripts/woo-sync.ts",
     "lint": "eslint ."
   },
   "dependencies": {
