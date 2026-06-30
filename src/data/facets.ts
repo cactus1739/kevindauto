@@ -236,7 +236,7 @@ export const SYNONYMS: Record<string, string[]> = {
   female: ['nu'],
   girl: ['nu'],
   lady: ['nu'],
-  couple: ['cap doi', 'doi', 'tinh nhan'],
+  couple: ['cap doi', 'tinh nhan'],
   family: ['gia dinh'],
   kid: ['tre em', 'be trai'],
   child: ['tre em'],
