@@ -1,0 +1,25 @@
+name: FTP list (chẩn đoán)
+
+# Chạy tay để liệt kê cây thư mục FTP, tìm chỗ cài WordPress.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ftp-deploy
+  cancel-in-progress: false
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Liệt kê FTP
+        run: node scripts/ftp-list.mjs
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}

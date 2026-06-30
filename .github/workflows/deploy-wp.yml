@@ -9,6 +9,10 @@ on:
     paths: ['wp/mu-plugins/**']
   workflow_dispatch:
 
+concurrency:
+  group: ftp-deploy
+  cancel-in-progress: false
+
 jobs:
   deploy-wp:
     runs-on: ubuntu-latest
