@@ -3,6 +3,7 @@
  * Plugin Name: KDT - Nhận báo giá từ website
  * Description: Endpoint công khai POST /wp-json/kdt/v1/quote — tạo đơn nháp WooCommerce + email cho shop.
  * Author: kevindauto
+ * Version: 1.0.1
  */
 if (!defined('ABSPATH')) exit;
 
