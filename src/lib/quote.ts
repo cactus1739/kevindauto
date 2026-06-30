@@ -25,38 +25,3 @@ export function quoteText(items: QuoteItem[]): string {
     `\n\nTạm tính: ${formatVND(quoteTotal(items))}\n(Gửi từ website kevindauto.com)`
   )
 }
-
-export interface QuoteContact {
-  name: string
-  phone: string
-  note?: string
-}
-
-/** Gửi báo giá thẳng về shop (tạo đơn trong WooCommerce + email cho chủ). */
-export async function submitQuote(
-  items: QuoteItem[],
-  contact: QuoteContact,
-): Promise<{ ok: boolean; error?: string; order?: number }> {
-  const payload = {
-    name: contact.name.trim(),
-    phone: contact.phone.trim(),
-    note: (contact.note ?? '').trim(),
-    website: '', // honeypot — form thật luôn để trống
-    items: items
-      .map((it) => ({ code: productsById[it.id]?.code, qty: it.qty }))
-      .filter((x) => x.code),
-  }
-  try {
-    // Content-Type text/plain để tránh CORS preflight giữa kevindauto.com và subdomain admin
-    const res = await fetch(site.quoteApi, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-      body: JSON.stringify(payload),
-    })
-    const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; order?: number }
-    if (!res.ok || !data.ok) return { ok: false, error: data.error || 'Gửi thất bại, vui lòng thử lại.' }
-    return { ok: true, order: data.order }
-  } catch {
-    return { ok: false, error: 'Lỗi kết nối, vui lòng thử lại sau.' }
-  }
-}

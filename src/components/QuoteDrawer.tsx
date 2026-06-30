@@ -1,44 +1,15 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Plus, Minus, Trash2, MessageCircle, Copy, Check, ClipboardList, Send, Loader2 } from 'lucide-react'
+import { X, Plus, Minus, Trash2, MessageCircle, Copy, Check, ClipboardList } from 'lucide-react'
 import ProductImage from './ProductImage'
 import { useUI } from '../context/ui'
 import { productsById } from '../data/products'
 import { formatVND, site } from '../data/site'
-import { quoteText, quoteTotal, submitQuote } from '../lib/quote'
+import { quoteText, quoteTotal } from '../lib/quote'
 
 export default function QuoteDrawer() {
   const { quote, quoteOpen, closeQuoteDrawer, setQty, removeFromQuote, clearQuote, quoteCount } = useUI()
   const [copied, setCopied] = useState(false)
-
-  // Gửi báo giá thẳng về shop
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [note, setNote] = useState('')
-  const [website, setWebsite] = useState('') // honeypot chống bot
-  const [sending, setSending] = useState(false)
-  const [result, setResult] = useState<{ ok: boolean; msg: string } | null>(null)
-
-  const phoneValid = /^[0-9 +().-]{8,}$/.test(phone.trim())
-  const canSend = name.trim().length >= 2 && phoneValid && quote.length > 0 && !sending
-
-  const handleSubmit = async () => {
-    if (website || !canSend) return
-    setSending(true)
-    setResult(null)
-    const r = await submitQuote(quote, { name, phone, note })
-    setSending(false)
-    if (r.ok) {
-      setResult({ ok: true, msg: '' })
-      clearQuote()
-      setName(''); setPhone(''); setNote('')
-    } else {
-      setResult({ ok: false, msg: r.error || 'Gửi thất bại, vui lòng thử lại.' })
-    }
-  }
-
-  const inputCls =
-    'w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-brand-400 focus:outline-none'
 
   useEffect(() => {
     if (!quoteOpen) return
@@ -114,20 +85,7 @@ export default function QuoteDrawer() {
               </button>
             </div>
 
-            {result?.ok ? (
-              <div className="flex flex-1 flex-col items-center justify-center p-8 text-center">
-                <span className="grid h-16 w-16 place-items-center rounded-2xl bg-cyan2-400/15">
-                  <Check className="h-8 w-8 text-cyan2-400" />
-                </span>
-                <p className="mt-4 font-semibold text-white">Đã gửi báo giá! 🎉</p>
-                <p className="mt-1 text-sm text-slate-400">
-                  Shop đã nhận được và sẽ liên hệ bạn sớm qua số điện thoại bạn nhập. Cảm ơn bạn!
-                </p>
-                <button onClick={() => { setResult(null); closeQuoteDrawer() }} className="btn-primary mt-6 text-sm">
-                  Đóng
-                </button>
-              </div>
-            ) : items.length === 0 ? (
+            {items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center p-8 text-center">
                 <span className="grid h-16 w-16 place-items-center rounded-2xl bg-white/5">
                   <ClipboardList className="h-8 w-8 text-slate-400" />
@@ -199,10 +157,8 @@ export default function QuoteDrawer() {
                     <span className="text-sm text-slate-400">Tạm tính</span>
                     <span className="font-display text-xl font-extrabold text-gradient tabular">{formatVND(total)}</span>
                   </div>
-
-                  {/* Gửi qua chat (Zalo / Messenger) — tự copy nội dung */}
                   <p className="mb-3 text-xs text-slate-400">
-                    Bấm gửi → nội dung danh sách tự được sao chép, bạn chỉ cần <span className="text-slate-200">dán vào khung chat</span> gửi shop.
+                    Bấm gửi → nội dung danh sách tự được sao chép, bạn chỉ cần <span className="text-slate-200">dán vào khung chat</span> gửi shop để được chốt đơn.
                   </p>
                   <div className="flex flex-col gap-2.5">
                     <button onClick={() => sendVia(site.zalo)} className="btn-primary w-full">
@@ -218,24 +174,6 @@ export default function QuoteDrawer() {
                       </button>
                     </div>
                   </div>
-
-                  {/* hoặc để shop chủ động gọi lại */}
-                  <div className="my-3 flex items-center gap-3 text-[11px] uppercase tracking-wide text-slate-500">
-                    <span className="h-px flex-1 bg-white/10" /> hoặc để shop gọi lại <span className="h-px flex-1 bg-white/10" />
-                  </div>
-
-                  <div className="mb-2 grid grid-cols-2 gap-2">
-                    <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Tên của bạn" className={inputCls} />
-                    <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Số điện thoại" inputMode="tel" className={inputCls} />
-                  </div>
-                  <input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Ghi chú (tuỳ chọn)" className={`${inputCls} mb-2`} />
-                  {/* honeypot ẩn chống bot */}
-                  <input value={website} onChange={(e) => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
-                  {result && !result.ok && <p className="mb-2 text-xs text-red-400">{result.msg}</p>}
-                  <button onClick={handleSubmit} disabled={!canSend} className="btn-ghost w-full disabled:cursor-not-allowed disabled:opacity-50">
-                    {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-                    {sending ? 'Đang gửi...' : 'Gửi báo giá về shop (shop gọi lại)'}
-                  </button>
                 </div>
               </>
             )}
