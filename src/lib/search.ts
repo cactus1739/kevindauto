@@ -8,12 +8,16 @@ interface Indexed {
   product: Product
   text: string
   words: Set<string>
+  rawWords: Set<string>
 }
 
 const indexed: Indexed[] = products.map((p) => {
-  const text = normalizeVi([p.name, p.series, p.code, categoryLabel[p.category], ...p.tags].join(' '))
+  const parts = [p.name, p.series, p.code, categoryLabel[p.category], ...p.tags]
+  const raw = parts.join(' ')
+  const text = normalizeVi(raw)
   const words = new Set(text.split(' ').filter((w) => w.length >= 2))
-  return { product: p, text, words }
+  const rawWords = new Set(raw.toLowerCase().split(/\s+/).filter((w) => w.length >= 2))
+  return { product: p, text, words, rawWords }
 })
 
 // Từ điển tất cả các từ (để sửa lỗi chính tả).
@@ -77,36 +81,68 @@ export function searchProducts(rawQuery: string): Product[] {
   if (!primary.length && !phrases.length) return products
 
   const N = indexed.length || 1
-  // Tần suất tài liệu (df) + trọng số IDF: từ càng phổ biến (vd "người") trọng số càng thấp.
   const df = primary.map((t) => indexed.reduce((c, it) => c + (tokenHitsWords(t, it.words) ? 1 : 0), 0))
   const idf = df.map((d) => Math.log((N + 1) / (d + 1)) + 0.2)
-  const common = df.map((d) => d > N * 0.3) // token khớp > 30% sản phẩm = quá phổ biến
+  const common = df.map((d) => d > N * 0.3)
   const allCommon = common.every(Boolean)
   const totalIdf = idf.reduce((a, b) => a + b, 0) || 1
-  const COVER = 0.45 // sản phẩm phải "phủ" tối thiểu 45% trọng số truy vấn mới được tính
+  const COVER = 0.55
+
+  const anyPrimaryInCorpus = df.some((d) => d > 0)
+
+  const hasDiacritics = /[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ]/i.test(rawQuery)
+  const rawTokens = hasDiacritics ? rawQuery.toLowerCase().split(/\s+/).filter((t) => t.length >= 2) : []
+
+  // Ánh xạ token chuẩn hoá → token gốc (có dấu) để phân biệt "đá"/"da"/"dạ"
+  const rawByNorm = new Map<string, string>()
+  if (hasDiacritics) {
+    const normParts = normalizeVi(rawQuery).split(' ').filter((t) => t.length >= 2)
+    for (let i = 0; i < Math.min(rawTokens.length, normParts.length); i++) {
+      if (rawTokens[i] !== normParts[i]) rawByNorm.set(normParts[i], rawTokens[i])
+    }
+  }
 
   const scored = new Map<string, number>()
   const add = (id: string, pts: number) => scored.set(id, (scored.get(id) ?? 0) + pts)
 
-  // Lượt 1: khớp từ khoá (có trọng số IDF) + cụm đồng nghĩa
   for (const it of indexed) {
+    if (hasDiacritics && allCommon) {
+      const rawHit = rawTokens.some((rt) => {
+        if (it.rawWords.has(rt)) return true
+        if (rt.length >= 4) for (const rw of it.rawWords) if (rw.startsWith(rt)) return true
+        return false
+      })
+      if (!rawHit) continue
+    }
+
     let tokenPts = 0
     let matchedIdf = 0
     let hitSpecific = false
     for (let i = 0; i < primary.length; i++) {
       if (tokenHitsWords(primary[i], it.words)) {
-        tokenPts += 2 * idf[i]
-        matchedIdf += idf[i]
-        if (allCommon || !common[i]) hitSpecific = true // khớp được một từ ĐẶC TRƯNG
+        let w = idf[i]
+        const rawForm = rawByNorm.get(primary[i])
+        if (rawForm) {
+          const rawHit = it.rawWords.has(rawForm) ||
+            (rawForm.length >= 4 && [...it.rawWords].some((rw) => rw.startsWith(rawForm)))
+          if (!rawHit) w *= 0.25
+        }
+        tokenPts += 2 * w
+        matchedIdf += w
+        if (allCommon || !common[i]) hitSpecific = true
       }
     }
     let phrasePts = 0
     for (const ph of phrases) if (it.text.includes(ph)) phrasePts += 1
 
-    // Đủ điều kiện: khớp cụm đồng nghĩa, HOẶC khớp ≥1 từ đặc trưng và phủ đủ trọng số truy vấn
-    // (tránh việc chỉ khớp một từ quá phổ biến như "người" mà lọt vào kết quả).
-    if (phrasePts > 0 || (hitSpecific && matchedIdf >= COVER * totalIdf)) {
-      add(it.product.id, tokenPts + phrasePts)
+    if (anyPrimaryInCorpus) {
+      if (hitSpecific && matchedIdf >= COVER * totalIdf) {
+        add(it.product.id, tokenPts + phrasePts)
+      } else if (phrasePts > 0 && tokenPts > 0) {
+        add(it.product.id, tokenPts + phrasePts)
+      }
+    } else if (phrasePts > 0) {
+      add(it.product.id, phrasePts)
     }
   }
 
