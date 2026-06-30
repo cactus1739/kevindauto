@@ -200,28 +200,13 @@ export default function QuoteDrawer() {
                     <span className="font-display text-xl font-extrabold text-gradient tabular">{formatVND(total)}</span>
                   </div>
 
-                  {/* Gửi thẳng về shop — shop nhận ngay, gọi lại cho khách */}
-                  <div className="mb-2 grid grid-cols-2 gap-2">
-                    <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Tên của bạn" className={inputCls} />
-                    <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Số điện thoại" inputMode="tel" className={inputCls} />
-                  </div>
-                  <input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Ghi chú (tuỳ chọn)" className={`${inputCls} mb-2`} />
-                  {/* honeypot ẩn chống bot */}
-                  <input value={website} onChange={(e) => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
-                  {result && !result.ok && <p className="mb-2 text-xs text-red-400">{result.msg}</p>}
-                  <button onClick={handleSubmit} disabled={!canSend} className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50">
-                    {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-                    {sending ? 'Đang gửi...' : 'Gửi báo giá về shop'}
-                  </button>
-                  <p className="mt-2 text-center text-[11px] text-slate-500">Shop nhận ngay & gọi lại cho bạn — không cần tự nhắn.</p>
-
-                  <div className="my-3 flex items-center gap-3 text-[11px] uppercase tracking-wide text-slate-500">
-                    <span className="h-px flex-1 bg-white/10" /> hoặc gửi qua chat <span className="h-px flex-1 bg-white/10" />
-                  </div>
-
+                  {/* Gửi qua chat (Zalo / Messenger) — tự copy nội dung */}
+                  <p className="mb-3 text-xs text-slate-400">
+                    Bấm gửi → nội dung danh sách tự được sao chép, bạn chỉ cần <span className="text-slate-200">dán vào khung chat</span> gửi shop.
+                  </p>
                   <div className="flex flex-col gap-2.5">
-                    <button onClick={() => sendVia(site.zalo)} className="btn-ghost w-full">
-                      <MessageCircle className="h-4 w-4" /> Gửi qua Zalo (tự copy)
+                    <button onClick={() => sendVia(site.zalo)} className="btn-primary w-full">
+                      <MessageCircle className="h-4 w-4" /> Gửi báo giá qua Zalo
                     </button>
                     <div className="flex gap-2.5">
                       <button onClick={() => sendVia(site.messenger)} className="btn-ghost flex-1">
@@ -233,6 +218,24 @@ export default function QuoteDrawer() {
                       </button>
                     </div>
                   </div>
+
+                  {/* hoặc để shop chủ động gọi lại */}
+                  <div className="my-3 flex items-center gap-3 text-[11px] uppercase tracking-wide text-slate-500">
+                    <span className="h-px flex-1 bg-white/10" /> hoặc để shop gọi lại <span className="h-px flex-1 bg-white/10" />
+                  </div>
+
+                  <div className="mb-2 grid grid-cols-2 gap-2">
+                    <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Tên của bạn" className={inputCls} />
+                    <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Số điện thoại" inputMode="tel" className={inputCls} />
+                  </div>
+                  <input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Ghi chú (tuỳ chọn)" className={`${inputCls} mb-2`} />
+                  {/* honeypot ẩn chống bot */}
+                  <input value={website} onChange={(e) => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+                  {result && !result.ok && <p className="mb-2 text-xs text-red-400">{result.msg}</p>}
+                  <button onClick={handleSubmit} disabled={!canSend} className="btn-ghost w-full disabled:cursor-not-allowed disabled:opacity-50">
+                    {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                    {sending ? 'Đang gửi...' : 'Gửi báo giá về shop (shop gọi lại)'}
+                  </button>
                 </div>
               </>
             )}
