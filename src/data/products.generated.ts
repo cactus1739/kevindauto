@@ -1,7 +1,7 @@
 // ============================================================================
 //  FILE TỰ ĐỘNG SINH từ WooCommerce — đừng sửa tay.
 //  Tạo lại bằng: npx -y tsx scripts/woo-sync.ts
-//  Cập nhật lần cuối: 2026-06-30T10:53:06.490Z — 241 sản phẩm.
+//  Cập nhật lần cuối: 2026-06-30T11:09:49.084Z — 241 sản phẩm.
 // ============================================================================
 import type { Product } from './products'
 
@@ -824,9 +824,11 @@ export const generatedProducts: Product[] = [
     "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4429-3.webp",
     "tags": [
       "chưa sơn",
-      "điện thoại",
+      "điếu thuốc",
+      "hút thuốc",
       "nữ",
       "prototype",
+      "thuốc lá",
       "xám"
     ],
     "description": "Bản mẫu màu xám chưa sơn — phù hợp người chơi thích tự tay tô màu sáng tạo.",

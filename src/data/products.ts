@@ -179,7 +179,7 @@ export const staticProducts: Product[] = [
     'Cô nàng áo khoác xanh, jeans và kính mát, tạo dáng cực ngầu và tự tin.'),
   p(4428, 'Quý cô đầm đỏ', 'nu', 'Dạ hội', ['nữ', 'đầm đỏ', 'sang trọng', 'ngồi', 'dạ hội'],
     'Quý cô trong đầm đỏ nổi bật, dáng ngồi sang trọng kiểu tiệc tối.'),
-  p(4429, 'Nữ mẫu bản xám (chưa sơn)', 'nu', 'Prototype', ['nữ', 'xám', 'chưa sơn', 'prototype', 'điện thoại'],
+  p(4429, 'Nữ mẫu bản xám (chưa sơn)', 'nu', 'Prototype', ['nữ', 'xám', 'chưa sơn', 'prototype', 'hút thuốc', 'thuốc lá', 'điếu thuốc'],
     'Bản mẫu màu xám chưa sơn — phù hợp người chơi thích tự tay tô màu sáng tạo.'),
   p(4430, 'Cô gái tóc vàng', 'nu', 'Đời thường', ['nữ', 'tóc vàng', 'đời thường', 'điện thoại'],
     'Cô gái tóc vàng dáng đứng tự nhiên, cầm điện thoại — hình mẫu đời thường dễ thương.'),

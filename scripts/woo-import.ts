@@ -117,17 +117,25 @@ async function main() {
   console.log('1) Danh mục...')
   const catMap = await ensureCategories()
 
-  console.log('\n2) Sản phẩm...')
-  let created = 0, updated = 0, failed = 0
+  // Chỉ TẠO sản phẩm chưa có. Sản phẩm đã tồn tại -> BỎ QUA để KHÔNG ghi đè chỉnh sửa
+  // trên trang admin (tên/giá/thẻ/danh mục khách tự sửa là nguồn sự thật).
+  // Muốn ép cập nhật toàn bộ từ products.ts: chạy với cờ --force.
+  const FORCE = process.argv.includes('--force')
+  console.log(`\n2) Sản phẩm... ${FORCE ? '(--force: GHI ĐÈ cả cái đã có)' : '(chỉ tạo mới, bỏ qua cái đã có)'}`)
+  let created = 0, skipped = 0, updated = 0, failed = 0
   for (const p of products) {
     const payload = buildPayload(p, catMap)
     try {
       if (DRY) { console.log(`  [dry] ${p.code} — ${p.name}`); continue }
       const existingId = await findBySku(p.code)
       if (existingId) {
-        await woo(`/products/${existingId}`, 'PUT', payload)
-        updated++
-        console.log(`  ~ cập nhật ${p.code} — ${p.name}`)
+        if (FORCE) {
+          await woo(`/products/${existingId}`, 'PUT', payload)
+          updated++
+          console.log(`  ~ ghi đè ${p.code} — ${p.name}`)
+        } else {
+          skipped++
+        }
       } else {
         await woo('/products', 'POST', payload)
         created++
@@ -139,7 +147,7 @@ async function main() {
     }
   }
 
-  console.log(`\n✅ Xong. Tạo mới: ${created} | Cập nhật: ${updated} | Lỗi: ${failed}`)
+  console.log(`\n✅ Xong. Tạo mới: ${created} | Bỏ qua (giữ nguyên admin): ${skipped} | Ghi đè: ${updated} | Lỗi: ${failed}`)
 }
 
 main().catch((e) => { console.error('❌', e); process.exit(1) })

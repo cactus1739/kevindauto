@@ -30,7 +30,10 @@ const API = `${WOO_URL}/wp-json/wc/v3`
 const AUTH = 'Basic ' + Buffer.from(`${WOO_KEY}:${WOO_SECRET}`).toString('base64')
 
 async function woo(path: string) {
-  const res = await fetch(`${API}${path}`, { headers: { Authorization: AUTH } })
+  // Chống cache (LiteSpeed) — thêm tham số ngẫu nhiên + header no-cache để luôn lấy dữ liệu mới nhất.
+  const sep = path.includes('?') ? '&' : '?'
+  const url = `${API}${path}${sep}_nocache=${Date.now()}_${Math.random().toString(36).slice(2)}`
+  const res = await fetch(url, { headers: { Authorization: AUTH, 'Cache-Control': 'no-cache', Pragma: 'no-cache' } })
   const text = await res.text()
   if (!res.ok) throw new Error(`GET ${path} -> ${res.status}: ${text}`)
   return JSON.parse(text)

@@ -76,15 +76,38 @@ export function searchProducts(rawQuery: string): Product[] {
   const { primary, phrases } = tokenize(rawQuery)
   if (!primary.length && !phrases.length) return products
 
+  const N = indexed.length || 1
+  // Tần suất tài liệu (df) + trọng số IDF: từ càng phổ biến (vd "người") trọng số càng thấp.
+  const df = primary.map((t) => indexed.reduce((c, it) => c + (tokenHitsWords(t, it.words) ? 1 : 0), 0))
+  const idf = df.map((d) => Math.log((N + 1) / (d + 1)) + 0.2)
+  const common = df.map((d) => d > N * 0.3) // token khớp > 30% sản phẩm = quá phổ biến
+  const allCommon = common.every(Boolean)
+  const totalIdf = idf.reduce((a, b) => a + b, 0) || 1
+  const COVER = 0.45 // sản phẩm phải "phủ" tối thiểu 45% trọng số truy vấn mới được tính
+
   const scored = new Map<string, number>()
   const add = (id: string, pts: number) => scored.set(id, (scored.get(id) ?? 0) + pts)
 
-  // Lượt 1: khớp trực tiếp từ khoá + cụm đồng nghĩa
+  // Lượt 1: khớp từ khoá (có trọng số IDF) + cụm đồng nghĩa
   for (const it of indexed) {
-    let pts = 0
-    for (const token of primary) if (tokenHitsWords(token, it.words)) pts += 2
-    for (const ph of phrases) if (it.text.includes(ph)) pts += 1
-    if (pts > 0) add(it.product.id, pts)
+    let tokenPts = 0
+    let matchedIdf = 0
+    let hitSpecific = false
+    for (let i = 0; i < primary.length; i++) {
+      if (tokenHitsWords(primary[i], it.words)) {
+        tokenPts += 2 * idf[i]
+        matchedIdf += idf[i]
+        if (allCommon || !common[i]) hitSpecific = true // khớp được một từ ĐẶC TRƯNG
+      }
+    }
+    let phrasePts = 0
+    for (const ph of phrases) if (it.text.includes(ph)) phrasePts += 1
+
+    // Đủ điều kiện: khớp cụm đồng nghĩa, HOẶC khớp ≥1 từ đặc trưng và phủ đủ trọng số truy vấn
+    // (tránh việc chỉ khớp một từ quá phổ biến như "người" mà lọt vào kết quả).
+    if (phrasePts > 0 || (hitSpecific && matchedIdf >= COVER * totalIdf)) {
+      add(it.product.id, tokenPts + phrasePts)
+    }
   }
 
   // Lượt 2 (chỉ khi KHÔNG ra gì): sửa lỗi chính tả token gốc rồi thử lại
