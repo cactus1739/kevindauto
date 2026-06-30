@@ -111,7 +111,7 @@ function p(
 }
 
 // Dữ liệu TĨNH gốc (viết tay) — luôn dùng làm bản dự phòng khi chưa đồng bộ từ WooCommerce.
-const staticProducts: Product[] = [
+export const staticProducts: Product[] = [
   // ---------------- Hàng 1: 4400–4412 ----------------
   p(4400, 'Chàng trai phượt chụp ảnh', 'nam', 'Du lịch', ['nam', 'phượt', 'du lịch', 'ba lô', 'nhiếp ảnh', 'máy ảnh', 'đời thường'],
     'Mô hình chàng trai đeo ba lô lớn đang đưa máy ảnh lên chụp — chất phượt thủ năng động, hợp diorama đường phố.'),

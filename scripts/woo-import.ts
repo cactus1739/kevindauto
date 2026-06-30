@@ -11,7 +11,10 @@
 //  Script CHẠY LẠI ĐƯỢC NHIỀU LẦN an toàn: trùng SKU thì cập nhật, không tạo trùng.
 // ============================================================================
 import { readFileSync, existsSync } from 'node:fs'
-import { products, categories, categoryLabel } from '../src/data/products'
+// LƯU Ý: dùng staticProducts (nguồn viết tay), KHÔNG dùng `products` — vì `products` ưu
+// tiên dữ liệu đã đồng bộ từ WooCommerce (products.generated.ts), sẽ che mất sản phẩm
+// mới thêm vào staticProducts mà chưa từng tồn tại trên WooCommerce.
+import { staticProducts as products, categories, categoryLabel } from '../src/data/products'
 
 // ---- Nạp biến môi trường từ .env (không cần thư viện) ----------------------
 function loadEnv(file = '.env') {

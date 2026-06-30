@@ -1,7 +1,7 @@
 // ============================================================================
 //  FILE TỰ ĐỘNG SINH từ WooCommerce — đừng sửa tay.
 //  Tạo lại bằng: npx -y tsx scripts/woo-sync.ts
-//  Cập nhật lần cuối: 2026-06-29T15:48:44.975Z — 90 sản phẩm.
+//  Cập nhật lần cuối: 2026-06-30T10:11:07.730Z — 142 sản phẩm.
 // ============================================================================
 import type { Product } from './products'
 
@@ -18,7 +18,7 @@ export const generatedProducts: Product[] = [
     "reviews": 120,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4400.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4400-2.webp",
     "tags": [
       "ba lô",
       "đời thường",
@@ -47,7 +47,7 @@ export const generatedProducts: Product[] = [
     "reviews": 121,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4401.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4401-2.webp",
     "tags": [
       "dạo phố",
       "denim",
@@ -75,7 +75,7 @@ export const generatedProducts: Product[] = [
     "reviews": 122,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4402.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4402-2.webp",
     "tags": [
       "đời thường",
       "kính",
@@ -102,7 +102,7 @@ export const generatedProducts: Product[] = [
     "reviews": 123,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4403.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4403-2.webp",
     "tags": [
       "áo khoác",
       "mùa đông",
@@ -129,7 +129,7 @@ export const generatedProducts: Product[] = [
     "reviews": 124,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4404.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4404-2.webp",
     "tags": [
       "công sở",
       "doanh nhân",
@@ -158,7 +158,7 @@ export const generatedProducts: Product[] = [
     "reviews": 125,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4405.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4405-2.webp",
     "tags": [
       "bóng rổ",
       "jersey",
@@ -185,7 +185,7 @@ export const generatedProducts: Product[] = [
     "reviews": 126,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4406.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4406-2.webp",
     "tags": [
       "áo đỏ",
       "đời thường",
@@ -212,7 +212,7 @@ export const generatedProducts: Product[] = [
     "reviews": 127,
     "inStock": true,
     "accent": "gold",
-    "image": "./products/sp-4407.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4407-2.webp",
     "tags": [
       "cặp đôi",
       "đôi",
@@ -242,7 +242,7 @@ export const generatedProducts: Product[] = [
     "reviews": 128,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4408.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4408-2.webp",
     "tags": [
       "casual",
       "đời thường",
@@ -269,7 +269,7 @@ export const generatedProducts: Product[] = [
     "reviews": 129,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4409.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4409-2.webp",
     "tags": [
       "ba lô",
       "đi bộ",
@@ -297,7 +297,7 @@ export const generatedProducts: Product[] = [
     "reviews": 130,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4410.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4410-2.webp",
     "tags": [
       "biker",
       "bikini",
@@ -325,7 +325,7 @@ export const generatedProducts: Product[] = [
     "reviews": 131,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4411.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4411-2.webp",
     "tags": [
       "cao gót",
       "gợi cảm",
@@ -352,7 +352,7 @@ export const generatedProducts: Product[] = [
     "reviews": 132,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4412.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4412-2.webp",
     "tags": [
       "boots",
       "măng tô",
@@ -379,7 +379,7 @@ export const generatedProducts: Product[] = [
     "reviews": 133,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4413.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4413-2.webp",
     "tags": [
       "cao tuổi",
       "lịch lãm",
@@ -406,7 +406,7 @@ export const generatedProducts: Product[] = [
     "reviews": 134,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4414.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4414-2.webp",
     "tags": [
       "cao tuổi",
       "đầu bếp",
@@ -434,7 +434,7 @@ export const generatedProducts: Product[] = [
     "reviews": 135,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4415.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4415-2.webp",
     "tags": [
       "cao tuổi",
       "đi bộ",
@@ -461,7 +461,7 @@ export const generatedProducts: Product[] = [
     "reviews": 136,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4416.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4416-2.webp",
     "tags": [
       "denim",
       "điện thoại",
@@ -488,7 +488,7 @@ export const generatedProducts: Product[] = [
     "reviews": 137,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4417.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4417-2.webp",
     "tags": [
       "bí ẩn",
       "bóng đen",
@@ -516,7 +516,7 @@ export const generatedProducts: Product[] = [
     "reviews": 138,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4418.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4418-2.webp",
     "tags": [
       "áo choàng",
       "độc đáo",
@@ -544,7 +544,7 @@ export const generatedProducts: Product[] = [
     "reviews": 139,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4419.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4419-2.webp",
     "tags": [
       "ấn tượng",
       "áo liền quần",
@@ -573,7 +573,7 @@ export const generatedProducts: Product[] = [
     "reviews": 140,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4420.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4420-2.webp",
     "tags": [
       "cao tuổi",
       "điện thoại",
@@ -598,9 +598,9 @@ export const generatedProducts: Product[] = [
     "material": "Resin 3D cao cấp",
     "rating": 5,
     "reviews": 141,
-    "inStock": true,
+    "inStock": false,
     "accent": "brand",
-    "image": "./products/sp-4421.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4421-2.webp",
     "tags": [
       "áo choàng",
       "bí ẩn",
@@ -628,7 +628,7 @@ export const generatedProducts: Product[] = [
     "reviews": 142,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4422.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4422-2.webp",
     "tags": [
       "doanh nhân",
       "nam",
@@ -655,7 +655,7 @@ export const generatedProducts: Product[] = [
     "reviews": 143,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4423.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4423-2.webp",
     "tags": [
       "ba lô",
       "gile",
@@ -683,7 +683,7 @@ export const generatedProducts: Product[] = [
     "reviews": 144,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4424.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4424-2.webp",
     "tags": [
       "đen",
       "gợi cảm",
@@ -710,7 +710,7 @@ export const generatedProducts: Product[] = [
     "reviews": 145,
     "inStock": true,
     "accent": "gold",
-    "image": "./products/sp-4425.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4425-2.webp",
     "tags": [
       "cổ điển",
       "điêu khắc",
@@ -738,7 +738,7 @@ export const generatedProducts: Product[] = [
     "reviews": 146,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4426.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4426-2.webp",
     "tags": [
       "hoodie",
       "ngồi",
@@ -766,7 +766,7 @@ export const generatedProducts: Product[] = [
     "reviews": 147,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4427.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4427-2.webp",
     "tags": [
       "áo khoác xanh",
       "cá tính",
@@ -794,7 +794,7 @@ export const generatedProducts: Product[] = [
     "reviews": 148,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4428.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4428-2.webp",
     "tags": [
       "dạ hội",
       "đầm đỏ",
@@ -821,14 +821,12 @@ export const generatedProducts: Product[] = [
     "reviews": 149,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4429.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4429-2.webp",
     "tags": [
       "chưa sơn",
-      "điếu thuốc",
-      "hút thuốc",
+      "điện thoại",
       "nữ",
       "prototype",
-      "thuốc lá",
       "xám"
     ],
     "description": "Bản mẫu màu xám chưa sơn — phù hợp người chơi thích tự tay tô màu sáng tạo.",
@@ -850,7 +848,7 @@ export const generatedProducts: Product[] = [
     "reviews": 150,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4430.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4430-2.webp",
     "tags": [
       "điện thoại",
       "đời thường",
@@ -876,7 +874,7 @@ export const generatedProducts: Product[] = [
     "reviews": 151,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4431.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4431-2.webp",
     "tags": [
       "cô dâu",
       "cưới",
@@ -905,7 +903,7 @@ export const generatedProducts: Product[] = [
     "reviews": 152,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4432.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4432-2.webp",
     "tags": [
       "ấn tượng",
       "anime",
@@ -935,7 +933,7 @@ export const generatedProducts: Product[] = [
     "reviews": 153,
     "inStock": true,
     "accent": "gold",
-    "image": "./products/sp-4433.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4433-2.webp",
     "tags": [
       "cổ điển",
       "điêu khắc",
@@ -963,7 +961,7 @@ export const generatedProducts: Product[] = [
     "reviews": 154,
     "inStock": true,
     "accent": "gold",
-    "image": "./products/sp-4434.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4434-2.webp",
     "tags": [
       "điêu khắc",
       "nghệ thuật",
@@ -990,7 +988,7 @@ export const generatedProducts: Product[] = [
     "reviews": 155,
     "inStock": true,
     "accent": "gold",
-    "image": "./products/sp-4435.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4435-2.webp",
     "tags": [
       "cánh",
       "điêu khắc",
@@ -1019,7 +1017,7 @@ export const generatedProducts: Product[] = [
     "reviews": 156,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4436.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4436-2.webp",
     "tags": [
       "điện thoại",
       "đời thường",
@@ -1046,7 +1044,7 @@ export const generatedProducts: Product[] = [
     "reviews": 157,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4437.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4437-2.webp",
     "tags": [
       "hoodie",
       "mũ",
@@ -1073,7 +1071,7 @@ export const generatedProducts: Product[] = [
     "reviews": 158,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4438.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4438-2.webp",
     "tags": [
       "beanie",
       "denim",
@@ -1101,7 +1099,7 @@ export const generatedProducts: Product[] = [
     "reviews": 159,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4439.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4439-2.webp",
     "tags": [
       "đời thường",
       "giao hàng",
@@ -1131,7 +1129,7 @@ export const generatedProducts: Product[] = [
     "reviews": 160,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4440.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4440-2.webp",
     "tags": [
       "chibi",
       "dễ thương",
@@ -1160,7 +1158,7 @@ export const generatedProducts: Product[] = [
     "reviews": 161,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4441.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4441-2.webp",
     "tags": [
       "dinosaur",
       "động vật",
@@ -1187,7 +1185,7 @@ export const generatedProducts: Product[] = [
     "reviews": 162,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4442.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4442-2.webp",
     "tags": [
       "chibi",
       "dễ thương",
@@ -1215,7 +1213,7 @@ export const generatedProducts: Product[] = [
     "reviews": 163,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4443.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4443-2.webp",
     "tags": [
       "chibi",
       "dễ thương",
@@ -1243,7 +1241,7 @@ export const generatedProducts: Product[] = [
     "reviews": 164,
     "inStock": true,
     "accent": "gold",
-    "image": "./products/sp-4444.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4444-2.webp",
     "tags": [
       "bé trai",
       "dễ thương",
@@ -1271,7 +1269,7 @@ export const generatedProducts: Product[] = [
     "reviews": 165,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4445.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4445-2.webp",
     "tags": [
       "ăn mừng",
       "bóng đá",
@@ -1300,7 +1298,7 @@ export const generatedProducts: Product[] = [
     "reviews": 166,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4446.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4446-2.webp",
     "tags": [
       "đời thường",
       "ghế",
@@ -1327,7 +1325,7 @@ export const generatedProducts: Product[] = [
     "reviews": 167,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4447.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4447-2.webp",
     "tags": [
       "công sở",
       "doanh nhân",
@@ -1354,7 +1352,7 @@ export const generatedProducts: Product[] = [
     "reviews": 168,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4448.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4448-2.webp",
     "tags": [
       "công sở",
       "lịch lãm",
@@ -1382,7 +1380,7 @@ export const generatedProducts: Product[] = [
     "reviews": 169,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4449.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4449-2.webp",
     "tags": [
       "bối cảnh",
       "ca nô",
@@ -1410,7 +1408,7 @@ export const generatedProducts: Product[] = [
     "reviews": 170,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4450.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4450-2.webp",
     "tags": [
       "bối cảnh",
       "nước",
@@ -1437,7 +1435,7 @@ export const generatedProducts: Product[] = [
     "reviews": 171,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4451.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4451-2.webp",
     "tags": [
       "beanie",
       "cá tính",
@@ -1466,7 +1464,7 @@ export const generatedProducts: Product[] = [
     "reviews": 72,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4352.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4352-2.webp",
     "tags": [
       "cà vạt",
       "công sở",
@@ -1494,7 +1492,7 @@ export const generatedProducts: Product[] = [
     "reviews": 73,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4353.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4353-2.webp",
     "tags": [
       "áo khoác",
       "cá tính",
@@ -1521,7 +1519,7 @@ export const generatedProducts: Product[] = [
     "reviews": 74,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4354.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4354-2.webp",
     "tags": [
       "áo khoác da",
       "cá tính",
@@ -1547,7 +1545,7 @@ export const generatedProducts: Product[] = [
     "reviews": 75,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4355.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4355-2.webp",
     "tags": [
       "ba lô",
       "điện thoại",
@@ -1576,7 +1574,7 @@ export const generatedProducts: Product[] = [
     "reviews": 76,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4356.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4356-2.webp",
     "tags": [
       "áo choàng",
       "đời thường",
@@ -1603,7 +1601,7 @@ export const generatedProducts: Product[] = [
     "reviews": 77,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4357.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4357-2.webp",
     "tags": [
       "điện thoại",
       "đời thường",
@@ -1630,7 +1628,7 @@ export const generatedProducts: Product[] = [
     "reviews": 78,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4358.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4358-2.webp",
     "tags": [
       "đời thường",
       "mũ",
@@ -1657,7 +1655,7 @@ export const generatedProducts: Product[] = [
     "reviews": 79,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4359.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4359-2.webp",
     "tags": [
       "mũ",
       "nữ",
@@ -1685,7 +1683,7 @@ export const generatedProducts: Product[] = [
     "reviews": 80,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4360.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4360-2.webp",
     "tags": [
       "đời thường",
       "kẻ caro",
@@ -1711,7 +1709,7 @@ export const generatedProducts: Product[] = [
     "reviews": 81,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4361.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4361-2.webp",
     "tags": [
       "mũ",
       "nam",
@@ -1738,7 +1736,7 @@ export const generatedProducts: Product[] = [
     "reviews": 82,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4362.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4362-2.webp",
     "tags": [
       "áo len",
       "cá tính",
@@ -1765,7 +1763,7 @@ export const generatedProducts: Product[] = [
     "reviews": 83,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4363.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4363-2.webp",
     "tags": [
       "đời thường",
       "ngồi",
@@ -1791,7 +1789,7 @@ export const generatedProducts: Product[] = [
     "reviews": 84,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4364.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4364-2.webp",
     "tags": [
       "đời thường",
       "khoanh tay",
@@ -1817,7 +1815,7 @@ export const generatedProducts: Product[] = [
     "reviews": 85,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4365.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4365-2.webp",
     "tags": [
       "denim",
       "đời thường",
@@ -1844,7 +1842,7 @@ export const generatedProducts: Product[] = [
     "reviews": 86,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4366.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4366-2.webp",
     "tags": [
       "cá tính",
       "nam",
@@ -1870,7 +1868,7 @@ export const generatedProducts: Product[] = [
     "reviews": 87,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4367.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4367-2.webp",
     "tags": [
       "biển",
       "bikini",
@@ -1898,7 +1896,7 @@ export const generatedProducts: Product[] = [
     "reviews": 88,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4368.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4368-2.webp",
     "tags": [
       "cao tuổi",
       "nghề nghiệp",
@@ -1925,7 +1923,7 @@ export const generatedProducts: Product[] = [
     "reviews": 89,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4369.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4369-2.webp",
     "tags": [
       "đầu bếp",
       "nam",
@@ -1952,7 +1950,7 @@ export const generatedProducts: Product[] = [
     "reviews": 90,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4370.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4370-2.webp",
     "tags": [
       "áo khoác",
       "cao tuổi",
@@ -1981,7 +1979,7 @@ export const generatedProducts: Product[] = [
     "reviews": 91,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4371.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4371-2.webp",
     "tags": [
       "biển",
       "bikini",
@@ -2009,7 +2007,7 @@ export const generatedProducts: Product[] = [
     "reviews": 92,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4372.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4372-2.webp",
     "tags": [
       "cá tính",
       "mũ",
@@ -2036,7 +2034,7 @@ export const generatedProducts: Product[] = [
     "reviews": 95,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4375.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4375-2.webp",
     "tags": [
       "đua xe",
       "mũ bảo hiểm",
@@ -2064,7 +2062,7 @@ export const generatedProducts: Product[] = [
     "reviews": 98,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4378.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4378-2.webp",
     "tags": [
       "bối cảnh",
       "cổ điển",
@@ -2091,7 +2089,7 @@ export const generatedProducts: Product[] = [
     "reviews": 99,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4379.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4379-2.webp",
     "tags": [
       "bối cảnh",
       "bưu điện",
@@ -2118,7 +2116,7 @@ export const generatedProducts: Product[] = [
     "reviews": 100,
     "inStock": true,
     "accent": "violet",
-    "image": "./products/sp-4380.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4380-2.webp",
     "tags": [
       "bối cảnh",
       "phụ kiện",
@@ -2146,7 +2144,7 @@ export const generatedProducts: Product[] = [
     "reviews": 101,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4381.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4381-2.webp",
     "tags": [
       "giao hàng",
       "mũ",
@@ -2174,7 +2172,7 @@ export const generatedProducts: Product[] = [
     "reviews": 102,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4382.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4382-2.webp",
     "tags": [
       "đồng phục",
       "học đường",
@@ -2201,7 +2199,7 @@ export const generatedProducts: Product[] = [
     "reviews": 103,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4383.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4383-2.webp",
     "tags": [
       "ăn mừng",
       "bóng đá",
@@ -2229,7 +2227,7 @@ export const generatedProducts: Product[] = [
     "reviews": 104,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4384.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4384-2.webp",
     "tags": [
       "dạ hội",
       "đầm đen",
@@ -2256,7 +2254,7 @@ export const generatedProducts: Product[] = [
     "reviews": 111,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4391.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4391-2.webp",
     "tags": [
       "áo khoác",
       "cargo",
@@ -2282,7 +2280,7 @@ export const generatedProducts: Product[] = [
     "reviews": 112,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4392.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4392-2.webp",
     "tags": [
       "điện thoại",
       "đời thường",
@@ -2309,7 +2307,7 @@ export const generatedProducts: Product[] = [
     "reviews": 113,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4393.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4393-2.webp",
     "tags": [
       "boots",
       "cá tính",
@@ -2337,7 +2335,7 @@ export const generatedProducts: Product[] = [
     "reviews": 114,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4394.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4394-2.webp",
     "tags": [
       "áo đỏ",
       "đỏ",
@@ -2364,7 +2362,7 @@ export const generatedProducts: Product[] = [
     "reviews": 115,
     "inStock": true,
     "accent": "brand",
-    "image": "./products/sp-4395.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4395-2.webp",
     "tags": [
       "gợi cảm",
       "ngồi",
@@ -2391,7 +2389,7 @@ export const generatedProducts: Product[] = [
     "reviews": 116,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4396.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4396-2.webp",
     "tags": [
       "áo khoác",
       "du lịch",
@@ -2418,7 +2416,7 @@ export const generatedProducts: Product[] = [
     "reviews": 117,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4397.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4397-2.webp",
     "tags": [
       "áo khoác",
       "denim",
@@ -2444,7 +2442,7 @@ export const generatedProducts: Product[] = [
     "reviews": 118,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4398.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4398-2.webp",
     "tags": [
       "mũ",
       "nam",
@@ -2470,7 +2468,7 @@ export const generatedProducts: Product[] = [
     "reviews": 119,
     "inStock": true,
     "accent": "cyan",
-    "image": "./products/sp-4399.webp",
+    "image": "https://admin.kevindauto.com/wp-content/uploads/2026/06/sp-4399-2.webp",
     "tags": [
       "cá tính",
       "denim",
@@ -2484,5 +2482,1399 @@ export const generatedProducts: Product[] = [
       "Sơn phủ tỉ mỉ",
       "Phù hợp trưng bày & diorama"
     ]
+  },
+  {
+    "id": "sp-2851",
+    "code": "2851",
+    "name": "Cô gái váy hồng tạo dáng chỉ tay",
+    "category": "nu",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 171,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2851.webp",
+    "tags": [
+      "dạo phố",
+      "đời thường",
+      "nữ",
+      "váy"
+    ],
+    "description": "Cô gái váy hồng nhẹ nhàng tạo dáng chỉ tay — nét nữ tính dịu dàng đời thường.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2800",
+    "code": "2800",
+    "name": "Mèo Thần Tài may mắn",
+    "category": "dongvat",
+    "series": "Mascot",
+    "price": 30000,
+    "material": "Nhựa PVC cao cấp",
+    "rating": 5,
+    "reviews": 120,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2800.webp",
+    "tags": [
+      "chibi",
+      "dễ thương",
+      "mascot",
+      "may mắn",
+      "mèo",
+      "thần tài"
+    ],
+    "description": "Tượng mèo Thần Tài ngồi trong chậu gốm — biểu tượng may mắn, hợp trưng bàn làm việc.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ],
+    "badge": "Mới"
+  },
+  {
+    "id": "sp-2801",
+    "code": "2801",
+    "name": "Cụ ông áo blouse khoanh tay",
+    "category": "caotuoi",
+    "series": "Nghề nghiệp",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 121,
+    "inStock": true,
+    "accent": "violet",
+    "image": "./products/sp-2801.webp",
+    "tags": [
+      "áo blouse",
+      "cao tuổi",
+      "khoanh tay",
+      "người già",
+      "ông"
+    ],
+    "description": "Cụ ông trong áo blouse trắng khoanh tay điềm đạm — phong thái người thầy/bác sĩ đáng kính.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2802",
+    "code": "2802",
+    "name": "Cầu thủ bóng đá kéo áo ăn mừng",
+    "category": "thethao",
+    "series": "Thể thao",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 122,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2802.webp",
+    "tags": [
+      "ăn mừng",
+      "áo đỏ",
+      "bóng đá",
+      "cầu thủ",
+      "số 4",
+      "thể thao"
+    ],
+    "description": "Cầu thủ áo đỏ số 4 kéo áo ăn mừng bàn thắng — khoảnh khắc bùng nổ cảm xúc sân cỏ.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2803",
+    "code": "2803",
+    "name": "Cầu thủ bóng đá ăn mừng cuồng nhiệt",
+    "category": "thethao",
+    "series": "Thể thao",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 123,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2803.webp",
+    "tags": [
+      "ăn mừng",
+      "áo đỏ",
+      "bóng đá",
+      "cầu thủ",
+      "thể thao"
+    ],
+    "description": "Cầu thủ áo đỏ tay ôm đầu ăn mừng đầy cảm xúc — tái hiện khoảnh khắc ghi bàn.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2804",
+    "code": "2804",
+    "name": "Chàng trai hoodie xám tay ôm đầu",
+    "category": "nam",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 124,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2804.webp",
+    "tags": [
+      "đời thường",
+      "hoodie",
+      "kính",
+      "nam",
+      "streetwear"
+    ],
+    "description": "Chàng trai hoodie xám, tay ôm đầu thư thái — dáng vẻ đời thường rất chill.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2805",
+    "code": "2805",
+    "name": "Người áo khoác xanh rêu bí ẩn",
+    "category": "nam",
+    "series": "Độc đáo",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 125,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2805.webp",
+    "tags": [
+      "áo khoác",
+      "bí ẩn",
+      "độc đáo",
+      "nam",
+      "xanh rêu"
+    ],
+    "description": "Người trong áo khoác xanh rêu, tay che mặt đầy bí ẩn — điểm nhấn độc lạ cho bộ sưu tập.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2806",
+    "code": "2806",
+    "name": "Cô gái tóc bạch kim cầm điện thoại",
+    "category": "nu",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 126,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2806.webp",
+    "tags": [
+      "điện thoại",
+      "đời thường",
+      "kính",
+      "nữ",
+      "tóc vàng"
+    ],
+    "description": "Cô gái tóc bạch kim đeo kính, tay cầm điện thoại — hình ảnh đời thường dễ thương.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2807",
+    "code": "2807",
+    "name": "Cô gái áo khoác be dạo phố",
+    "category": "nu",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 127,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2807.webp",
+    "tags": [
+      "áo khoác",
+      "dạo phố",
+      "đời thường",
+      "nữ"
+    ],
+    "description": "Cô gái áo khoác be sải bước dạo phố, phong cách nhẹ nhàng tự nhiên.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2808",
+    "code": "2808",
+    "name": "Người nông dân ôm bó rau",
+    "category": "nam",
+    "series": "Nghề nghiệp",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 128,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2808.webp",
+    "tags": [
+      "lao động",
+      "nghề nghiệp",
+      "nông dân",
+      "rau"
+    ],
+    "description": "Người nông dân ôm bó rau xanh tươi — hình ảnh lao động bình dị, gần gũi.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2809",
+    "code": "2809",
+    "name": "Đầu bếp chế biến món ăn",
+    "category": "nam",
+    "series": "Nghề nghiệp",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 129,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2809.webp",
+    "tags": [
+      "đầu bếp",
+      "nấu ăn",
+      "nghề nghiệp",
+      "tạp dề"
+    ],
+    "description": "Đầu bếp áo trắng đang chế biến món ăn trên thớt — chuyên nghiệp và tỉ mỉ.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2810",
+    "code": "2810",
+    "name": "Người áo choàng kẻ sọc trùm đầu",
+    "category": "nam",
+    "series": "Độc đáo",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 130,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2810.webp",
+    "tags": [
+      "áo choàng",
+      "bí ẩn",
+      "độc đáo",
+      "trùm đầu"
+    ],
+    "description": "Người trong áo choàng kẻ sọc, trùm đầu kín đáo — tạo hình độc đáo đầy ấn tượng.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2811",
+    "code": "2811",
+    "name": "Chàng trai áo khoác graffiti cầm ván trượt",
+    "category": "nam",
+    "series": "Streetwear",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 131,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2811.webp",
+    "tags": [
+      "áo khoác",
+      "nam",
+      "skateboard",
+      "streetwear",
+      "ván trượt"
+    ],
+    "description": "Chàng trai áo khoác họa tiết graffiti, tay cầm ván trượt — chất chơi đường phố đậm chất.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2812",
+    "code": "2812",
+    "name": "Chàng trai trượt ván đường phố",
+    "category": "nam",
+    "series": "Streetwear",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 132,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2812.webp",
+    "tags": [
+      "mũ",
+      "nam",
+      "skateboard",
+      "streetwear",
+      "thể thao",
+      "ván trượt"
+    ],
+    "description": "Chàng trai mũ lưỡi trai đang lướt ván trượt — năng động và đầy cá tính.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2813",
+    "code": "2813",
+    "name": "Thành viên đội đua ngồi nghỉ",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 133,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2813.webp",
+    "tags": [
+      "đua xe",
+      "ngồi nghỉ",
+      "pit crew",
+      "racing",
+      "thể thao"
+    ],
+    "description": "Thành viên đội đua ngồi nghỉ giữa giờ — khoảnh khắc đời thường bên đường đua.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2814",
+    "code": "2814",
+    "name": "Cô gái hoodie xám đứng tự nhiên",
+    "category": "nu",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 134,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2814.webp",
+    "tags": [
+      "đời thường",
+      "hoodie",
+      "nữ"
+    ],
+    "description": "Cô gái hoodie xám, quần short, dáng đứng tự nhiên thoải mái.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2815",
+    "code": "2815",
+    "name": "Tay đua ăn mừng chiến thắng",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 135,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2815.webp",
+    "tags": [
+      "ăn mừng",
+      "đua xe",
+      "mũ bảo hiểm",
+      "racing",
+      "thể thao"
+    ],
+    "description": "Tay đua trong bộ đồ đỏ đen, mũ bảo hiểm, giơ nắm đấm ăn mừng chiến thắng đường đua.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ],
+    "badge": "Mới"
+  },
+  {
+    "id": "sp-2816",
+    "code": "2816",
+    "name": "Thợ máy đội đua bên giá lốp",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 136,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2816.webp",
+    "tags": [
+      "cơ khí",
+      "đua xe",
+      "lốp xe",
+      "pit crew",
+      "racing"
+    ],
+    "description": "Thợ máy đội đua đứng cạnh giá đỡ lốp — hậu trường chuyên nghiệp của đường đua.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2817",
+    "code": "2817",
+    "name": "Thợ máy thay lốp xe đua",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 137,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2817.webp",
+    "tags": [
+      "đua xe",
+      "lốp xe",
+      "pit crew",
+      "racing",
+      "thay lốp"
+    ],
+    "description": "Thợ máy ngồi thao tác thay lốp xe đua nhanh gọn — tốc độ là yếu tố sống còn.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2818",
+    "code": "2818",
+    "name": "Chỉ huy đội đua đeo tai nghe",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 138,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2818.webp",
+    "tags": [
+      "chỉ huy",
+      "đua xe",
+      "pit crew",
+      "racing",
+      "tai nghe"
+    ],
+    "description": "Chỉ huy đội đua đứng đeo tai nghe chỉ đạo — bộ não chiến thuật phía sau đường đua.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2819",
+    "code": "2819",
+    "name": "Thợ máy cúi kiểm tra xe đua",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 139,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2819.webp",
+    "tags": [
+      "cơ khí",
+      "đua xe",
+      "kiểm tra",
+      "pit crew",
+      "racing"
+    ],
+    "description": "Thợ máy cúi người kiểm tra kỹ thuật xe đua — sự tỉ mỉ trước mỗi chặng đua.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2820",
+    "code": "2820",
+    "name": "Thợ máy đổ nhiên liệu pit stop",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 140,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2820.webp",
+    "tags": [
+      "cơ khí",
+      "đua xe",
+      "nhiên liệu",
+      "pit stop",
+      "racing"
+    ],
+    "description": "Thợ máy quỳ thao tác đổ nhiên liệu tại trạm pit stop — từng giây đều quý giá.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2821",
+    "code": "2821",
+    "name": "Tay đua bộ đồ đua xanh navy",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 141,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2821.webp",
+    "tags": [
+      "bộ đồ đua",
+      "đua xe",
+      "mũ bảo hiểm",
+      "racing",
+      "thể thao"
+    ],
+    "description": "Tay đua trong bộ đồ đua xanh navy chỉnh chu, sẵn sàng cho cuộc đua — chi tiết sắc nét.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ],
+    "badge": "Mới"
+  },
+  {
+    "id": "sp-2822",
+    "code": "2822",
+    "name": "Người cầm cờ về đích",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 142,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2822.webp",
+    "tags": [
+      "chiến thắng",
+      "cờ caro",
+      "đua xe",
+      "racing",
+      "về đích"
+    ],
+    "description": "Người giơ cao lá cờ caro báo hiệu về đích — khoảnh khắc kịch tính của đường đua.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2823",
+    "code": "2823",
+    "name": "Tay đua nhảy ăn mừng",
+    "category": "thethao",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 143,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2823.webp",
+    "tags": [
+      "ăn mừng",
+      "chiến thắng",
+      "đua xe",
+      "mũ bảo hiểm",
+      "racing"
+    ],
+    "description": "Tay đua bật nhảy ăn mừng đầy phấn khích sau chiến thắng — năng lượng bùng nổ.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2824",
+    "code": "2824",
+    "name": "Cô gái cầm cờ đua xe",
+    "category": "nu",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 144,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2824.webp",
+    "tags": [
+      "cờ caro",
+      "đua xe",
+      "grid girl",
+      "nữ",
+      "racing"
+    ],
+    "description": "Cô gái grid girl trong trang phục năng động, tay cầm lá cờ caro lớn — sắc màu đường đua.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2825",
+    "code": "2825",
+    "name": "Cô gái ăn mừng với cờ đua",
+    "category": "nu",
+    "series": "Đua xe",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 145,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2825.webp",
+    "tags": [
+      "ăn mừng",
+      "cờ caro",
+      "đua xe",
+      "nữ",
+      "racing"
+    ],
+    "description": "Cô gái giơ cao cờ caro ăn mừng cùng đội đua — không khí lễ hội tốc độ.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2826",
+    "code": "2826",
+    "name": "Cô gái áo khoác đỏ dáng dài",
+    "category": "nu",
+    "series": "Thanh lịch",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 146,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2826.webp",
+    "tags": [
+      "áo khoác",
+      "đỏ",
+      "nữ",
+      "thanh lịch"
+    ],
+    "description": "Cô gái khoác áo dài đỏ cùng khăn quàng trắng — khí chất thanh lịch nổi bật.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2827",
+    "code": "2827",
+    "name": "Cô gái áo khoác đỏ túi đeo vai",
+    "category": "nu",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 147,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2827.webp",
+    "tags": [
+      "áo khoác đỏ",
+      "đời thường",
+      "nữ",
+      "túi xách"
+    ],
+    "description": "Cô gái áo khoác đỏ, túi đeo vai dạo phố — phong cách năng động đời thường.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2828",
+    "code": "2828",
+    "name": "Chú đeo kính mát áo da ngầu",
+    "category": "nam",
+    "series": "Streetwear",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 148,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2828.webp",
+    "tags": [
+      "áo da",
+      "cá tính",
+      "kính mát",
+      "nam",
+      "ngầu",
+      "streetwear"
+    ],
+    "description": "Người đàn ông đeo kính mát, khoác áo da đen — khí chất ngầu đầy cá tính.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2829",
+    "code": "2829",
+    "name": "Chàng trai đeo khẩu trang xem điện thoại",
+    "category": "nam",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 149,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2829.webp",
+    "tags": [
+      "điện thoại",
+      "đời thường",
+      "khẩu trang",
+      "mũ",
+      "nam"
+    ],
+    "description": "Chàng trai đeo khẩu trang, mũ lưỡi trai, vừa đi vừa xem điện thoại — đời thường quen thuộc.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2830",
+    "code": "2830",
+    "name": "Chàng trai mũ lưỡi trai đeo khẩu trang",
+    "category": "nam",
+    "series": "Streetwear",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 150,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2830.webp",
+    "tags": [
+      "khẩu trang",
+      "mũ lưỡi trai",
+      "nam",
+      "streetwear"
+    ],
+    "description": "Chàng trai hoodie, mũ lưỡi trai và khẩu trang đen — phong cách street kín đáo cá tính.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2831",
+    "code": "2831",
+    "name": "Cô gái áo khoác đen cầm điện thoại",
+    "category": "nu",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 151,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2831.webp",
+    "tags": [
+      "áo khoác đen",
+      "điện thoại",
+      "đời thường",
+      "nữ"
+    ],
+    "description": "Cô gái áo khoác đen dài, tay cầm điện thoại — dáng vẻ hiện đại, cuốn hút.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2832",
+    "code": "2832",
+    "name": "Chàng trai áo phông cargo cầm điện thoại",
+    "category": "nam",
+    "series": "Streetwear",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 152,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2832.webp",
+    "tags": [
+      "cargo",
+      "điện thoại",
+      "mũ lưỡi trai",
+      "nam",
+      "streetwear"
+    ],
+    "description": "Chàng trai áo phông in chữ, quần cargo, balo nhỏ — chất đường phố năng động.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2833",
+    "code": "2833",
+    "name": "Chàng trai áo khoác đen dáng thư thái",
+    "category": "nam",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 153,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2833.webp",
+    "tags": [
+      "áo khoác đen",
+      "đời thường",
+      "nam"
+    ],
+    "description": "Chàng trai khoác áo dài đen, dáng đứng thư thái tự nhiên — phong cách tối giản.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2834",
+    "code": "2834",
+    "name": "Võ sĩ ăn mừng chiến thắng",
+    "category": "thethao",
+    "series": "Võ thuật",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 154,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2834.webp",
+    "tags": [
+      "ăn mừng",
+      "cơ bắp",
+      "thể thao",
+      "võ thuật"
+    ],
+    "description": "Võ sĩ giơ hai tay ăn mừng chiến thắng trong trang phục thi đấu — khí thế ngút trời.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2835",
+    "code": "2835",
+    "name": "Lực sĩ tạo dáng cơ bắp",
+    "category": "thethao",
+    "series": "Thể hình",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 155,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2835.webp",
+    "tags": [
+      "cơ bắp",
+      "gymer",
+      "thể hình",
+      "thể thao"
+    ],
+    "description": "Lực sĩ cởi trần tạo dáng cơ bắp săn chắc — biểu tượng cho đam mê thể hình.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2836",
+    "code": "2836",
+    "name": "Nam mẫu bản trắng (chưa sơn)",
+    "category": "nam",
+    "series": "Prototype",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 156,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2836.webp",
+    "tags": [
+      "chưa sơn",
+      "nam",
+      "prototype",
+      "trắng"
+    ],
+    "description": "Bản mẫu màu trắng chưa sơn — phù hợp người chơi thích tự tay tô màu sáng tạo.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2837",
+    "code": "2837",
+    "name": "Nam mẫu bản trắng dáng đứng",
+    "category": "nam",
+    "series": "Prototype",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 157,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2837.webp",
+    "tags": [
+      "chưa sơn",
+      "đứng",
+      "nam",
+      "prototype",
+      "trắng"
+    ],
+    "description": "Bản mẫu màu trắng dáng đứng tự nhiên — tự do sáng tạo theo phong cách riêng.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2838",
+    "code": "2838",
+    "name": "Lực sĩ cơ bắp săn chắc",
+    "category": "thethao",
+    "series": "Thể hình",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 158,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2838.webp",
+    "tags": [
+      "cơ bắp",
+      "gymer",
+      "thể hình",
+      "thể thao"
+    ],
+    "description": "Lực sĩ cơ bắp săn chắc đã hoàn thiện sơn màu da — chi tiết cơ bắp chân thực sống động.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2839",
+    "code": "2839",
+    "name": "Nữ sinh áo polo chân váy caro",
+    "category": "nu",
+    "series": "Học đường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 159,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2839.webp",
+    "tags": [
+      "caro",
+      "học đường",
+      "học sinh",
+      "nữ",
+      "sinh viên"
+    ],
+    "description": "Nữ sinh áo polo phối chân váy caro — nét trong trẻo của tuổi học trò.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2840",
+    "code": "2840",
+    "name": "Cô gái mũ bucket phong cách năng động",
+    "category": "nu",
+    "series": "Streetwear",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 160,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2840.webp",
+    "tags": [
+      "mũ bucket",
+      "năng động",
+      "nữ",
+      "streetwear"
+    ],
+    "description": "Cô gái đội mũ bucket, áo khoác và jean — phong cách năng động trẻ trung.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2841",
+    "code": "2841",
+    "name": "Cô nàng hoodie đen cúi nhìn điện thoại",
+    "category": "nu",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 161,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2841.webp",
+    "tags": [
+      "điện thoại",
+      "đời thường",
+      "hoodie đen",
+      "nữ"
+    ],
+    "description": "Cô nàng hoodie đen cúi nhìn điện thoại — khoảnh khắc đời thường rất đỗi tự nhiên.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2842",
+    "code": "2842",
+    "name": "Chuột lang đội sừng tuần lộc",
+    "category": "dongvat",
+    "series": "Chibi",
+    "price": 30000,
+    "material": "Nhựa PVC cao cấp",
+    "rating": 5,
+    "reviews": 162,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2842.webp",
+    "tags": [
+      "chibi",
+      "chuột lang",
+      "dễ thương",
+      "giáng sinh",
+      "hamster",
+      "sừng"
+    ],
+    "description": "Chú chuột lang đáng yêu đội sừng tuần lộc — mascot dễ thương cho mùa lễ hội.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ],
+    "badge": "Mới"
+  },
+  {
+    "id": "sp-2843",
+    "code": "2843",
+    "name": "Hải ly kính mát cầm ly nước",
+    "category": "dongvat",
+    "series": "Chibi",
+    "price": 30000,
+    "material": "Nhựa PVC cao cấp",
+    "rating": 5,
+    "reviews": 163,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2843.webp",
+    "tags": [
+      "chibi",
+      "dễ thương",
+      "hải ly",
+      "kính mát",
+      "ly nước",
+      "sừng"
+    ],
+    "description": "Hải ly đeo kính mát, đội sừng, tay cầm ly nước — mascot cực chất và hài hước.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ],
+    "badge": "Best Seller"
+  },
+  {
+    "id": "sp-2844",
+    "code": "2844",
+    "name": "Cụ ông vest nghe điện thoại",
+    "category": "caotuoi",
+    "series": "Người cao tuổi",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 164,
+    "inStock": true,
+    "accent": "violet",
+    "image": "./products/sp-2844.webp",
+    "tags": [
+      "cao tuổi",
+      "điện thoại",
+      "lịch lãm",
+      "người già",
+      "vest"
+    ],
+    "description": "Cụ ông trong bộ vest lịch lãm, tay áp điện thoại nghe gọi — phong thái quý ông từng trải.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2845",
+    "code": "2845",
+    "name": "Chú bảo vệ áo khoác xanh",
+    "category": "nam",
+    "series": "Nghề nghiệp",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 165,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2845.webp",
+    "tags": [
+      "an ninh",
+      "áo khoác",
+      "bảo vệ",
+      "nghề nghiệp"
+    ],
+    "description": "Chú bảo vệ trong bộ đồng phục áo khoác xanh — hình ảnh tận tụy với công việc.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2846",
+    "code": "2846",
+    "name": "Chú công nhân đội nón lá",
+    "category": "nam",
+    "series": "Nghề nghiệp",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 166,
+    "inStock": true,
+    "accent": "cyan",
+    "image": "./products/sp-2846.webp",
+    "tags": [
+      "công nhân",
+      "lao động",
+      "nghề nghiệp",
+      "nón lá",
+      "việt nam"
+    ],
+    "description": "Chú công nhân trong bộ đồ bảo hộ, đội nón lá truyền thống — nét lao động rất Việt Nam.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2847",
+    "code": "2847",
+    "name": "Cụ ông áo nâu dáng lao động",
+    "category": "caotuoi",
+    "series": "Người cao tuổi",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 167,
+    "inStock": true,
+    "accent": "violet",
+    "image": "./products/sp-2847.webp",
+    "tags": [
+      "áo nâu",
+      "cao tuổi",
+      "lao động",
+      "người già"
+    ],
+    "description": "Cụ ông áo nâu sờn cũ, dáng đi khắc khổ — hình ảnh người lao động bình dị một đời.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2848",
+    "code": "2848",
+    "name": "Em bé cầm que kem",
+    "category": "giadinh",
+    "series": "Trẻ em",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 168,
+    "inStock": true,
+    "accent": "gold",
+    "image": "./products/sp-2848.webp",
+    "tags": [
+      "bé trai",
+      "dễ thương",
+      "gia đình",
+      "kem",
+      "trẻ em"
+    ],
+    "description": "Em bé tóc xù cầm que kem, ánh mắt ngây thơ — khoảnh khắc tuổi thơ ngọt ngào.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ],
+    "badge": "Mới"
+  },
+  {
+    "id": "sp-2849",
+    "code": "2849",
+    "name": "Cô gái áo thun xám dáng đứng",
+    "category": "nu",
+    "series": "Đời thường",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 169,
+    "inStock": true,
+    "accent": "brand",
+    "image": "./products/sp-2849.webp",
+    "tags": [
+      "áo xám",
+      "đời thường",
+      "nữ"
+    ],
+    "description": "Cô gái áo thun xám, dáng đứng giản dị tự nhiên — phong cách thoải mái thường ngày.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ]
+  },
+  {
+    "id": "sp-2850",
+    "code": "2850",
+    "name": "Đôi bạn thân phong cách đường phố",
+    "category": "giadinh",
+    "series": "Đôi bạn",
+    "price": 30000,
+    "material": "Resin 3D cao cấp",
+    "rating": 5,
+    "reviews": 170,
+    "inStock": true,
+    "accent": "gold",
+    "image": "./products/sp-2850.webp",
+    "tags": [
+      "cặp đôi",
+      "đôi bạn",
+      "nam",
+      "nhóm bạn",
+      "streetwear"
+    ],
+    "description": "Cặp đôi bạn thân sánh bước trong trang phục streetwear — tình bạn và chất chơi đường phố.",
+    "highlights": [
+      "Chế tác chi tiết sắc nét",
+      "Sơn phủ tỉ mỉ",
+      "Phù hợp trưng bày & diorama"
+    ],
+    "badge": "Mới"
   }
 ]
