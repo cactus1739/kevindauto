@@ -1,0 +1,30 @@
+name: Deploy WP mu-plugins
+
+# Tải các file PHP "must-use plugin" lên WordPress (admin.kevindauto.com) qua FTP.
+# Chạy khi đổi file trong wp/mu-plugins/ hoặc bấm tay ở tab Actions.
+
+on:
+  push:
+    branches: [main]
+    paths: ['wp/mu-plugins/**']
+  workflow_dispatch:
+
+jobs:
+  deploy-wp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload mu-plugins (FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          timeout: 60000
+          local-dir: ./wp/mu-plugins/
+          server-dir: /public_html/admin/wp-content/mu-plugins/
+          dangerous-clean-slate: false
