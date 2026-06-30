@@ -14,6 +14,9 @@ export const site = {
   email: 'cactus1739@gmail.com',
   address: '124 Lê Văn Chí, Phường Linh Xuân, TP.HCM',
 
+  // Endpoint nhận báo giá gửi thẳng về shop (tạo đơn trong WooCommerce + email cho chủ)
+  quoteApi: 'https://admin.kevindauto.com/wp-json/kdt/v1/quote',
+
   // --- Mạng xã hội / kênh đặt hàng (THAY BẰNG LINK THẬT) ---
   zalo: 'https://zalo.me/0909180098',
   messenger: 'https://m.me/cactus1739',
