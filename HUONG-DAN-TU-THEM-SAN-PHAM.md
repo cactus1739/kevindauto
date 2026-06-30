@@ -4,6 +4,26 @@
 
 ---
 
+## ⚠️ ĐỌC TRƯỚC: thêm sản phẩm xong, web KHÔNG đổi ngay lập tức
+
+WooCommerce và web kevindauto.com là **2 hệ thống tách rời** (kiểu "headless"). Sau khi bạn
+thêm/sửa sản phẩm trên admin, **web chính cần một bước "xuất bản" mới thấy thay đổi** — đây
+không phải lỗi, mà là cách hệ thống được thiết kế (để web tải nhanh, không cần kết nối trực
+tiếp tới WooCommerce mỗi lần khách vào xem).
+
+Có 2 cách để thay đổi lên web:
+
+| Cách | Tốc độ | Cần làm gì |
+|---|---|---|
+| **Tự động** | Tối đa **15 phút** | Không cần làm gì — cứ thêm SP xong, đợi |
+| **Lên ngay (~2 phút)** | Ngay lập tức | Vào link dưới đây, bấm nút xanh **"Run workflow"** |
+
+👉 **Bấm để xuất bản ngay:** https://github.com/cactus1739/kevindauto/actions/workflows/deploy.yml
+(cần đăng nhập GitHub bằng tài khoản chủ repo) → bấm nút **"Run workflow"** (góc phải, có thể cần
+mở dropdown trước) → bấm tiếp **"Run workflow"** màu xanh lá để xác nhận. Web sẽ cập nhật sau ~2 phút.
+
+---
+
 ## PHẦN 1 — Up sản phẩm HÀNG LOẠT bằng file CSV (Excel)
 
 WooCommerce có sẵn công cụ nhập hàng loạt. Cách làm:

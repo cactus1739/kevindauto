@@ -10,7 +10,7 @@ on:
     branches: [main]
   workflow_dispatch: # nút "Run workflow" — bấm để xuất bản ngay sau khi sửa admin
   schedule:
-    - cron: '0 */3 * * *' # tự đồng bộ + deploy mỗi 3 giờ (sửa admin sẽ tự lên trong tối đa 3h)
+    - cron: '*/15 * * * *' # tự đồng bộ + deploy mỗi 15 phút (sửa admin sẽ tự lên trong tối đa 15 phút)
 
 # Tránh 2 workflow FTP chạy cùng lúc (Hostinger giới hạn kết nối FTP đồng thời)
 concurrency:
