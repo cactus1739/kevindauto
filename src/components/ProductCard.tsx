@@ -75,7 +75,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </p>
 
         {/* Giá */}
-        <div className="mt-2 flex items-end gap-2 lg:mt-3">
+        <div className="mt-auto flex items-end gap-2 pt-2 lg:pt-3">
           <span className="font-display text-sm font-bold text-white tabular lg:text-lg">{formatVND(product.price)}</span>
         </div>
 
