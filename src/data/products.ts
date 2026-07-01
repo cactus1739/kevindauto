@@ -14,8 +14,8 @@ export type Category =
   | 'treem'
   | 'caotuoi'
   | 'thethao'
-  | 'tuong'
   | 'dongvat'
+  | 'xe'
   | 'phukien'
 
 export interface Product {
@@ -44,9 +44,9 @@ export const categories: { id: Category; label: string }[] = [
   { id: 'treem', label: 'Trẻ em' },
   { id: 'caotuoi', label: 'Người cao tuổi' },
   { id: 'thethao', label: 'Thể thao' },
-  { id: 'tuong', label: 'Tượng & Nghệ thuật' },
   { id: 'dongvat', label: 'Động vật & Chibi' },
-  { id: 'phukien', label: 'Phụ kiện & Bối cảnh' },
+  { id: 'xe', label: 'Xe máy/Xe đạp/Ô tô' },
+  { id: 'phukien', label: 'Phụ kiện Diorama' },
 ]
 
 export const categoryLabel: Record<Category, string> = {
@@ -56,9 +56,9 @@ export const categoryLabel: Record<Category, string> = {
   treem: 'Trẻ em',
   caotuoi: 'Người cao tuổi',
   thethao: 'Thể thao',
-  tuong: 'Tượng & Nghệ thuật',
   dongvat: 'Động vật & Chibi',
-  phukien: 'Phụ kiện & Bối cảnh',
+  xe: 'Xe máy/Xe đạp/Ô tô',
+  phukien: 'Phụ kiện Diorama',
 }
 
 const ACCENT: Record<Category, Accent> = {
@@ -68,8 +68,8 @@ const ACCENT: Record<Category, Accent> = {
   treem: 'brand',
   caotuoi: 'violet',
   thethao: 'cyan',
-  tuong: 'gold',
   dongvat: 'brand',
+  xe: 'gold',
   phukien: 'violet',
 }
 
@@ -171,7 +171,7 @@ export const staticProducts: Product[] = [
     'Nam sinh áo gile kẻ, đeo ba lô, dáng vẻ trẻ trung của tuổi học trò.'),
   p(4424, 'Quý cô nội y đen', 'nu', 'Gợi cảm', ['nữ', 'gợi cảm', 'nội y', 'đen', 'ngồi'],
     'Quý cô trong trang phục đen gợi cảm, dáng ngồi quyến rũ và cá tính.'),
-  p(4425, 'Tượng thiếu nữ cổ điển', 'tuong', 'Nghệ thuật', ['tượng', 'nghệ thuật', 'cổ điển', 'trắng', 'điêu khắc'],
+  p(4425, 'Tượng thiếu nữ cổ điển', 'nu', 'Nghệ thuật', ['nữ', 'tượng', 'nghệ thuật', 'cổ điển', 'trắng', 'điêu khắc'],
     'Tượng thiếu nữ phong cách điêu khắc cổ điển, đường nét mềm mại — tác phẩm trưng bày nghệ thuật.',
     { badge: 'Limited', material: 'Resin trắng cao cấp' }),
 
@@ -192,13 +192,13 @@ export const staticProducts: Product[] = [
   p(4432, 'Nữ sát thủ kiếm đỏ', 'nu', 'Anime', ['nữ', 'kiếm', 'katana', 'đầm đỏ', 'sát thủ', 'anime', 'ấn tượng'],
     'Cô gái đầm đỏ cầm katana, khí chất nữ sát thủ ngầu lòi đậm chất anime.',
     { badge: 'Best Seller' }),
-  p(4433, 'Tượng nữ thần áo choàng', 'tuong', 'Nghệ thuật', ['tượng', 'nghệ thuật', 'cổ điển', 'nữ thần', 'điêu khắc', 'trắng'],
+  p(4433, 'Tượng nữ thần áo choàng', 'nu', 'Nghệ thuật', ['nữ', 'tượng', 'nghệ thuật', 'cổ điển', 'nữ thần', 'điêu khắc', 'trắng'],
     'Tượng nữ thần khoác áo choàng buông xõa, tạo hình điêu khắc cổ điển uy nghi.',
     { material: 'Resin trắng cao cấp' }),
-  p(4434, 'Tượng thiếu nữ ngồi', 'tuong', 'Nghệ thuật', ['tượng', 'nghệ thuật', 'trắng', 'điêu khắc', 'ngồi'],
+  p(4434, 'Tượng thiếu nữ ngồi', 'nu', 'Nghệ thuật', ['nữ', 'tượng', 'nghệ thuật', 'trắng', 'điêu khắc', 'ngồi'],
     'Tượng thiếu nữ ngồi trên bệ, đường nét tinh tế — tác phẩm trưng bày trung tâm.',
     { material: 'Resin trắng cao cấp' }),
-  p(4435, 'Thiên thần có cánh', 'tuong', 'Fantasy', ['tượng', 'thiên thần', 'cánh', 'nghệ thuật', 'điêu khắc', 'fantasy'],
+  p(4435, 'Thiên thần có cánh', 'nu', 'Fantasy', ['nữ', 'tượng', 'thiên thần', 'cánh', 'nghệ thuật', 'điêu khắc', 'fantasy'],
     'Tượng thiên thần với đôi cánh lớn trải rộng — kiệt tác fantasy đầy mê hoặc.',
     { badge: 'Limited', material: 'Resin trắng cao cấp' }),
   p(4436, 'Cô gái hoodie thường ngày', 'nu', 'Streetwear', ['nữ', 'hoodie', 'đời thường', 'điện thoại', 'streetwear'],
@@ -290,13 +290,13 @@ export const staticProducts: Product[] = [
     'Cô gái cao ráo, mũ lưỡi trai và túi xách — phong cách street năng động.'),
   p(4375, 'Tay đua xe', 'thethao', 'Thể thao', ['thể thao', 'đua xe', 'racing', 'mũ bảo hiểm', 'vận động viên'],
     'Tay đua trong bộ giáp racing cầm mũ bảo hiểm — tốc độ và đam mê đường đua.', { badge: 'Mới' }),
-  p(4378, 'Xe đạp cổ điển', 'phukien', 'Phụ kiện', ['phụ kiện', 'xe đạp', 'bối cảnh', 'xe', 'cổ điển'],
+  p(4378, 'Xe đạp cổ điển', 'xe', 'Xe đạp', ['xe đạp', 'phụ kiện', 'bối cảnh', 'xe', 'cổ điển'],
     'Mô hình xe đạp tông cam cổ điển — đạo cụ tạo bối cảnh đường phố sống động.',
     { material: 'Nhựa & kim loại' }),
   p(4379, 'Hòm thư đỏ', 'phukien', 'Phụ kiện', ['phụ kiện', 'hòm thư', 'bưu điện', 'bối cảnh', 'đỏ'],
     'Mô hình hòm thư bưu điện màu đỏ — chi tiết bối cảnh hoài niệm cho diorama.',
     { material: 'Nhựa cao cấp' }),
-  p(4380, 'Xe tay ga', 'phukien', 'Phụ kiện', ['phụ kiện', 'xe máy', 'xe tay ga', 'scooter', 'bối cảnh', 'xe'],
+  p(4380, 'Xe tay ga', 'xe', 'Xe máy', ['xe máy', 'xe tay ga', 'scooter', 'phụ kiện', 'bối cảnh', 'xe'],
     'Mô hình xe tay ga trắng chi tiết — phụ kiện hoàn hảo cho cảnh phố thị.',
     { material: 'Nhựa & kim loại' }),
   p(4381, 'Shipper xe đạp', 'nam', 'Nghề nghiệp', ['nam', 'shipper', 'giao hàng', 'xe đạp', 'nghề nghiệp', 'mũ'],

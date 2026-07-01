@@ -1,4 +1,4 @@
-import { User, UserRound, Users, Baby, PersonStanding, Dumbbell, Landmark, PawPrint, Sailboat, ArrowUpRight } from 'lucide-react'
+import { User, UserRound, Users, Baby, PersonStanding, Dumbbell, Bike, PawPrint, Sailboat, ArrowUpRight } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 import { products, type Category } from '../data/products'
@@ -67,15 +67,6 @@ const cards: {
     ring: 'hover:shadow-glow-cyan',
   },
   {
-    id: 'tuong',
-    label: 'Tượng & Nghệ thuật',
-    desc: 'Tượng điêu khắc, thiên thần — tác phẩm trưng bày',
-    icon: Landmark,
-    accentText: 'text-gold-400',
-    accentBg: 'bg-gold-400/15',
-    ring: 'hover:shadow-glow-gold',
-  },
-  {
     id: 'dongvat',
     label: 'Động vật & Chibi',
     desc: 'Gấu, khủng long, mascot dễ thương cho mọi lứa tuổi',
@@ -85,8 +76,17 @@ const cards: {
     ring: 'hover:shadow-glow',
   },
   {
+    id: 'xe',
+    label: 'Xe máy/Xe đạp/Ô tô',
+    desc: 'Mô hình xe cổ điển, xe tay ga — phụ kiện diorama',
+    icon: Bike,
+    accentText: 'text-gold-400',
+    accentBg: 'bg-gold-400/15',
+    ring: 'hover:shadow-glow-gold',
+  },
+  {
     id: 'phukien',
-    label: 'Phụ kiện & Bối cảnh',
+    label: 'Phụ kiện Diorama',
     desc: 'Thuyền, đạo cụ tạo bối cảnh diorama sống động',
     icon: Sailboat,
     accentText: 'text-violet2-400',
