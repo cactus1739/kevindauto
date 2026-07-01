@@ -5,6 +5,7 @@ import { mkdirSync } from 'node:fs'
 const COLS = 13
 const ROWS = 4
 const START = parseInt(process.env.START || '4400', 10)
+const COUNT = parseInt(process.env.COUNT || `${COLS * ROWS}`, 10)
 const CW = 150
 const CH = 205
 const LH = 26
@@ -17,6 +18,8 @@ for (let r = 0; r < ROWS; r++) {
   const composites = []
   let labels = ''
   for (let c = 0; c < COLS; c++) {
+    const index = r * COLS + c
+    if (index >= COUNT) break
     const code = START + r * COLS + c
     const buf = await sharp(`public/products/sp-${code}.webp`)
       .resize({ width: CW, height: CH, fit: 'cover' })

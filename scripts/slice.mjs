@@ -10,6 +10,8 @@ const SRC = process.env.SRC || 'import/4400/4400-4451 color_.jpg'
 const COLS = 13
 const ROWS = 4
 const START = parseInt(process.env.START || '4400', 10)
+const COUNT = parseInt(process.env.COUNT || `${COLS * ROWS}`, 10)
+const outputDir = process.env.OUTPUT_DIR || 'public/products'
 
 const mode = process.argv[2] || 'calibrate'
 // Mặc định GIỮ NGUYÊN ô: không cắt viền, không cắt nhãn số (full cell)
@@ -64,15 +66,17 @@ if (mode === 'calibrate') {
   }
   console.log(`Xong calibrate → ${dir}`)
 } else if (mode === 'all') {
-  const dir = 'public/products'
+  const dir = outputDir
   mkdirSync(dir, { recursive: true })
   let n = 0
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
+      if (n >= COUNT) break
       const code = START + r * COLS + c
       await extract(r, c, `${dir}/sp-${code}.webp`)
       n++
     }
+    if (n >= COUNT) break
   }
   console.log(`Đã cắt ${n} ảnh → ${dir}/sp-4400..sp-4451.webp (trimBottom=${trimBottom})`)
 }
