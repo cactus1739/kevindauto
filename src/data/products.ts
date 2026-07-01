@@ -4,7 +4,6 @@
 //  Giá đang để đồng giá 30.000₫ — chỉnh tay lại trong từng dòng nếu cần.
 // ============================================================================
 
-import { generatedProducts } from './products.generated'
 
 export type Accent = 'brand' | 'cyan' | 'gold' | 'violet'
 
@@ -12,6 +11,7 @@ export type Category =
   | 'nam'
   | 'nu'
   | 'giadinh'
+  | 'treem'
   | 'caotuoi'
   | 'thethao'
   | 'tuong'
@@ -40,7 +40,8 @@ export interface Product {
 export const categories: { id: Category; label: string }[] = [
   { id: 'nam', label: 'Nam giới' },
   { id: 'nu', label: 'Nữ giới' },
-  { id: 'giadinh', label: 'Cặp đôi & Gia đình' },
+  { id: 'giadinh', label: 'Cặp đôi' },
+  { id: 'treem', label: 'Trẻ em' },
   { id: 'caotuoi', label: 'Người cao tuổi' },
   { id: 'thethao', label: 'Thể thao' },
   { id: 'tuong', label: 'Tượng & Nghệ thuật' },
@@ -51,7 +52,8 @@ export const categories: { id: Category; label: string }[] = [
 export const categoryLabel: Record<Category, string> = {
   nam: 'Nam giới',
   nu: 'Nữ giới',
-  giadinh: 'Cặp đôi & Gia đình',
+  giadinh: 'Cặp đôi',
+  treem: 'Trẻ em',
   caotuoi: 'Người cao tuổi',
   thethao: 'Thể thao',
   tuong: 'Tượng & Nghệ thuật',
@@ -63,6 +65,7 @@ const ACCENT: Record<Category, Accent> = {
   nam: 'cyan',
   nu: 'brand',
   giadinh: 'gold',
+  treem: 'brand',
   caotuoi: 'violet',
   thethao: 'cyan',
   tuong: 'gold',
@@ -221,7 +224,7 @@ export const staticProducts: Product[] = [
   p(4443, 'Khủng long hoạt hình xanh', 'dongvat', 'Chibi', ['khủng long', 'dinosaur', 'chibi', 'dễ thương', 'xanh', 'hoạt hình'],
     'Khủng long phong cách hoạt hình màu xanh mướt, tạo hình cute cho mọi lứa tuổi.',
     { material: 'Nhựa PVC cao cấp' }),
-  p(4444, 'Cậu bé cầm máy ảnh', 'giadinh', 'Trẻ em', ['trẻ em', 'bé trai', 'máy ảnh', 'ghế xếp', 'gia đình', 'dễ thương'],
+  p(4444, 'Cậu bé cầm máy ảnh', 'treem', 'Trẻ em', ['trẻ em', 'bé trai', 'máy ảnh', 'ghế xếp', 'gia đình', 'dễ thương'],
     'Cậu bé đội mũ ngồi ghế xếp, tay cầm máy ảnh — khoảnh khắc tuổi thơ trong veo.'),
   p(4445, 'Cầu thủ bóng đá ăn mừng', 'thethao', 'Thể thao', ['thể thao', 'bóng đá', 'cầu thủ', 'ăn mừng', 'jersey', 'số 7'],
     'Cầu thủ bóng đá áo số 7 tung nắm đấm ăn mừng bàn thắng — khoảnh khắc bùng nổ.',
@@ -428,7 +431,7 @@ export const staticProducts: Product[] = [
     'Chú công nhân trong bộ đồ bảo hộ, đội nón lá truyền thống — nét lao động rất Việt Nam.'),
   p(2847, 'Cụ ông áo nâu dáng lao động', 'caotuoi', 'Người cao tuổi', ['người già', 'cao tuổi', 'lao động', 'áo nâu'],
     'Cụ ông áo nâu sờn cũ, dáng đi khắc khổ — hình ảnh người lao động bình dị một đời.'),
-  p(2848, 'Em bé cầm que kem', 'giadinh', 'Trẻ em', ['trẻ em', 'kem', 'dễ thương', 'gia đình', 'bé trai'],
+  p(2848, 'Em bé cầm que kem', 'treem', 'Trẻ em', ['trẻ em', 'kem', 'dễ thương', 'gia đình', 'bé trai'],
     'Em bé tóc xù cầm que kem, ánh mắt ngây thơ — khoảnh khắc tuổi thơ ngọt ngào.',
     { badge: 'Mới' }),
   p(2849, 'Cô gái áo thun xám dáng đứng', 'nu', 'Đời thường', ['nữ', 'áo xám', 'đời thường'],
@@ -600,7 +603,7 @@ export const staticProducts: Product[] = [
     'Bản mẫu xám chưa sơn — ngồi ghế bành thư thái, dáng vẻ nhàn nhã.'),
   p(80, 'Nhân vật áo giáp tư thế hành động', 'nam', 'Fantasy', ['fantasy', 'áo giáp', 'hành động', 'chưa sơn', 'prototype', 'bản xám'],
     'Bản mẫu xám chưa sơn — khoác áo giáp fantasy, tư thế hành động mạnh mẽ.'),
-  p(81, 'Người bế em bé', 'giadinh', 'Gia đình', ['gia đình', 'bế trẻ', 'ấm áp', 'chưa sơn', 'prototype', 'bản xám'],
+  p(81, 'Người bế em bé', 'treem', 'Trẻ em', ['gia đình', 'bế trẻ', 'ấm áp', 'chưa sơn', 'prototype', 'bản xám'],
     'Bản mẫu xám chưa sơn — dáng đứng bế em bé trong vòng tay ấm áp.'),
   p(82, 'Nhân vật hoạt hình dáng tròn', 'nam', 'Fantasy', ['hoạt hình', 'độc đáo', 'fantasy', 'chưa sơn', 'prototype', 'bản xám'],
     'Bản mẫu xám chưa sơn — nhân vật hoạt hình thân tròn, dáng vẻ hài hước.'),
@@ -640,8 +643,6 @@ export const staticProducts: Product[] = [
     'Bản mẫu xám chưa sơn — cởi trần gồng cơ tay, thân hình săn chắc.'),
 ]
 
-// CÔNG TẮC: có dữ liệu đồng bộ từ WooCommerce thì dùng, không thì quay về dữ liệu tĩnh.
-// Sinh `products.generated.ts` bằng: npx -y tsx scripts/woo-sync.ts
-export const products: Product[] = generatedProducts.length > 0 ? generatedProducts : staticProducts
+export const products: Product[] = staticProducts
 
 export const productsById = Object.fromEntries(products.map((p) => [p.id, p]))

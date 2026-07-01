@@ -1,18 +1,14 @@
 name: Build & Deploy to Hostinger
 
 # Tự động build và upload lên Hostinger qua FTP.
-# Secrets cần có: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (deploy)
-#                 WOO_URL, WOO_KEY, WOO_SECRET (đồng bộ sản phẩm từ WooCommerce)
+# Secrets cần có: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
 # (Settings → Secrets and variables → Actions)
 
 on:
   push:
     branches: [main]
-  workflow_dispatch: # nút "Run workflow" — bấm để xuất bản ngay sau khi sửa admin
-  schedule:
-    - cron: '*/15 * * * *' # tự đồng bộ + deploy mỗi 15 phút (sửa admin sẽ tự lên trong tối đa 15 phút)
+  workflow_dispatch:
 
-# Tránh 2 workflow FTP chạy cùng lúc (Hostinger giới hạn kết nối FTP đồng thời)
 concurrency:
   group: ftp-deploy
   cancel-in-progress: false
@@ -32,14 +28,6 @@ jobs:
 
       - name: Cài dependencies
         run: npm ci
-
-      - name: Đồng bộ sản phẩm từ WooCommerce
-        run: npm run woo:sync
-        continue-on-error: true # Woo lỗi/tạm ngừng thì dùng dữ liệu đã commit (không chặn deploy)
-        env:
-          WOO_URL: ${{ secrets.WOO_URL }}
-          WOO_KEY: ${{ secrets.WOO_KEY }}
-          WOO_SECRET: ${{ secrets.WOO_SECRET }}
 
       - name: Build production
         run: npm run build

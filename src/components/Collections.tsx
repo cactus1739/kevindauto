@@ -1,4 +1,4 @@
-import { User, UserRound, Users, PersonStanding, Dumbbell, Landmark, PawPrint, Sailboat, ArrowUpRight } from 'lucide-react'
+import { User, UserRound, Users, Baby, PersonStanding, Dumbbell, Landmark, PawPrint, Sailboat, ArrowUpRight } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 import { products, type Category } from '../data/products'
@@ -32,12 +32,21 @@ const cards: {
   },
   {
     id: 'giadinh',
-    label: 'Cặp đôi & Gia đình',
-    desc: 'Cặp đôi, trẻ em — khoảnh khắc gia đình ấm áp',
+    label: 'Cặp đôi',
+    desc: 'Figure cặp đôi, tình nhân — khoảnh khắc lãng mạn',
     icon: Users,
     accentText: 'text-gold-400',
     accentBg: 'bg-gold-400/15',
     ring: 'hover:shadow-glow-gold',
+  },
+  {
+    id: 'treem',
+    label: 'Trẻ em',
+    desc: 'Em bé, cậu bé, bé gái — tuổi thơ đáng yêu',
+    icon: Baby,
+    accentText: 'text-brand-400',
+    accentBg: 'bg-brand-500/15',
+    ring: 'hover:shadow-glow',
   },
   {
     id: 'caotuoi',
