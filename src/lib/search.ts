@@ -83,20 +83,14 @@ export function searchProducts(rawQuery: string): Product[] {
   const N = indexed.length || 1
   const df = primary.map((t) => indexed.reduce((c, it) => c + (tokenHitsWords(t, it.words) ? 1 : 0), 0))
   const idf = df.map((d) => Math.log((N + 1) / (d + 1)) + 0.2)
-  const common = df.map((d) => d > N * 0.3)
   // Token không khớp sản phẩm nào (df=0, vd "xinh", "đẹp" — tính từ cảm tính không có trong dữ liệu)
-  // không được tính vào tổng trọng số phủ, tránh phá ngưỡng COVER khiến rơi vào sửa lỗi chính tả bừa bãi.
+  // bị loại khỏi yêu cầu bắt buộc: không thể đòi khớp một từ không tồn tại trong kho dữ liệu.
   const realIdx = idf.map((_, i) => i).filter((i) => df[i] > 0)
-  const allCommon = realIdx.length > 0 && realIdx.every((i) => common[i])
-  const totalIdf = realIdx.reduce((a, i) => a + idf[i], 0) || 1
-  const COVER = 0.55
-
-  const anyPrimaryInCorpus = df.some((d) => d > 0)
 
   const hasDiacritics = /[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ]/i.test(rawQuery)
   const rawTokens = hasDiacritics ? rawQuery.toLowerCase().split(/\s+/).filter((t) => t.length >= 2) : []
 
-  // Ánh xạ token chuẩn hoá → token gốc (có dấu) để phân biệt "đá"/"da"/"dạ"
+  // Ánh xạ token chuẩn hoá → token gốc (có dấu) để phân biệt "đá"/"da"/"dạ", "nằm"/"nam"
   const rawByNorm = new Map<string, string>()
   if (hasDiacritics) {
     const normParts = normalizeVi(rawQuery).split(' ').filter((t) => t.length >= 2)
@@ -109,39 +103,37 @@ export function searchProducts(rawQuery: string): Product[] {
   const add = (id: string, pts: number) => scored.set(id, (scored.get(id) ?? 0) + pts)
 
   for (const it of indexed) {
-    if (hasDiacritics && allCommon) {
-      const rawHit = rawTokens.some((rt) => {
-        if (it.rawWords.has(rt)) return true
-        if (rt.length >= 4) for (const rw of it.rawWords) if (rw.startsWith(rt)) return true
-        return false
-      })
-      if (!rawHit) continue
-    }
-
     let tokenPts = 0
-    let matchedIdf = 0
-    let hitSpecific = false
+    let matchedCount = 0
     for (let i = 0; i < primary.length; i++) {
-      if (tokenHitsWords(primary[i], it.words)) {
-        let w = idf[i]
+      if (df[i] === 0) continue // từ không tồn tại trong kho dữ liệu — bỏ qua, không bắt buộc khớp
+      let matched = tokenHitsWords(primary[i], it.words)
+      if (matched) {
+        // Nếu người dùng gõ CÓ dấu cho token này, bắt buộc khớp đúng dấu gốc
+        // (tránh "nằm" khớp "nam", "đá" khớp "da"/"dạ" chỉ vì trùng sau khi bỏ dấu).
         const rawForm = rawByNorm.get(primary[i])
         if (rawForm) {
           const rawHit = it.rawWords.has(rawForm) ||
             (rawForm.length >= 4 && [...it.rawWords].some((rw) => rw.startsWith(rawForm)))
-          if (!rawHit) w *= 0.25
+          if (!rawHit) matched = false
         }
-        tokenPts += 2 * w
-        matchedIdf += w
-        if (allCommon || !common[i]) hitSpecific = true
+      }
+      if (matched) {
+        tokenPts += 2 * idf[i]
+        matchedCount++
       }
     }
     let phrasePts = 0
     for (const ph of phrases) if (it.text.includes(ph)) phrasePts += 1
 
-    if (anyPrimaryInCorpus) {
-      if (hitSpecific && matchedIdf >= COVER * totalIdf) {
+    if (realIdx.length > 0) {
+      // Bắt buộc khớp ĐỦ toàn bộ từ khoá có thật (AND) — gõ "nam hút thuốc" thì phải
+      // vừa là nam, vừa hút thuốc, không lọt sản phẩm chỉ khớp 1 trong 2 điều kiện.
+      if (matchedCount === realIdx.length) {
         add(it.product.id, tokenPts + phrasePts)
       } else if (phrasePts > 0 && tokenPts > 0) {
+        // Ngoại lệ cho từ khoá mơ hồ mở rộng qua đồng nghĩa (vd "đi làm" -> công sở):
+        // chấp nhận nếu cụm đồng nghĩa khớp VÀ có ít nhất 1 từ khoá gốc khớp thật.
         add(it.product.id, tokenPts + phrasePts)
       }
     } else if (phrasePts > 0) {
@@ -149,8 +141,10 @@ export function searchProducts(rawQuery: string): Product[] {
     }
   }
 
-  // Lượt 2 (chỉ khi KHÔNG ra gì): sửa lỗi chính tả token gốc rồi thử lại
-  if (scored.size === 0) {
+  // Lượt 2 (chỉ khi KHÔNG có từ khoá nào tồn tại thật trong dữ liệu): thử sửa lỗi chính tả.
+  // KHÔNG chạy khi mọi token đều là từ thật nhưng tổ hợp AND không ra sản phẩm nào — trường hợp
+  // đó nghĩa là shop thật sự chưa có sản phẩm khớp đủ điều kiện, trả rỗng mới đúng (không đoán bừa).
+  if (scored.size === 0 && realIdx.length === 0) {
     for (const token of primary) {
       for (const cw of corrections(token)) {
         for (const it of indexed) if (it.words.has(cw)) add(it.product.id, 1)
