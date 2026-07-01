@@ -1,5 +1,6 @@
 import type { Accent, Category, Product } from './products'
 import { batch600Products } from './importedProducts600'
+import { batch2200Products } from './importedProducts2200'
 
 const accentByCategory: Record<Category, Accent> = {
   nam: 'cyan',
@@ -618,4 +619,5 @@ export const importedProducts: Product[] = [
   visualProduct(599, 'Quý ông vest bước đi', 'nam', 'Công sở',
     ['nam', 'vest', 'bước đi', 'công sở']),
   ...batch600Products,
+  ...batch2200Products,
 ]
