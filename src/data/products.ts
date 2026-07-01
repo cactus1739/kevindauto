@@ -17,6 +17,7 @@ export type Category =
   | 'dongvat'
   | 'xe'
   | 'phukien'
+  | 'duongpho'
 
 export interface Product {
   id: string
@@ -47,6 +48,7 @@ export const categories: { id: Category; label: string }[] = [
   { id: 'dongvat', label: 'Động vật & Chibi' },
   { id: 'xe', label: 'Xe máy/Xe đạp/Ô tô' },
   { id: 'phukien', label: 'Phụ kiện Diorama' },
+  { id: 'duongpho', label: 'Đường phố - Buôn bán' },
 ]
 
 export const categoryLabel: Record<Category, string> = {
@@ -59,6 +61,7 @@ export const categoryLabel: Record<Category, string> = {
   dongvat: 'Động vật & Chibi',
   xe: 'Xe máy/Xe đạp/Ô tô',
   phukien: 'Phụ kiện Diorama',
+  duongpho: 'Đường phố - Buôn bán',
 }
 
 const ACCENT: Record<Category, Accent> = {
@@ -71,6 +74,7 @@ const ACCENT: Record<Category, Accent> = {
   dongvat: 'brand',
   xe: 'gold',
   phukien: 'violet',
+  duongpho: 'cyan',
 }
 
 interface Opts {
@@ -317,8 +321,8 @@ export const staticProducts: Product[] = [
     'Chàng trai áo đỏ ngồi thư giãn trên ghế — dáng vẻ tự nhiên, đời thường.'),
   p(4395, 'Cô gái tóc vàng ngồi', 'nu', 'Gợi cảm', ['nữ', 'gợi cảm', 'tóc vàng', 'ngồi', 'short'],
     'Cô gái tóc vàng ngồi tạo dáng với quần short — quyến rũ và trẻ trung.'),
-  p(4396, 'Chàng trai cầm bộ đàm', 'nam', 'Du lịch', ['nam', 'bộ đàm', 'kính râm', 'áo khoác', 'du lịch', 'phượt'],
-    'Chàng trai đeo kính râm, tay cầm bộ đàm liên lạc — chất phượt thủ bụi bặm.'),
+  p(4396, 'Nam hút thuốc Nhật Bản', 'nam', 'Tao Bao', ['nam', 'bộ đàm', 'kính râm', 'áo khoác', 'du lịch', 'phượt'],
+    'Nam đeo kính râm trên đầu, hút thuốc - Phôi theo mẫu Tao Bao'),
   p(4397, 'Chàng trai áo khoác denim', 'nam', 'Streetwear', ['nam', 'denim', 'áo khoác', 'streetwear'],
     'Chàng trai trong áo khoác denim đứng tự tin — phong cách street kinh điển.'),
   p(4398, 'Chàng trai ngồi thùng gỗ', 'nam', 'Streetwear', ['nam', 'ngồi', 'streetwear', 'mũ'],

@@ -1,4 +1,4 @@
-import { User, UserRound, Users, Baby, PersonStanding, Dumbbell, Bike, PawPrint, Sailboat, ArrowUpRight } from 'lucide-react'
+import { User, UserRound, Users, Baby, PersonStanding, Dumbbell, Bike, PawPrint, Sailboat, Store, ArrowUpRight } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 import { products, type Category } from '../data/products'
@@ -92,6 +92,15 @@ const cards: {
     accentText: 'text-violet2-400',
     accentBg: 'bg-violet2-500/15',
     ring: 'hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.45)]',
+  },
+  {
+    id: 'duongpho',
+    label: 'Đường phố - Buôn bán',
+    desc: 'Gánh hàng rong, quầy sạp — nhịp sống đường phố đời thường',
+    icon: Store,
+    accentText: 'text-cyan2-400',
+    accentBg: 'bg-cyan2-400/15',
+    ring: 'hover:shadow-glow-cyan',
   },
 ]
 
