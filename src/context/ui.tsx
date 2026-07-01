@@ -18,6 +18,7 @@ interface UIContextValue {
   quoteCount: number
   inQuote: (id: string) => boolean
   addToQuote: (id: string) => void
+  toggleQuote: (id: string) => void
   removeFromQuote: (id: string) => void
   setQty: (id: string, qty: number) => void
   clearQuote: () => void
@@ -71,6 +72,14 @@ export function UIProvider({ children }: { children: ReactNode }) {
 
   const removeFromQuote = useCallback((id: string) => setQuote((prev) => prev.filter((i) => i.id !== id)), [])
 
+  const toggleQuote = useCallback((id: string) => {
+    setQuote((prev) => (
+      prev.some((item) => item.id === id)
+        ? prev.filter((item) => item.id !== id)
+        : [...prev, { id, qty: 1 }]
+    ))
+  }, [])
+
   const setQty = useCallback((id: string, qty: number) => {
     setQuote((prev) =>
       qty <= 0 ? prev.filter((i) => i.id !== id) : prev.map((i) => (i.id === id ? { ...i, qty } : i)),
@@ -93,6 +102,7 @@ export function UIProvider({ children }: { children: ReactNode }) {
         quoteCount,
         inQuote,
         addToQuote,
+        toggleQuote,
         removeFromQuote,
         setQty,
         clearQuote,

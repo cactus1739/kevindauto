@@ -8,7 +8,7 @@ import { categoryLabel } from '../data/products'
 import { formatVND, site } from '../data/site'
 
 export default function ProductModal() {
-  const { activeProduct, closeProduct, addToQuote, inQuote } = useUI()
+  const { activeProduct, closeProduct, toggleQuote, inQuote } = useUI()
 
   // Đóng bằng phím ESC + khoá cuộn nền
   useEffect(() => {
@@ -138,14 +138,14 @@ export default function ProductModal() {
                 <button
                   type="button"
                   onClick={() => {
-                    addToQuote(activeProduct.id)
+                    toggleQuote(activeProduct.id)
                     closeProduct()
                   }}
                   className="btn-primary mt-6 w-full"
                 >
                   {inQuote(activeProduct.id) ? (
                     <>
-                      <Check className="h-4 w-4" /> Đã có trong list — thêm nữa
+                      <X className="h-4 w-4" /> Hủy chọn khỏi list báo giá
                     </>
                   ) : (
                     <>

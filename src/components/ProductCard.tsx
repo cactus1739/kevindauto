@@ -13,7 +13,7 @@ const badgeStyle: Record<NonNullable<Product['badge']>, string> = {
 }
 
 export default function ProductCard({ product }: { product: Product }) {
-  const { openProduct, addToQuote, inQuote } = useUI()
+  const { openProduct, toggleQuote, inQuote } = useUI()
   const added = inQuote(product.id)
 
   return (
@@ -83,10 +83,10 @@ export default function ProductCard({ product }: { product: Product }) {
         <div className="mt-2 flex items-center gap-1.5 pt-0 lg:mt-4 lg:gap-2">
           <button
             type="button"
-            onClick={() => addToQuote(product.id)}
+            onClick={() => toggleQuote(product.id)}
             aria-pressed={added}
-            aria-label={added ? `Đã thêm ${product.name}` : `Thêm ${product.name} vào list`}
-            title={added ? 'Đã thêm' : 'Thêm vào list'}
+            aria-label={added ? `Hủy chọn ${product.name} khỏi list` : `Thêm ${product.name} vào list`}
+            title={added ? 'Bấm để hủy chọn' : 'Thêm vào list'}
             className={`flex h-8 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-full px-1.5 text-xs font-semibold transition-colors lg:h-10 lg:px-3 lg:text-sm ${
               added
                 ? 'bg-cyan2-400/15 text-cyan2-300 ring-1 ring-inset ring-cyan2-400/40'
@@ -94,7 +94,7 @@ export default function ProductCard({ product }: { product: Product }) {
             }`}
           >
             {added ? <Check className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-            <span className="hidden lg:inline">{added ? 'Đã thêm' : 'Thêm vào list'}</span>
+            <span className="hidden lg:inline">{added ? 'Đã chọn' : 'Thêm vào list'}</span>
           </button>
           <button
             type="button"
