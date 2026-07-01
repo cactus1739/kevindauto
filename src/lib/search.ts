@@ -20,6 +20,20 @@ const indexed: Indexed[] = products.map((p) => {
   return { product: p, text, words, rawWords }
 })
 
+const productsByCode = new Map(
+  products.map((product) => [String(Number(product.code)), product] as const),
+)
+
+function productsFromCodeList(rawQuery: string): Product[] | null {
+  const query = rawQuery.trim()
+  if (!query || !/^[\d\s,;]+$/.test(query)) return null
+
+  const uniqueCodes = [...new Set((query.match(/\d+/g) ?? []).map((code) => String(Number(code))))]
+  return uniqueCodes
+    .map((code) => productsByCode.get(code))
+    .filter((product): product is Product => Boolean(product))
+}
+
 // Từ điển tất cả các từ (để sửa lỗi chính tả).
 const vocab = [...new Set(indexed.flatMap((i) => [...i.words]))].filter((w) => w.length >= 3)
 
@@ -76,6 +90,9 @@ function tokenHitsWords(token: string, words: Set<string>): boolean {
  */
 export function searchProducts(rawQuery: string): Product[] {
   if (!rawQuery.trim()) return products
+
+  const productsByRequestedCode = productsFromCodeList(rawQuery)
+  if (productsByRequestedCode) return productsByRequestedCode
 
   const { primary, phrases } = tokenize(rawQuery)
   if (!primary.length && !phrases.length) return products

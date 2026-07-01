@@ -150,7 +150,7 @@ export default function Catalog() {
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Thử: đi làm, cute, đồ đỏ, ngồi, biển..."
+                  placeholder="Thử: đi làm, cute... hoặc 4100, 4212, 2866"
                   aria-label="Tìm kiếm sản phẩm"
                   className="w-full rounded-full border border-white/10 bg-white/5 py-2.5 pl-10 pr-4 text-sm text-white placeholder-slate-500 outline-none transition-colors focus:border-cyan2-400/60 focus:bg-white/10"
                 />
