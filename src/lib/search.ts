@@ -84,8 +84,11 @@ export function searchProducts(rawQuery: string): Product[] {
   const df = primary.map((t) => indexed.reduce((c, it) => c + (tokenHitsWords(t, it.words) ? 1 : 0), 0))
   const idf = df.map((d) => Math.log((N + 1) / (d + 1)) + 0.2)
   const common = df.map((d) => d > N * 0.3)
-  const allCommon = common.every(Boolean)
-  const totalIdf = idf.reduce((a, b) => a + b, 0) || 1
+  // Token không khớp sản phẩm nào (df=0, vd "xinh", "đẹp" — tính từ cảm tính không có trong dữ liệu)
+  // không được tính vào tổng trọng số phủ, tránh phá ngưỡng COVER khiến rơi vào sửa lỗi chính tả bừa bãi.
+  const realIdx = idf.map((_, i) => i).filter((i) => df[i] > 0)
+  const allCommon = realIdx.length > 0 && realIdx.every((i) => common[i])
+  const totalIdf = realIdx.reduce((a, i) => a + idf[i], 0) || 1
   const COVER = 0.55
 
   const anyPrimaryInCorpus = df.some((d) => d > 0)
