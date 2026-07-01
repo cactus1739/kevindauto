@@ -1,12 +1,49 @@
-import { motion } from 'framer-motion'
-import { Star, ShieldCheck, Truck, Sparkles, ArrowRight, Play } from 'lucide-react'
-import ProductImage from './ProductImage'
-import { products } from '../data/products'
-import { formatVND, site } from '../data/site'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Star, ShieldCheck, Truck, Sparkles, ArrowRight, ChevronLeft, ChevronRight, Play } from 'lucide-react'
+import { site } from '../data/site'
 
-const featured = products.find((p) => p.id === 'sp-4451')!
+// Ảnh banner riêng, KHÔNG lấy từ ảnh sản phẩm — đặt file vào public/banners/,
+// kích thước & tỷ lệ chuẩn: xem ghi chú cuối file.
+interface BannerSlide {
+  id: string
+  image: string
+  label: string
+  title: string
+}
+
+const slides: BannerSlide[] = [
+  { id: 'b1', image: '/banners/slide-1.webp', label: 'Phong cách', title: 'Lịch lãm với blazer xanh navy' },
+  { id: 'b2', image: '/banners/slide-2.webp', label: 'Streetwear', title: 'Bụi bặm phong cách oversize' },
+  { id: 'b3', image: '/banners/slide-3.webp', label: 'Cá tính', title: 'Năng động sắc màu đường phố' },
+  { id: 'b4', image: '/banners/slide-4.webp', label: 'Đời thường', title: 'Giản dị mà cuốn hút' },
+  { id: 'b5', image: '/banners/slide-5.webp', label: 'Năng động', title: 'Trẻ trung tràn đầy sức sống' },
+  { id: 'b6', image: '/banners/slide-6.webp', label: 'Cổ điển', title: 'Da nâu phong trần lịch lãm' },
+  { id: 'b7', image: '/banners/slide-7.webp', label: 'Gợi cảm', title: 'Quyến rũ trong từng dáng đứng' },
+  { id: 'b8', image: '/banners/slide-8.webp', label: 'Cá tính', title: 'Graffiti đậm chất nổi loạn' },
+]
+
+const AUTOPLAY_MS = 5000
 
 export default function Hero() {
+  const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const dir = useRef(1)
+
+  const go = useCallback((next: number) => {
+    dir.current = next > index || (index === slides.length - 1 && next === 0) ? 1 : -1
+    setIndex(((next % slides.length) + slides.length) % slides.length)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index])
+
+  useEffect(() => {
+    if (paused || slides.length < 2) return
+    const t = setInterval(() => go(index + 1), AUTOPLAY_MS)
+    return () => clearInterval(t)
+  }, [index, paused, go])
+
+  const current = slides[index]
+
   return (
     <section id="home" className="relative overflow-hidden pt-28 lg:pt-36">
       {/* Nền hào quang */}
@@ -87,31 +124,76 @@ export default function Hero() {
           </motion.ul>
         </div>
 
-        {/* Cột hình ảnh nổi bật */}
+        {/* Cột banner slide */}
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 28 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="group relative mx-auto max-w-md"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
           >
-            {/* Card sản phẩm chính */}
+            {/* Card banner trượt */}
             <div className="border-gradient card-glass overflow-hidden rounded-[28px] shadow-card">
-              <div className="aspect-[4/5] w-full animate-float">
-                <ProductImage
-                  accent={featured.accent}
-                  category={featured.category}
-                  series={featured.series}
-                  image={featured.image}
-                  name={featured.name}
-                />
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <AnimatePresence initial={false} custom={dir.current} mode="popLayout">
+                  <motion.div
+                    key={current.id}
+                    custom={dir.current}
+                    initial={{ opacity: 0, x: dir.current * 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: dir.current * -50 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-0"
+                  >
+                    <img
+                      src={current.image}
+                      alt={current.title}
+                      className="h-full w-full object-cover"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/10 to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Nút điều hướng */}
+                <button
+                  type="button"
+                  onClick={() => go(index - 1)}
+                  aria-label="Ảnh trước"
+                  className="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-white/15 bg-ink-950/50 p-2 text-white backdrop-blur transition hover:bg-ink-950/80 sm:grid sm:place-items-center"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => go(index + 1)}
+                  aria-label="Ảnh tiếp theo"
+                  className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-white/15 bg-ink-950/50 p-2 text-white backdrop-blur transition hover:bg-ink-950/80 sm:grid sm:place-items-center"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
               </div>
               <div className="flex items-center justify-between gap-3 border-t border-white/10 bg-ink-900/60 p-4">
                 <div className="min-w-0">
-                  <p className="truncate font-semibold text-white">{featured.name}</p>
-                  <p className="text-xs text-slate-400">Mã {featured.code} · {featured.material}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-300">{current.label}</p>
+                  <p className="truncate font-semibold text-white">{current.title}</p>
                 </div>
-                <span className="shrink-0 font-display text-lg font-bold text-gradient">{formatVND(featured.price)}</span>
+                <div className="flex shrink-0 gap-1.5">
+                  {slides.map((s, i) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => go(i)}
+                      aria-label={`Chuyển đến ảnh ${i + 1}`}
+                      aria-current={i === index}
+                      className={`h-1.5 rounded-full transition-all ${
+                        i === index ? 'w-5 bg-white' : 'w-1.5 bg-white/30 hover:bg-white/60'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -152,3 +234,12 @@ export default function Hero() {
     </section>
   )
 }
+
+// ============================================================================
+//  QUY CÁCH ẢNH BANNER (đặt file vào public/banners/slide-1.jpg ... slide-6.jpg)
+//  - Tỷ lệ: 4:5 (dọc, khớp khung thẻ ở Hero) — VD 1200×1500px, nén JPG/WebP ~80%.
+//  - "Vùng an toàn chữ": mép DƯỚI ảnh có lớp gradient tối nhẹ + thanh chú thích
+//    (nhãn + tiêu đề) nằm NGAY DƯỚI ảnh (ngoài ảnh, nền riêng) — không đè chữ
+//    lên ảnh, nên không cần chừa khoảng trống đặc biệt, chỉ cần chủ thể rõ nét,
+//    căn giữa khung dọc.
+// ============================================================================

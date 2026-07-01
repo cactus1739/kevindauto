@@ -6,7 +6,6 @@ import { site } from '../data/site'
 import { useUI } from '../context/ui'
 
 const links = [
-  { href: '#collections', label: 'Bộ sưu tập' },
   { href: '#catalog', label: 'Sản phẩm' },
   { href: '#about', label: 'Về chúng tôi' },
   { href: '#reviews', label: 'Đánh giá' },

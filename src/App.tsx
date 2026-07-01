@@ -3,7 +3,6 @@ import { UIProvider } from './context/ui'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import BrandMarquee from './components/BrandMarquee'
-import Collections from './components/Collections'
 import Catalog from './components/Catalog'
 import Stats from './components/Stats'
 import WhyUs from './components/WhyUs'
@@ -33,7 +32,6 @@ export default function App() {
         <main>
           <Hero />
           <BrandMarquee />
-          <Collections />
           <Catalog />
           <Stats />
           <WhyUs />
