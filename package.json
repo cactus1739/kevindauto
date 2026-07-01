@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc -p tsconfig.json --noEmit && vite build",
     "preview": "vite preview",
+    "products:check": "node scripts/check-product-imports.mjs",
     "deploy": "node scripts/deploy-ftp.mjs",
     "lint": "eslint ."
   },

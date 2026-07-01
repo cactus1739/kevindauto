@@ -29,6 +29,11 @@ const facetCount = new Map(
   ),
 )
 
+const categoryCount = new Map<Filter, number>([
+  ['all', products.length],
+  ...categories.map((c) => [c.id as Filter, products.filter((p) => p.category === c.id).length] as const),
+])
+
 export default function Catalog() {
   const [filter, setFilter] = useState<Filter>('all')
   const [query, setQuery] = useState('')
@@ -79,9 +84,12 @@ export default function Catalog() {
     return list
   }, [filter, query, sort, selected])
 
-  const tabs: { id: Filter; label: string }[] = [
-    { id: 'all', label: 'Tất cả' },
-    ...categories.map((c) => ({ id: c.id as Filter, label: c.label })),
+  const tabs: { id: Filter; label: string; count: number }[] = [
+    { id: 'all', label: 'Tất cả', count: categoryCount.get('all') ?? 0 },
+    ...categories.map((c) => {
+      const id = c.id as Filter
+      return { id, label: c.label, count: categoryCount.get(id) ?? 0 }
+    }),
   ]
 
   const activeCount = selected.size + (query.trim() ? 1 : 0) + (filter !== 'all' ? 1 : 0)
@@ -107,13 +115,20 @@ export default function Catalog() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setFilter(t.id)}
-                    className={`rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 ${
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 ${
                       active
                         ? 'bg-brand-500 text-white shadow-glow'
                         : 'border border-white/10 bg-white/5 text-slate-300 hover:border-white/25 hover:text-white'
                     }`}
                   >
-                    {t.label}
+                    <span>{t.label}</span>
+                    <span
+                      className={`rounded-full px-2 py-0.5 text-xs font-bold tabular-nums ${
+                        active ? 'bg-white/20 text-white' : 'bg-white/10 text-slate-400'
+                      }`}
+                    >
+                      {t.count}
+                    </span>
                   </button>
                 )
               })}

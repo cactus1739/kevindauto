@@ -3,6 +3,7 @@
 //  Ảnh nằm ở /public/products/sp-<mã>.webp (cắt từ catalog gốc).
 //  Giá đang để đồng giá 30.000₫ — chỉnh tay lại trong từng dòng nếu cần.
 // ============================================================================
+import { importedProducts } from './importedProducts'
 
 
 export type Accent = 'brand' | 'cyan' | 'gold' | 'violet'
@@ -845,6 +846,6 @@ export const staticProducts: Product[] = [
     'Bản mẫu xám chưa sơn — cô gái cầm cây lau nhà, khoảnh khắc đời thường giản dị.'),
 ]
 
-export const products: Product[] = staticProducts
+export const products: Product[] = [...importedProducts, ...staticProducts]
 
 export const productsById = Object.fromEntries(products.map((p) => [p.id, p]))
