@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, SlidersHorizontal, PackageOpen, X, Check } from 'lucide-react'
+import { Search, SlidersHorizontal, PackageOpen, X, Check, ChevronDown } from 'lucide-react'
 import ProductCard from './ProductCard'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
@@ -10,6 +10,7 @@ import { searchProducts } from '../lib/search'
 
 type Filter = 'all' | Category
 type Sort = 'featured' | 'price-asc' | 'price-desc' | 'rating'
+const PAGE_SIZE = 48
 
 const sortOptions: { id: Sort; label: string }[] = [
   { id: 'featured', label: 'Liên quan / Nổi bật' },
@@ -40,6 +41,7 @@ export default function Catalog() {
   const [sort, setSort] = useState<Sort>('featured')
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [showFilters, setShowFilters] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
   const toggleFacet = (id: string) =>
     setSelected((prev) => {
@@ -92,6 +94,12 @@ export default function Catalog() {
     }),
   ]
 
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+  }, [filter, query, sort, selected])
+
+  const visibleProducts = filtered.slice(0, visibleCount)
+  const remainingCount = filtered.length - visibleProducts.length
   const activeCount = selected.size + (query.trim() ? 1 : 0) + (filter !== 'all' ? 1 : 0)
 
   return (
@@ -241,7 +249,7 @@ export default function Catalog() {
         {filtered.length > 0 ? (
           <motion.div layout className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <AnimatePresence mode="popLayout">
-              {filtered.map((p) => (
+              {visibleProducts.map((p) => (
                 <motion.div
                   key={p.id}
                   layout
@@ -264,6 +272,19 @@ export default function Catalog() {
             <p className="mt-1 text-sm text-slate-400">Thử từ khoá khác hoặc bỏ bớt bộ lọc nhé.</p>
             <button onClick={clearAll} className="btn-ghost mt-5 text-sm">
               Xoá bộ lọc
+            </button>
+          </div>
+        )}
+
+        {remainingCount > 0 && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              <ChevronDown className="h-4 w-4" />
+              Xem thêm {Math.min(PAGE_SIZE, remainingCount)} sản phẩm
             </button>
           </div>
         )}

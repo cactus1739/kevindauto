@@ -78,5 +78,5 @@ if (mode === 'calibrate') {
     }
     if (n >= COUNT) break
   }
-  console.log(`Đã cắt ${n} ảnh → ${dir}/sp-4400..sp-4451.webp (trimBottom=${trimBottom})`)
+  console.log(`Đã cắt ${n} ảnh → ${dir}/sp-${START}..sp-${START + n - 1}.webp (trimBottom=${trimBottom})`)
 }
