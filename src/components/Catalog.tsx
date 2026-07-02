@@ -132,7 +132,7 @@ export default function Catalog() {
                     key={t.id}
                     role="tab"
                     aria-selected={active}
-                    onClick={() => setFilter(t.id)}
+                    onClick={() => setFilter((current) => (t.id !== 'all' && current === t.id ? 'all' : t.id))}
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 ${
                       active
                         ? 'bg-brand-500 text-white shadow-glow'
