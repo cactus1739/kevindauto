@@ -77,7 +77,7 @@ export default {
       animation: {
         float: 'float 6s ease-in-out infinite',
         shine: 'shine 6s linear infinite',
-        marquee: 'marquee-x 28s linear infinite',
+        marquee: 'marquee-x 48s linear infinite',
       },
     },
   },

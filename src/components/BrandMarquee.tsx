@@ -4,18 +4,38 @@ import { Facebook } from 'lucide-react'
 const artists = [
   {
     name: 'Nguyễn Dương',
-    avatar: '/banners/slide-1.webp',
+    avatar: '/artists/nguyen-duong.webp',
     facebook: 'https://www.facebook.com/nguyen.duong.739386',
   },
   {
     name: 'Lê Ngọc Hân',
-    avatar: '/banners/slide-2.webp',
+    avatar: '/artists/le-ngoc-han.webp',
     facebook: 'https://www.facebook.com/LeengocHan88',
   },
   {
     name: 'Bboy Dinosmall',
-    avatar: '/banners/slide-3.webp',
+    avatar: '/artists/bboy-dsmall.webp',
     facebook: 'https://www.facebook.com/bboy.dinosmall',
+  },
+  {
+    name: 'Nguyễn Hoàng Linh',
+    avatar: '/artists/nguyen-hoang-linh.webp',
+    facebook: 'https://www.facebook.com/linhoang2608',
+  },
+  {
+    name: 'Nhật Nam',
+    avatar: '/artists/nhat-nam.webp',
+    facebook: 'https://www.facebook.com/gi.ma.96995',
+  },
+  {
+    name: 'Lê Trân',
+    avatar: '/artists/le-tran.webp',
+    facebook: 'https://www.facebook.com/le.tran.268032',
+  },
+  {
+    name: 'Mai Trinh',
+    avatar: '/artists/mai-trinh.webp',
+    facebook: 'https://www.facebook.com/lam.decem',
   },
 ]
 
@@ -31,7 +51,7 @@ export default function BrandMarquee() {
       </div>
 
       <div className="mask-fade-x overflow-hidden">
-        <div className="flex w-max animate-marquee items-start gap-8 pr-8 hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
+        <div className="flex w-max animate-marquee items-start gap-8 pr-8 [animation-duration:90s] hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
           {[...marqueeArtists, ...marqueeArtists].map((artist, index) => {
             const duplicate = index >= artists.length
 

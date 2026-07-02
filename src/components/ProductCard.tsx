@@ -94,6 +94,7 @@ export default function ProductCard({ product }: { product: Product }) {
             }`}
           >
             {added ? <Check className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+            <span className="lg:hidden">{added ? 'Đã chọn' : 'Thêm list'}</span>
             <span className="hidden lg:inline">{added ? 'Đã chọn' : 'Thêm vào list'}</span>
           </button>
           <button
