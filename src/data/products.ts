@@ -4,6 +4,7 @@
 //  Giá đang để đồng giá 30.000₫ — chỉnh tay lại trong từng dòng nếu cần.
 // ============================================================================
 import { importedProducts } from './importedProducts'
+import { productNameOverrides } from './productNameOverrides'
 
 
 export type Accent = 'brand' | 'cyan' | 'gold' | 'violet'
@@ -3435,6 +3436,19 @@ export const staticProducts: Product[] = [
     'Cô gái khoác áo, phong cách đường phố.'),
 ]
 
-export const products: Product[] = [...importedProducts, ...staticProducts]
+function applyProductNameOverrides(items: Product[]): Product[] {
+  const seenByCode = new Map<string, number>()
+
+  return items.map((product) => {
+    const code = String(Number(product.code))
+    const occurrence = seenByCode.get(code) ?? 0
+    seenByCode.set(code, occurrence + 1)
+
+    const name = productNameOverrides[code]?.[occurrence]
+    return name ? { ...product, name } : product
+  })
+}
+
+export const products: Product[] = applyProductNameOverrides([...importedProducts, ...staticProducts])
 
 export const productsById = Object.fromEntries(products.map((p) => [p.id, p]))
