@@ -24,12 +24,25 @@ const productsByCode = new Map(
   products.map((product) => [String(Number(product.code)), product] as const),
 )
 
-function productsFromCodeList(rawQuery: string): Product[] | null {
+export function productCodesFromQuery(rawQuery: string): string[] | null {
   const query = rawQuery.trim()
-  if (!query || !/^[\d\s,;]+$/.test(query)) return null
+  if (!query || !/^[\d\s,;./|+\-_–—]+$/u.test(query)) return null
 
-  const uniqueCodes = [...new Set((query.match(/\d+/g) ?? []).map((code) => String(Number(code))))]
-  return uniqueCodes
+  const codes = query.match(/\d+/g) ?? []
+  if (!codes.length || codes.some((code) => code.length < 3)) return null
+
+  return [...new Set(codes.map((code) => String(Number(code))))]
+}
+
+export function isProductCodeListQuery(rawQuery: string): boolean {
+  return productCodesFromQuery(rawQuery) !== null
+}
+
+function productsFromCodeList(rawQuery: string): Product[] | null {
+  const codes = productCodesFromQuery(rawQuery)
+  if (!codes) return null
+
+  return codes
     .map((code) => productsByCode.get(code))
     .filter((product): product is Product => Boolean(product))
 }

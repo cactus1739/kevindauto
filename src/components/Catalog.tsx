@@ -6,7 +6,7 @@ import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import { products, categories, type Category } from '../data/products'
 import { facetGroups, productMatchesFacet } from '../data/facets'
-import { searchProducts } from '../lib/search'
+import { isProductCodeListQuery, searchProducts } from '../lib/search'
 
 type Filter = 'all' | Category
 type Sort = 'featured' | 'price-asc' | 'price-desc' | 'rating'
@@ -56,15 +56,25 @@ export default function Catalog() {
     setSelected(new Set())
   }
 
+  const updateQuery = (value: string) => {
+    setQuery(value)
+    if (isProductCodeListQuery(value)) {
+      setFilter('all')
+      setSelected(new Set())
+    }
+  }
+
   const filtered = useMemo(() => {
+    const codeListQuery = isProductCodeListQuery(query)
+
     // 1) Search mờ (giữ thứ tự độ liên quan) hoặc toàn bộ
     let list = query.trim() ? searchProducts(query) : products.slice()
 
     // 2) Danh mục chính
-    if (filter !== 'all') list = list.filter((p) => p.category === filter)
+    if (!codeListQuery && filter !== 'all') list = list.filter((p) => p.category === filter)
 
     // 3) Facet: trong cùng nhóm = HOẶC, khác nhóm = VÀ (chồng lấn)
-    if (selected.size) {
+    if (!codeListQuery && selected.size) {
       const byGroup = new Map<string, string[]>()
       for (const id of selected) {
         const info = facetById.get(id)
@@ -79,9 +89,9 @@ export default function Catalog() {
     }
 
     // 4) Sắp xếp (nếu không phải "liên quan")
-    if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price)
-    else if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price)
-    else if (sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating || b.reviews - a.reviews)
+    if (!codeListQuery && sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price)
+    else if (!codeListQuery && sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price)
+    else if (!codeListQuery && sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating || b.reviews - a.reviews)
 
     return list
   }, [filter, query, sort, selected])
@@ -149,7 +159,7 @@ export default function Catalog() {
                 <input
                   type="search"
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={(e) => updateQuery(e.target.value)}
                   placeholder="Thử: đi làm, cute... hoặc 4100, 4212, 2866"
                   aria-label="Tìm kiếm sản phẩm"
                   className="w-full rounded-full border border-white/10 bg-white/5 py-2.5 pl-10 pr-4 text-sm text-white placeholder-slate-500 outline-none transition-colors focus:border-cyan2-400/60 focus:bg-white/10"
