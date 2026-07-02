@@ -4,6 +4,7 @@ import { batch2200Products } from './importedProducts2200'
 import { batch2300Products, batch2400Products, batch2500Products } from './importedProducts2300'
 import { batch2600Products } from './importedProducts2600'
 import { batch2800Products, batch2900Products } from './importedProducts2800'
+import { batch3000Products, batch3100Products, batch3200Products } from './importedProducts3000'
 
 const accentByCategory: Record<Category, Accent> = {
   nam: 'cyan',
@@ -629,4 +630,7 @@ export const importedProducts: Product[] = [
   ...batch2600Products,
   ...batch2800Products,
   ...batch2900Products,
+  ...batch3000Products,
+  ...batch3100Products,
+  ...batch3200Products,
 ]
