@@ -2,15 +2,24 @@ import { Facebook } from 'lucide-react'
 
 // Thay name, avatar và facebook tại đây khi có danh sách họa sĩ chính thức.
 const artists = [
-  { name: 'Minh Khoa', avatar: '/banners/slide-1.webp', facebook: 'https://facebook.com/your-artist-01' },
-  { name: 'An Nhiên', avatar: '/banners/slide-2.webp', facebook: 'https://facebook.com/your-artist-02' },
-  { name: 'Gia Huy', avatar: '/banners/slide-3.webp', facebook: 'https://facebook.com/your-artist-03' },
-  { name: 'Bảo Trân', avatar: '/banners/slide-4.webp', facebook: 'https://facebook.com/your-artist-04' },
-  { name: 'Tuấn Anh', avatar: '/banners/slide-5.webp', facebook: 'https://facebook.com/your-artist-05' },
-  { name: 'Khánh Linh', avatar: '/banners/slide-6.webp', facebook: 'https://facebook.com/your-artist-06' },
-  { name: 'Đức Phong', avatar: '/banners/slide-7.webp', facebook: 'https://facebook.com/your-artist-07' },
-  { name: 'Hà My', avatar: '/banners/slide-8.webp', facebook: 'https://facebook.com/your-artist-08' },
+  {
+    name: 'Nguyễn Dương',
+    avatar: '/banners/slide-1.webp',
+    facebook: 'https://www.facebook.com/nguyen.duong.739386',
+  },
+  {
+    name: 'Lê Ngọc Hân',
+    avatar: '/banners/slide-2.webp',
+    facebook: 'https://www.facebook.com/LeengocHan88',
+  },
+  {
+    name: 'Bboy Dinosmall',
+    avatar: '/banners/slide-3.webp',
+    facebook: 'https://www.facebook.com/bboy.dinosmall',
+  },
 ]
+
+const marqueeArtists = Array.from({ length: 6 }, () => artists).flat()
 
 export default function BrandMarquee() {
   return (
@@ -21,7 +30,7 @@ export default function BrandMarquee() {
 
       <div className="mask-fade-x overflow-hidden">
         <div className="flex w-max animate-marquee items-start gap-8 pr-8 hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
-          {[...artists, ...artists].map((artist, index) => {
+          {[...marqueeArtists, ...marqueeArtists].map((artist, index) => {
             const duplicate = index >= artists.length
 
             return (
