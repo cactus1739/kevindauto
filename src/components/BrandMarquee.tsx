@@ -24,9 +24,11 @@ const marqueeArtists = Array.from({ length: 6 }, () => artists).flat()
 export default function BrandMarquee() {
   return (
     <section aria-labelledby="collaborating-artists-title" className="border-y border-white/10 bg-ink-900/40 py-5">
-      <h2 id="collaborating-artists-title" className="sr-only">
-        Họa sĩ hợp tác
-      </h2>
+      <div className="container-x mb-5 text-center">
+        <h2 id="collaborating-artists-title" className="font-display text-sm font-bold text-white sm:text-base">
+          Top họa sĩ tham khảo để đặt lên màu
+        </h2>
+      </div>
 
       <div className="mask-fade-x overflow-hidden">
         <div className="flex w-max animate-marquee items-start gap-8 pr-8 hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
