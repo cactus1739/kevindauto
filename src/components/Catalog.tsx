@@ -247,7 +247,7 @@ export default function Catalog() {
 
         {/* Lưới sản phẩm */}
         {filtered.length > 0 ? (
-          <motion.div layout className="mt-8 grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-5 lg:gap-4">
+          <motion.div layout className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-5 lg:gap-4">
             <AnimatePresence mode="popLayout">
               {visibleProducts.map((p) => (
                 <motion.div

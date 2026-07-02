@@ -10,6 +10,7 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -27,6 +28,8 @@
 
   body {
     @apply bg-ink-950 text-slate-200 font-sans antialiased;
+    min-width: 0;
+    overflow-x: clip;
     background-image:
       radial-gradient(circle at 15% -10%, rgba(255, 45, 120, 0.12), transparent 40%),
       radial-gradient(circle at 90% 5%, rgba(34, 211, 238, 0.1), transparent 38%);
