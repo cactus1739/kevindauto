@@ -58,9 +58,9 @@ export default function Hero() {
         }}
       />
 
-      <div className="container-x relative grid items-center gap-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-28">
+      <div className="container-x relative grid min-w-0 grid-cols-[minmax(0,1fr)] items-center gap-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-28">
         {/* Cột nội dung */}
-        <div>
+        <div className="min-w-0">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -125,12 +125,12 @@ export default function Hero() {
         </div>
 
         {/* Cột banner slide */}
-        <div className="relative">
+        <div className="relative min-w-0">
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 28 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative mx-auto max-w-md"
+            className="group relative mx-auto w-full min-w-0 max-w-md"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
