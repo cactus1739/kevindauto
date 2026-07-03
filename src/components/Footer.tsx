@@ -1,10 +1,17 @@
-import { Facebook, Instagram, Youtube, MessageCircle, MapPin, Phone, Mail } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Facebook, Instagram, Youtube, MessageCircle, MapPin, Phone, Mail, Users } from 'lucide-react'
 import Logo from './Logo'
 import { site } from '../data/site'
 import { categories } from '../data/products'
+import { trackVisit } from '../lib/analytics'
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const [visitorCount, setVisitorCount] = useState<number | null>(null)
+
+  useEffect(() => {
+    void trackVisit().then(setVisitorCount)
+  }, [])
 
   return (
     <footer className="border-t border-white/10 bg-ink-950">
@@ -94,6 +101,14 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-slate-500 sm:flex-row">
           <p>© {year} KEVIN ĐẦU TO. Bảo lưu mọi quyền.</p>
+          {visitorCount !== null && (
+            <p className="inline-flex items-center gap-2" aria-label={`${visitorCount.toLocaleString('vi-VN')} lượt ghé thăm`}>
+              <Users className="h-4 w-4 text-brand-300" />
+              <span>
+                <span className="font-semibold tabular text-slate-300">{visitorCount.toLocaleString('vi-VN')}</span> lượt ghé thăm
+              </span>
+            </p>
+          )}
           <p>
             Thiết kế &amp; phát triển bởi <span className="font-semibold text-slate-300">KEVIN ĐẦU TO Team</span>
           </p>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Thống kê truy cập — KEVIN ĐẦU TO</title>
+    <style>
+      :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #07070d; color: #f8fafc; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top, #281247, #07070d 45%); }
+      main { width: min(1100px, calc(100% - 32px)); margin: auto; padding: 48px 0; }
+      h1 { margin: 0 0 8px; font-size: clamp(26px, 5vw, 42px); }
+      p { color: #94a3b8; }
+      form, .card, section { border: 1px solid #ffffff1a; background: #ffffff0d; border-radius: 20px; }
+      form { display: flex; gap: 10px; padding: 16px; margin-top: 28px; }
+      input, button { border-radius: 12px; padding: 12px 14px; font: inherit; }
+      input { min-width: 0; flex: 1; border: 1px solid #ffffff24; background: #090914; color: white; }
+      button { border: 0; background: #7c3aed; color: white; font-weight: 700; cursor: pointer; }
+      #error { color: #fca5a5; min-height: 24px; }
+      #report[hidden] { display: none; }
+      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
+      .card { padding: 20px; }
+      .card span { display: block; color: #94a3b8; font-size: 13px; }
+      .card strong { display: block; margin-top: 8px; font-size: 28px; }
+      .grids { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      section { padding: 20px; overflow: hidden; }
+      h2 { margin: 0 0 14px; font-size: 17px; }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      th, td { padding: 10px 0; border-bottom: 1px solid #ffffff12; text-align: left; }
+      th:last-child, td:last-child { text-align: right; }
+      @media (max-width: 700px) { .cards, .grids { grid-template-columns: 1fr; } form { flex-direction: column; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Thống kê truy cập</h1>
+      <p>Số liệu tổng hợp, không lưu IP hoặc thông tin nhận dạng cá nhân.</p>
+      <form id="login">
+        <input id="key" type="password" autocomplete="current-password" placeholder="Nhập khóa báo cáo" required />
+        <button type="submit">Xem báo cáo</button>
+      </form>
+      <p id="error" role="alert"></p>
+
+      <div id="report" hidden>
+        <div class="cards">
+          <div class="card"><span>Tổng lượt ghé thăm</span><strong id="total">0</strong></div>
+          <div class="card"><span>Hôm nay</span><strong id="today">0</strong></div>
+          <div class="card"><span>Cập nhật gần nhất</span><strong id="updated" style="font-size:16px">—</strong></div>
+        </div>
+        <div class="grids">
+          <section><h2>30 ngày gần nhất</h2><table id="days"></table></section>
+          <section><h2>Thiết bị</h2><table id="devices"></table></section>
+          <section><h2>Nguồn truy cập</h2><table id="referrers"></table></section>
+          <section><h2>Trang được xem</h2><table id="paths"></table></section>
+        </div>
+      </div>
+    </main>
+    <script>
+      const form = document.querySelector('#login')
+      const error = document.querySelector('#error')
+      const report = document.querySelector('#report')
+      const format = new Intl.NumberFormat('vi-VN')
+
+      function rows(id, values, limit = 30) {
+        const entries = Object.entries(values || {}).sort((a, b) => b[0].localeCompare(a[0])).slice(0, limit)
+        document.querySelector(`#${id}`).innerHTML =
+          '<tr><th>Mục</th><th>Lượt</th></tr>' +
+          entries.map(([label, count]) => `<tr><td>${escapeHtml(label)}</td><td>${format.format(count)}</td></tr>`).join('')
+      }
+
+      function escapeHtml(value) {
+        const div = document.createElement('div')
+        div.textContent = value
+        return div.innerHTML
+      }
+
+      async function loadReport(key) {
+        error.textContent = ''
+        const response = await fetch('/api/analytics.php?report=1', {
+          headers: { 'X-Analytics-Key': key },
+        })
+        if (!response.ok) throw new Error('Khóa không đúng hoặc máy chủ chưa sẵn sàng.')
+        const data = await response.json()
+        const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Ho_Chi_Minh' })
+        document.querySelector('#total').textContent = format.format(data.total || 0)
+        document.querySelector('#today').textContent = format.format(data.days?.[today] || 0)
+        document.querySelector('#updated').textContent = data.updatedAt
+          ? new Date(data.updatedAt).toLocaleString('vi-VN')
+          : 'Chưa có dữ liệu'
+        rows('days', data.days)
+        rows('devices', data.devices)
+        rows('referrers', data.referrers)
+        rows('paths', data.paths)
+        report.hidden = false
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        try {
+          await loadReport(document.querySelector('#key').value)
+        } catch (reason) {
+          error.textContent = reason.message
+          report.hidden = true
+        }
+      })
+    </script>
+  </body>
+</html>
