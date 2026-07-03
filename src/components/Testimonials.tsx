@@ -39,11 +39,11 @@ const reviews = [
     initials: 'PA',
   },
   {
-    name: 'Trọng Nghĩa',
-    role: 'Khách quen',
-    text: 'Đặt con figure shipper với cầu thủ bóng đá, shop tư vấn nhiệt tình, hàng đẹp hơn ảnh. 10 điểm.',
+    name: 'Nguyễn Hiếu Minh',
+    role: 'Người sơn chuyên nghiệp, vui vẻ',
+    text: 'Fig rõ từng nét nhỏ, mẫu mã đa dạng, in ko bị vân. Chỉ có mỗi lần lựa hơi choáng vì nhiều model quá giờ có web thì đỡ rồi. Mong shop sớm tích xanh thêm nhiều mẫu cũ',
     accent: 'cyan',
-    initials: 'TN',
+    initials: 'NHM',
   },
 ]
 
