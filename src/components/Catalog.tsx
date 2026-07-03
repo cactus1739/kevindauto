@@ -11,6 +11,7 @@ import { isProductCodeListQuery, searchProducts } from '../lib/search'
 type Filter = 'all' | Category
 type Sort = 'featured' | 'price-asc' | 'price-desc' | 'rating'
 const PAGE_SIZE = 48
+const quickKeywords = ['nữ váy', 'nam vest', 'ngồi ghế', 'cặp đôi', 'bóng đá', 'shipper', 'người già', 'mèo thần tài']
 
 const sortOptions: { id: Sort; label: string }[] = [
   { id: 'featured', label: 'Liên quan / Nổi bật' },
@@ -117,8 +118,8 @@ export default function Catalog() {
       <div className="container-x">
         <SectionHeading
           label="Cửa hàng"
-          title={<>Tìm figure theo “gu” của bạn</>}
-          description="Gõ từ khoá kiểu gì cũng được (kể cả không dấu, sai chính tả, vu vơ) — web tự tìm sản phẩm tương đồng. Lọc sâu theo phong cách, tư thế, chủ đề, màu sắc…"
+          title={<>Tìm figure theo "gu" của bạn</>}
+          description="Gõ từ khóa kiểu gì cũng được, kể cả không dấu, sai chính tả hoặc vu vơ. Web sẽ tự tìm sản phẩm tương đồng. Lọc sâu theo phong cách, tư thế, chủ đề, màu sắc..."
         />
 
         <Reveal className="mt-10">
@@ -195,6 +196,20 @@ export default function Catalog() {
               </div>
             </div>
 
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Gợi ý</span>
+              {quickKeywords.map((keyword) => (
+                <button
+                  key={keyword}
+                  type="button"
+                  onClick={() => updateQuery(keyword)}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-slate-300 transition-colors hover:border-white/25 hover:text-white"
+                >
+                  {keyword}
+                </button>
+              ))}
+            </div>
+
             {/* Panel facet nâng cao */}
             <AnimatePresence initial={false}>
               {showFilters && (
@@ -241,14 +256,14 @@ export default function Catalog() {
               )}
             </AnimatePresence>
 
-            {/* Dòng kết quả + xoá lọc */}
+            {/* Dòng kết quả + xóa lọc */}
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm text-slate-400" aria-live="polite">
                 Hiển thị <span className="font-semibold text-white tabular">{filtered.length}</span> sản phẩm
               </p>
               {activeCount > 0 && (
                 <button onClick={clearAll} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300 hover:text-brand-200">
-                  <X className="h-4 w-4" /> Xoá tất cả bộ lọc
+                  <X className="h-4 w-4" /> Xóa tất cả bộ lọc
                 </button>
               )}
             </div>
@@ -279,9 +294,9 @@ export default function Catalog() {
               <PackageOpen className="h-8 w-8 text-slate-400" />
             </span>
             <p className="mt-4 font-semibold text-white">Không tìm thấy sản phẩm phù hợp</p>
-            <p className="mt-1 text-sm text-slate-400">Thử từ khoá khác hoặc bỏ bớt bộ lọc nhé.</p>
+            <p className="mt-1 text-sm text-slate-400">Thử từ khóa khác hoặc bỏ bớt bộ lọc nhé.</p>
             <button onClick={clearAll} className="btn-ghost mt-5 text-sm">
-              Xoá bộ lọc
+              Xóa bộ lọc
             </button>
           </div>
         )}

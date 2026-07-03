@@ -1,6 +1,6 @@
 import { Facebook } from 'lucide-react'
 
-// Thay name, avatar và facebook tại đây khi có danh sách họa sĩ chính thức.
+// Thay name, avatar va facebook tai day khi co danh sach hoa si chinh thuc.
 const artists = [
   {
     name: 'Nguyễn Dương',
@@ -36,6 +36,29 @@ const artists = [
     name: 'Mai Trinh',
     avatar: '/artists/mai-trinh.webp',
     facebook: 'https://www.facebook.com/lam.decem',
+  },
+]
+
+const communities = [
+  {
+    name: 'Diorama - Vietnam 1:64',
+    image: '/communities/diorama-vietnam-1-64.webp',
+    facebook: 'https://www.facebook.com/groups/MUABANDAUGIAmohinh',
+  },
+  {
+    name: '1:64 Scale - Diorama & Cars Việt Nam',
+    image: '/communities/1-64-scale-diorama-car.webp',
+    facebook: 'https://www.facebook.com/groups/1797613757406534',
+  },
+  {
+    name: 'Hội mô hình xe phân khối nhỏ',
+    image: '/communities/hoi-mo-hinh-phan-khoi-nho.webp',
+    facebook: 'https://www.facebook.com/groups/667605220772791',
+  },
+  {
+    name: 'Group mua bán 1:64',
+    image: '/communities/group-mua-ban-164.webp',
+    facebook: 'https://www.facebook.com/groups/778404172303735',
   },
 ]
 
@@ -84,6 +107,40 @@ export default function BrandMarquee() {
               </a>
             )
           })}
+        </div>
+      </div>
+
+      <div className="container-x mt-10">
+        <div className="mb-5 text-center">
+          <h2 className="font-display text-lg font-bold text-white sm:text-2xl">Các Cộng đồng Mô hình nổi bật</h2>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {communities.map((community) => (
+            <a
+              key={community.name}
+              href={community.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] transition-all duration-200 hover:border-brand-400/60 hover:bg-white/[0.07] hover:shadow-glow"
+              title={`Mở Facebook của ${community.name}`}
+            >
+              <span className="block aspect-[4/3] overflow-hidden bg-ink-800">
+                <img
+                  src={community.image}
+                  alt={community.name}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </span>
+              <span className="flex min-h-16 items-center justify-between gap-3 px-4 py-3">
+                <span className="text-sm font-bold leading-5 text-white">{community.name}</span>
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#1877f2] text-white">
+                  <Facebook className="h-4 w-4" />
+                </span>
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </section>
