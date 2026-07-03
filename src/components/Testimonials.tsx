@@ -18,11 +18,11 @@ const reviews = [
     initials: 'DB',
   },
   {
-    name: 'Quốc Bảo',
-    role: 'Người làm diorama',
-    text: 'Set figure nam công sở với thuyền phao về làm bối cảnh quá hợp, chi tiết ngon. Giá lại mềm.',
+    name: 'Quốc Hào',
+    role: 'Người làm Diorama chuyên nghiệp',
+    text: 'Figure chi tiết, tỉ lệ khá nét. Shop xử lý phôi khá tốt, dễ ăn màu không kén, nhiều dáng và khá nhiều mẫu để chọn. Một điểm trừ là shop nói chuyện hơi cọc lóc, còn lại thì good job.',
     accent: 'gold',
-    initials: 'QB',
+    initials: 'QH',
   },
   {
     name: 'Hải Đăng',
