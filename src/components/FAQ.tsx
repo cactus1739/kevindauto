@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: 'Phí vận chuyển và thời gian giao hàng thế nào?',
-    a: 'Nội thành TP.HCM giao trong 2-4 giờ. Toàn quốc 1-3 ngày qua đơn vị vận chuyển uy tín. Freeship cho đơn từ 2.000.000₫. Tất cả đơn đều đóng gói chống sốc kỹ lưỡng.',
+    a: 'Shop giao toàn quốc qua Viettel Post. Nội thành TP.HCM thường 2-4 giờ, các tỉnh thường 1-3 ngày tùy khu vực. Freeship cho đơn từ 2.000.000₫. Tất cả đơn đều đóng gói chống sốc kỹ lưỡng.',
   },
   {
     q: 'Tôi có được kiểm tra hàng trước khi thanh toán không?',
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: 'Chính sách đổi trả ra sao?',
-    a: 'Đổi mới 1-1 trong 7 ngày nếu sản phẩm lỗi do nhà sản xuất (gãy, thiếu chi tiết, lỗi nước sơn). Vui lòng quay video lúc mở hộp để được hỗ trợ nhanh nhất.',
+    a: 'Shop bảo hành các hư hỏng trong quá trình vận chuyển và hỗ trợ đổi trả nếu sản phẩm lỗi/sai mô tả. Vui lòng quay video lúc mở hộp để được hỗ trợ nhanh nhất.',
   },
   {
     q: 'Hàng pre-order (đặt trước) hoạt động thế nào?',

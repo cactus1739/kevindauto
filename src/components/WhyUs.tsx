@@ -5,8 +5,8 @@ import SectionHeading from './SectionHeading'
 const features = [
   {
     icon: BadgeCheck,
-    title: 'Chính hãng 100%',
-    desc: 'Mô hình resin in 3D độ phân giải cao, tuyển chọn kỹ từng mẫu. Cam kết hoàn tiền nếu sai mô tả.',
+    title: 'Không hài lòng hoàn tiền',
+    desc: 'Cam kết hoàn tiền nếu sản phẩm không đúng mô tả hoặc không làm bạn hài lòng sau khi nhận hàng.',
     color: 'text-cyan2-400',
     bg: 'bg-cyan2-400/15',
   },
@@ -53,8 +53,8 @@ export default function WhyUs() {
       <div className="container-x">
         <SectionHeading
           label="Vì sao chọn chúng tôi"
-          title={<>Mua mô hình, yên tâm tuyệt đối</>}
-          description="Không chỉ bán hàng — KEVIN ĐẦU TO đồng hành cùng bạn trong cả hành trình sưu tầm."
+          title={<>Cam kết không hài lòng hoàn tiền</>}
+          description="Không chỉ bán hàng — KEVIN ĐẦU TO đồng hành cùng bạn trong cả hành trình đam mê tô màu figure và làm diorama."
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

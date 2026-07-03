@@ -87,7 +87,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.12 }}
             className="mt-5 max-w-xl text-base text-slate-300 sm:text-lg"
           >
-            <span className="font-semibold text-white">KEVIN ĐẦU TO</span> — thế giới mô hình figure người &amp;
+            <span className="font-semibold text-white">KEVIN ĐẦU TO</span> — thế giới phôi chưa sơn figure người &amp;
             phụ kiện diorama cao cấp. Hàng thật, chi tiết thật, đặt nhanh qua Zalo &amp; Messenger.
           </motion.p>
 
@@ -113,10 +113,10 @@ export default function Hero() {
             className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm text-slate-300"
           >
             <li className="flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5 text-cyan2-400" /> Bảo hành đổi trả 7 ngày
+              <ShieldCheck className="h-5 w-5 text-cyan2-400" /> Bảo hành hư hỏng vận chuyển và đổi trả
             </li>
             <li className="flex items-center gap-2">
-              <Truck className="h-5 w-5 text-gold-400" /> Giao toàn quốc, đóng gói chống sốc
+              <Truck className="h-5 w-5 text-gold-400" /> Giao toàn quốc qua Viettel Post
             </li>
             <li className="flex items-center gap-2">
               <Star className="h-5 w-5 fill-brand-400 text-brand-400" /> 4.9/5 từ 1.200+ khách

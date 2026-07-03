@@ -175,10 +175,10 @@ export default function ProductModal() {
                 {/* Cam kết */}
                 <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-400">
                   <span className="flex items-center gap-1.5">
-                    <ShieldCheck className="h-4 w-4 text-cyan2-400" /> Bảo hành đổi trả 7 ngày
+                    <ShieldCheck className="h-4 w-4 text-cyan2-400" /> Bảo hành hư hỏng vận chuyển và đổi trả
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Truck className="h-4 w-4 text-gold-400" /> Giao toàn quốc
+                    <Truck className="h-4 w-4 text-gold-400" /> Giao toàn quốc qua Viettel Post
                   </span>
                 </div>
               </div>

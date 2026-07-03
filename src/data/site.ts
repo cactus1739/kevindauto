@@ -5,8 +5,8 @@
 
 export const site = {
   brand: 'KEVIN ĐẦU TO',
-  tagline: 'Mô hình & figure cao cấp chính hãng',
-  slogan: 'Sưu tầm chất — Chơi tới bến',
+  tagline: 'Phôi chưa sơn figure người & phụ kiện diorama cao cấp',
+  slogan: 'Hàng thật, chi tiết thật, đặt nhanh qua Zalo & Messenger',
 
   // --- Liên hệ (THAY BẰNG THÔNG TIN THẬT) ---
   phone: '0909 180 098',
