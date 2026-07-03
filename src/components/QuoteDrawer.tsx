@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Plus, Minus, Trash2, MessageCircle, Copy, Check, ClipboardList } from 'lucide-react'
+import { X, Plus, Minus, Trash2, MessageCircle, Copy, Check, ClipboardList, Download, LoaderCircle } from 'lucide-react'
 import ProductImage from './ProductImage'
 import { useUI } from '../context/ui'
 import { productsById } from '../data/products'
@@ -10,6 +10,7 @@ import { quoteText, quoteTotal } from '../lib/quote'
 export default function QuoteDrawer() {
   const { quote, quoteOpen, closeQuoteDrawer, setQty, removeFromQuote, clearQuote, quoteCount } = useUI()
   const [copied, setCopied] = useState(false)
+  const [pdfState, setPdfState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   useEffect(() => {
     if (!quoteOpen) return
@@ -39,6 +40,20 @@ export default function QuoteDrawer() {
   const sendVia = async (url: string) => {
     await copyList()
     window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  const downloadPdf = async () => {
+    if (pdfState === 'loading') return
+    setPdfState('loading')
+
+    try {
+      const { downloadQuotePdf } = await import('../lib/quotePdf')
+      await downloadQuotePdf(quote)
+      setPdfState('success')
+      setTimeout(() => setPdfState('idle'), 2500)
+    } catch {
+      setPdfState('error')
+    }
   }
 
   return (
@@ -169,6 +184,29 @@ export default function QuoteDrawer() {
                     Bấm gửi → nội dung danh sách tự được sao chép, bạn chỉ cần <span className="text-slate-200">dán vào khung chat</span> gửi shop để được chốt đơn.
                   </p>
                   <div className="flex flex-col gap-2.5">
+                    <button
+                      onClick={downloadPdf}
+                      disabled={pdfState === 'loading'}
+                      className="btn-ghost w-full disabled:cursor-wait disabled:opacity-70"
+                    >
+                      {pdfState === 'loading' ? (
+                        <LoaderCircle className="h-4 w-4 animate-spin" />
+                      ) : pdfState === 'success' ? (
+                        <Check className="h-4 w-4 text-cyan2-400" />
+                      ) : (
+                        <Download className="h-4 w-4" />
+                      )}
+                      {pdfState === 'loading'
+                        ? 'Đang tạo PDF có hình ảnh...'
+                        : pdfState === 'success'
+                          ? 'Đã tải PDF'
+                          : 'Tải đơn PDF có hình ảnh'}
+                    </button>
+                    {pdfState === 'error' && (
+                      <p className="text-center text-xs text-brand-300">
+                        Chưa tạo được PDF. Vui lòng thử lại hoặc dùng trình duyệt khác.
+                      </p>
+                    )}
                     <button onClick={() => sendVia(site.zalo)} className="btn-primary w-full">
                       <MessageCircle className="h-4 w-4" /> Gửi báo giá qua Zalo
                     </button>
