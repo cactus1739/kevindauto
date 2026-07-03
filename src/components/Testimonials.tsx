@@ -4,18 +4,18 @@ import StarRating from './StarRating'
 
 const reviews = [
   {
-    name: 'Minh Tuấn',
-    role: 'Người chơi diorama',
-    text: 'Mấy con figure người chi tiết khỏi chê, nước in mịn, dựng diorama lên đẹp hẳn. Shop tư vấn nhiệt tình từ A-Z!',
+    name: 'Lê Ngọc Hân (18 tuổi)',
+    role: 'Bạn tô fig chuyên nghiệp Hà Nội',
+    text: 'Phôi nhà anh Kevin thì ổn đẹp trong tầm giá, mẫu mã đa dạng. Mọi người muốn tô nét thì nên thêm lót trắng nha, siêu recommend mọi người mua phôi shop Kevin =))',
     accent: 'brand',
-    initials: 'MT',
+    initials: 'LH',
   },
   {
-    name: 'Thuỳ Linh',
-    role: 'Khách sưu tầm',
-    text: 'Tượng nghệ thuật trắng đẹp xuất sắc, đường nét sắc sảo. Đóng gói chống sốc cực kỹ, ship nhanh trong ngày.',
+    name: 'Dino Bùi',
+    role: 'Người sơn chuyên nghiệp Sài Gòn',
+    text: 'Phôi shop làm đẹp, phôi nếu có lỗi shop bao đổi, về lót là sơn thôi. Lâu lâu còn được tặng quà thêm. Shop ship hàng hơi lâu, nhưng càng lâu càng dễ được quà ❤️',
     accent: 'cyan',
-    initials: 'TL',
+    initials: 'DB',
   },
   {
     name: 'Quốc Bảo',

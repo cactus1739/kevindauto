@@ -34,6 +34,7 @@ interface Props {
   series: string
   image?: string
   name: string
+  fit?: 'cover' | 'contain'
   className?: string
 }
 
@@ -41,8 +42,9 @@ interface Props {
  * Hiển thị ảnh sản phẩm. Nếu có `image` thật thì dùng ảnh,
  * nếu không sẽ render "poster" gradient theo tông màu sản phẩm.
  */
-export default function ProductImage({ accent, category, series, image, name, className = '' }: Props) {
+export default function ProductImage({ accent, category, series, image, name, fit = 'cover', className = '' }: Props) {
   const Icon = categoryIcon[category]
+  const fitClass = fit === 'contain' ? 'object-contain' : 'object-cover'
 
   if (image) {
     return (
@@ -51,7 +53,7 @@ export default function ProductImage({ accent, category, series, image, name, cl
         alt={name}
         loading="lazy"
         decoding="async"
-        className={`h-full w-full object-cover ${className}`}
+        className={`h-full w-full ${fitClass} ${className}`}
       />
     )
   }

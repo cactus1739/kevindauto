@@ -35,6 +35,7 @@ export interface Product {
   inStock: boolean
   accent: Accent
   image?: string
+  images?: string[]
   tags: string[]
   description: string
   highlights: string[]
@@ -85,6 +86,7 @@ interface Opts {
   reviews?: number
   badge?: Product['badge']
   inStock?: boolean
+  images?: string[]
   highlights?: string[]
 }
 
@@ -112,6 +114,7 @@ function p(
     inStock: opts.inStock ?? true,
     accent: ACCENT[category],
     image: `./products/sp-${code}.webp`,
+    images: opts.images,
     tags,
     description,
     highlights:

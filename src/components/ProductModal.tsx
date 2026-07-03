@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, MessageCircle, Check, ShieldCheck, Truck, Phone, ListPlus } from 'lucide-react'
 import ProductImage from './ProductImage'
@@ -9,6 +9,11 @@ import { formatVND, site } from '../data/site'
 
 export default function ProductModal() {
   const { activeProduct, closeProduct, toggleQuote, inQuote } = useUI()
+  const [selectedImage, setSelectedImage] = useState(0)
+  const galleryImages = activeProduct
+    ? (Array.from(new Set([...(activeProduct.images ?? []), activeProduct.image].filter(Boolean))) as string[])
+    : []
+  const currentImage = galleryImages[selectedImage] ?? activeProduct?.image
 
   // Đóng bằng phím ESC + khoá cuộn nền
   useEffect(() => {
@@ -21,6 +26,10 @@ export default function ProductModal() {
       document.body.style.overflow = ''
     }
   }, [activeProduct, closeProduct])
+
+  useEffect(() => {
+    setSelectedImage(0)
+  }, [activeProduct?.id])
 
   return (
     <AnimatePresence>
@@ -63,18 +72,45 @@ export default function ProductModal() {
 
             <div className="grid gap-0 md:grid-cols-2">
               {/* Ảnh */}
-              <div className="relative aspect-square w-full md:aspect-auto md:min-h-full">
-                <ProductImage
-                  accent={activeProduct.accent}
-                  category={activeProduct.category}
-                  series={activeProduct.series}
-                  image={activeProduct.image}
-                  name={activeProduct.name}
-                />
+              <div className="relative flex min-h-[360px] flex-col bg-ink-950 md:min-h-full">
+                <div className="relative min-h-0 flex-1">
+                  <ProductImage
+                    accent={activeProduct.accent}
+                    category={activeProduct.category}
+                    series={activeProduct.series}
+                    image={currentImage}
+                    name={activeProduct.name}
+                    fit="contain"
+                    className="bg-ink-950"
+                  />
+                </div>
                 {activeProduct.badge && (
                   <span className="absolute left-4 top-4 rounded-full bg-brand-500 px-3 py-1 text-xs font-bold text-white">
                     {activeProduct.badge}
                   </span>
+                )}
+                {galleryImages.length > 1 && (
+                  <div className="grid grid-cols-4 gap-2 border-t border-white/10 bg-ink-950/95 p-3 sm:grid-cols-5">
+                    {galleryImages.map((image, index) => {
+                      const active = index === selectedImage
+                      return (
+                        <button
+                          key={`${image}-${index}`}
+                          type="button"
+                          onClick={() => setSelectedImage(index)}
+                          aria-label={`Xem ảnh ${index + 1} của ${activeProduct.name}`}
+                          aria-pressed={active}
+                          className={`aspect-square overflow-hidden rounded-lg border bg-ink-900 transition-all ${
+                            active
+                              ? 'border-brand-400 ring-2 ring-brand-400/30'
+                              : 'border-white/10 hover:border-white/30'
+                          }`}
+                        >
+                          <img src={image} alt="" className="h-full w-full object-cover" loading="lazy" />
+                        </button>
+                      )
+                    })}
+                  </div>
                 )}
               </div>
 
