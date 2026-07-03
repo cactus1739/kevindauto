@@ -25,11 +25,11 @@ const reviews = [
     initials: 'QH',
   },
   {
-    name: 'Hải Đăng',
-    role: 'Collector lâu năm',
-    text: 'Đặt mấy mẫu Limited, hàng tuyển kỹ, nước in mịn. Uy tín, sẽ còn ủng hộ dài dài.',
+    name: 'Lê Trân',
+    role: 'Người lên màu fig chuyên nghiệp Sài Gòn',
+    text: 'Figure khá nét và chi tiết. Mẫu mã đa dạng, đáp ứng nhiều phong cách và sở thích của người sưu tầm. Nhìn chung, đây là sản phẩm có chất lượng hoàn thiện tốt ✅',
     accent: 'violet',
-    initials: 'HĐ',
+    initials: 'LT',
   },
   {
     name: 'Phương Anh',
