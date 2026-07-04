@@ -3,6 +3,7 @@ import { batch600Products } from './importedProducts600'
 import { batch2200Products } from './importedProducts2200'
 import { batch2300Products, batch2400Products, batch2500Products } from './importedProducts2300'
 import { batch2600Products } from './importedProducts2600'
+import { batch2700Products } from './importedProducts2700'
 import { batch2800Products, batch2900Products } from './importedProducts2800'
 import { batch3000Products, batch3100Products, batch3200Products } from './importedProducts3000'
 import { batch3300Products } from './importedProducts3300'
@@ -634,6 +635,7 @@ export const importedProducts: Product[] = [
   ...batch2400Products,
   ...batch2500Products,
   ...batch2600Products,
+  ...batch2700Products,
   ...batch2800Products,
   ...batch2900Products,
   ...batch3000Products,
