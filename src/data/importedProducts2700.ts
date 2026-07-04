@@ -109,7 +109,7 @@ const specialNames: Record<number, string> = {
   2781: 'Cô gái ngồi xổm đội mũ',
   2782: 'Quý ông lớn tuổi mặc áo khoác',
   2783: 'Cô gái mặc áo khoác dạ thanh lịch',
-  2784: 'Ninja tóc vàng ngồi thiền áo cam',
+  2784: 'Naruto ngồi ăn mì',
   2785: 'Quái vật đá cầm gậy gỗ',
   2786: 'Chàng trai cởi trần cơ bắp',
   2787: 'Chàng trai xăm hình phong cách hip-hop',
@@ -125,6 +125,10 @@ const specialNames: Record<number, string> = {
   2797: 'Cô gái áo croptop cầm quạt',
   2798: 'Cô gái mặc đầm hai dây',
   2799: 'Cô gái quần ống rộng vuốt tóc',
+}
+
+const specialTags: Record<number, string[]> = {
+  2784: ['naruto', 'ngồi ăn', 'mì', 'manga', 'anime'],
 }
 
 const specialSeries: Record<number, string> = {
@@ -188,7 +192,7 @@ function product(code: number): Product {
     inStock: true,
     accent: accents[category],
     image: `./products/sp-${code}.webp`,
-    tags: [category, series.toLocaleLowerCase('vi'), lowerName, `${code}`],
+    tags: specialTags[code] ?? [category, series.toLocaleLowerCase('vi'), lowerName, `${code}`],
     description: `Mô hình ${lowerName} với tạo hình rõ nét, phù hợp trưng bày và dựng diorama chủ đề ${series.toLocaleLowerCase('vi')}.`,
     highlights: ['Tạo hình rõ nét', 'Tối ưu cho in resin 3D', 'Phù hợp trưng bày và dựng diorama'],
   }

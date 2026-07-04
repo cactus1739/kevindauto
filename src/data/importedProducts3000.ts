@@ -84,7 +84,7 @@ const specialNames: Record<number, string> = {
   3093: 'Cô gái trượt ván',
   3103: 'Chàng trai đứng bên chó',
   3110: 'Bạch tuộc trang trí',
-  3111: 'Siêu nhân ăn tại bàn',
+  3111: 'Superman ăn tại bàn',
   3112: 'Người Nhện ăn tại bàn',
   3133: 'Cô gái ôm chó trắng',
   3138: 'Tiểu cảnh cây trên vali',
