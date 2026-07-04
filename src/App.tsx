@@ -14,11 +14,22 @@ import Footer from './components/Footer'
 import FloatingActions from './components/FloatingActions'
 import ProductModal from './components/ProductModal'
 import QuoteDrawer from './components/QuoteDrawer'
+import GalleryPage from './components/GalleryPage'
 
 export default function App() {
+  const isGalleryPage = window.location.pathname.replace(/\/+$/, '') === '/gallery'
+
   return (
     <MotionConfig reducedMotion="user">
       <UIProvider>
+        {isGalleryPage ? (
+          <>
+            <GalleryPage />
+            <ProductModal />
+            <QuoteDrawer />
+          </>
+        ) : (
+          <>
         {/* Skip link cho người dùng bàn phím / screen reader */}
         <a
           href="#catalog"
@@ -45,6 +56,8 @@ export default function App() {
         <FloatingActions />
         <ProductModal />
         <QuoteDrawer />
+          </>
+        )}
       </UIProvider>
     </MotionConfig>
   )
