@@ -3452,6 +3452,21 @@ function applyProductNameOverrides(items: Product[]): Product[] {
   })
 }
 
-export const products: Product[] = applyProductNameOverrides([...importedProducts, ...staticProducts])
+// staticProducts (biên tập tay) và importedProducts (nhập từ Excel) đôi khi trùng mã do cùng
+// một đợt sản phẩm được đưa vào cả hai nguồn. Luôn ưu tiên bản staticProducts (biên tập tay,
+// tên/thẻ chất lượng cao hơn) và bỏ bản importedProducts trùng mã để mỗi mã chỉ còn 1 sản phẩm.
+function dedupeImportedAgainstStatic(imported: Product[], curated: Product[]): Product[] {
+  const curatedCodes = new Set(curated.map((p) => p.code))
+  return imported.filter((p) => !curatedCodes.has(p.code))
+}
+
+// productNameOverrides chỉ áp cho importedProducts (đổi tên tự động sinh từ Excel) — staticProducts
+// đã có tên biên tập tay sẵn nên KHÔNG áp override, tránh ghi đè nhầm khi 2 nguồn trùng mã.
+const namedImportedProducts = applyProductNameOverrides(importedProducts)
+
+export const products: Product[] = [
+  ...dedupeImportedAgainstStatic(namedImportedProducts, staticProducts),
+  ...staticProducts,
+]
 
 export const productsById = Object.fromEntries(products.map((p) => [p.id, p]))
