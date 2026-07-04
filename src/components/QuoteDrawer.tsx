@@ -210,8 +210,8 @@ export default function QuoteDrawer() {
                         )}
                         {pdfState === 'loading' ? 'Đang tạo...' : pdfState === 'success' ? 'Đã tải PDF' : 'Tải PDF'}
                       </button>
-                      <button onClick={() => sendVia(site.messenger)} className="btn-ghost flex-1">
-                        <MessageCircle className="h-4 w-4" /> Messenger
+                      <button onClick={() => sendVia(site.zalo)} className="btn-ghost flex-1">
+                        <MessageCircle className="h-4 w-4" /> Zalo
                       </button>
                     </div>
                     {pdfState === 'error' && (
@@ -219,8 +219,8 @@ export default function QuoteDrawer() {
                         Chưa tạo được PDF. Vui lòng thử lại hoặc dùng trình duyệt khác.
                       </p>
                     )}
-                    <button onClick={() => sendVia(site.zalo)} className="btn-primary w-full">
-                      <MessageCircle className="h-4 w-4" /> Gửi báo giá qua Zalo
+                    <button onClick={() => sendVia(site.messenger)} className="btn-primary w-full">
+                      <MessageCircle className="h-4 w-4" /> Gửi báo giá qua Messenger
                     </button>
                   </div>
                 </div>
