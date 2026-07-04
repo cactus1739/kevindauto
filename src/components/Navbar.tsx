@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, MessageCircle, ClipboardList } from 'lucide-react'
+import { Menu, X, MessageCircle, ClipboardList, Search } from 'lucide-react'
 import Logo from './Logo'
 import { site } from '../data/site'
 import { useUI } from '../context/ui'
@@ -32,6 +32,14 @@ export default function Navbar() {
       document.body.style.overflow = ''
     }
   }, [open])
+
+  // Cuộn tới ô tìm kiếm ở phần catalog và focus để gõ ngay
+  const goToSearch = () => {
+    const input = document.getElementById('catalog-search-input') as HTMLInputElement | null
+    if (!input) return
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    setTimeout(() => input.focus(), 400)
+  }
 
   return (
     <header
@@ -73,8 +81,16 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Nút mobile: list + menu */}
+        {/* Nút mobile: tìm kiếm + list + menu */}
         <div className="flex items-center gap-2 lg:hidden">
+          <button
+            type="button"
+            onClick={goToSearch}
+            className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5 text-white"
+            aria-label="Tìm kiếm sản phẩm"
+          >
+            <Search className="h-5 w-5" />
+          </button>
           <button
             type="button"
             onClick={openQuoteDrawer}
