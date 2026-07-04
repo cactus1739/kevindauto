@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Plus, Minus, Trash2, MessageCircle, Copy, Check, ClipboardList, Download, LoaderCircle } from 'lucide-react'
+import { X, Plus, Minus, Trash2, MessageCircle, Check, ClipboardList, Download, LoaderCircle } from 'lucide-react'
 import ProductImage from './ProductImage'
 import { useUI } from '../context/ui'
 import { productsById } from '../data/products'
@@ -9,7 +9,6 @@ import { quoteText, quoteTotal, quoteSubtotal, quotePhoiNguoiDiscount } from '..
 
 export default function QuoteDrawer() {
   const { quote, quoteOpen, closeQuoteDrawer, setQty, removeFromQuote, clearQuote, quoteCount } = useUI()
-  const [copied, setCopied] = useState(false)
   const [pdfState, setPdfState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   useEffect(() => {
@@ -31,10 +30,8 @@ export default function QuoteDrawer() {
   const copyList = async () => {
     try {
       await navigator.clipboard.writeText(quoteText(quote))
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2500)
     } catch {
-      setCopied(false)
+      /* bỏ qua nếu trình duyệt chặn clipboard */
     }
   }
 
@@ -198,24 +195,25 @@ export default function QuoteDrawer() {
                     Bấm gửi → nội dung danh sách tự được sao chép, bạn chỉ cần <span className="text-slate-200">dán vào khung chat</span> gửi shop để được chốt đơn.
                   </p>
                   <div className="flex flex-col gap-2.5">
-                    <button
-                      onClick={downloadPdf}
-                      disabled={pdfState === 'loading'}
-                      className="btn-ghost w-full disabled:cursor-wait disabled:opacity-70"
-                    >
-                      {pdfState === 'loading' ? (
-                        <LoaderCircle className="h-4 w-4 animate-spin" />
-                      ) : pdfState === 'success' ? (
-                        <Check className="h-4 w-4 text-cyan2-400" />
-                      ) : (
-                        <Download className="h-4 w-4" />
-                      )}
-                      {pdfState === 'loading'
-                        ? 'Đang tạo PDF có hình ảnh...'
-                        : pdfState === 'success'
-                          ? 'Đã tải PDF'
-                          : 'Tải đơn PDF có hình ảnh'}
-                    </button>
+                    <div className="flex gap-2.5">
+                      <button
+                        onClick={downloadPdf}
+                        disabled={pdfState === 'loading'}
+                        className="btn-ghost flex-1 disabled:cursor-wait disabled:opacity-70"
+                      >
+                        {pdfState === 'loading' ? (
+                          <LoaderCircle className="h-4 w-4 animate-spin" />
+                        ) : pdfState === 'success' ? (
+                          <Check className="h-4 w-4 text-cyan2-400" />
+                        ) : (
+                          <Download className="h-4 w-4" />
+                        )}
+                        {pdfState === 'loading' ? 'Đang tạo...' : pdfState === 'success' ? 'Đã tải PDF' : 'Tải PDF'}
+                      </button>
+                      <button onClick={() => sendVia(site.messenger)} className="btn-ghost flex-1">
+                        <MessageCircle className="h-4 w-4" /> Messenger
+                      </button>
+                    </div>
                     {pdfState === 'error' && (
                       <p className="text-center text-xs text-brand-300">
                         Chưa tạo được PDF. Vui lòng thử lại hoặc dùng trình duyệt khác.
@@ -224,15 +222,6 @@ export default function QuoteDrawer() {
                     <button onClick={() => sendVia(site.zalo)} className="btn-primary w-full">
                       <MessageCircle className="h-4 w-4" /> Gửi báo giá qua Zalo
                     </button>
-                    <div className="flex gap-2.5">
-                      <button onClick={() => sendVia(site.messenger)} className="btn-ghost flex-1">
-                        <MessageCircle className="h-4 w-4" /> Messenger
-                      </button>
-                      <button onClick={copyList} className="btn-ghost flex-1">
-                        {copied ? <Check className="h-4 w-4 text-cyan2-400" /> : <Copy className="h-4 w-4" />}
-                        {copied ? 'Đã copy' : 'Copy list'}
-                      </button>
-                    </div>
                   </div>
                 </div>
               </>
