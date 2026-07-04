@@ -33,12 +33,14 @@ export default function Navbar() {
     }
   }, [open])
 
-  // Cuộn tới ô tìm kiếm ở phần catalog và focus để gõ ngay
+  // Focus ngay trong lúc chạm (đồng bộ) để trình duyệt di động bật bàn phím ngay,
+  // rồi mới cuộn mượt tới ô — gọi focus() trễ (setTimeout) sẽ khiến iOS/Android
+  // không tự bật bàn phím vì mất "cử chỉ người dùng" trực tiếp.
   const goToSearch = () => {
     const input = document.getElementById('catalog-search-input') as HTMLInputElement | null
     if (!input) return
+    input.focus({ preventScroll: true })
     input.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    setTimeout(() => input.focus(), 400)
   }
 
   return (
