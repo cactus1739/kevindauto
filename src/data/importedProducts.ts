@@ -1,4 +1,5 @@
 import type { Accent, Category, Product } from './products'
+import { batch200Products } from './importedProducts200'
 import { batch600Products } from './importedProducts600'
 import { batch2200Products } from './importedProducts2200'
 import { batch2300Products, batch2400Products, batch2500Products } from './importedProducts2300'
@@ -629,6 +630,7 @@ export const importedProducts: Product[] = [
     ['nam', 'vest', 'bỏ tay túi', 'công sở']),
   visualProduct(599, 'Quý ông vest bước đi', 'nam', 'Công sở',
     ['nam', 'vest', 'bước đi', 'công sở']),
+  ...batch200Products,
   ...batch600Products,
   ...batch2200Products,
   ...batch2300Products,
