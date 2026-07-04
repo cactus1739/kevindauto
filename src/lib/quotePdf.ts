@@ -1,7 +1,7 @@
 import type { QuoteItem } from '../context/ui'
 import { productsById } from '../data/products'
 import { formatVND, site } from '../data/site'
-import { quoteTotal } from './quote'
+import { quoteSubtotal, quotePhoiNguoiDiscount, quoteTotal } from './quote'
 
 const FONT_REGULAR_URL = '/fonts/BeVietnamPro-Regular.ttf'
 const FONT_BOLD_URL = '/fonts/BeVietnamPro-Bold.ttf'
@@ -106,6 +106,8 @@ export async function downloadQuotePdf(quote: QuoteItem[]) {
   const cardHeight = 41
   const gridStartY = 45
   const totalQuantity = items.reduce((sum, item) => sum + item.qty, 0)
+  const subtotal = quoteSubtotal(quote)
+  const { freeQty, discountAmount } = quotePhoiNguoiDiscount(quote)
   const orderTotal = quoteTotal(quote)
   const totalPages = Math.ceil(items.length / itemsPerPage)
   const generatedAt = new Intl.DateTimeFormat('vi-VN', {
@@ -131,19 +133,36 @@ export async function downloadQuotePdf(quote: QuoteItem[]) {
 
     const totalBoxWidth = 62
     const totalBoxX = pageWidth - margin - totalBoxWidth
+    const totalBoxHeight = freeQty > 0 ? 33 : 27
     doc.setFillColor(76, 29, 149)
-    doc.roundedRect(totalBoxX, 6, totalBoxWidth, 27, 3, 3, 'F')
+    doc.roundedRect(totalBoxX, 6, totalBoxWidth, totalBoxHeight, 3, 3, 'F')
     doc.setTextColor(221, 214, 254)
     doc.setFontSize(7.5)
     doc.text('TẠM TÍNH', totalBoxX + 5, 13)
+    doc.setFont('BeVietnamPro', 'normal')
+    doc.setFontSize(7.5)
+    doc.text(formatVND(subtotal), pageWidth - margin - 5, 13, { align: 'right' })
+
+    let totalY = 23
+    if (freeQty > 0) {
+      doc.setTextColor(94, 234, 212)
+      doc.setFontSize(6.7)
+      doc.text(
+        `Ưu đãi phôi người (11 tặng 1): -${freeQty} phôi -${formatVND(discountAmount)}`,
+        totalBoxX + 5,
+        18.5,
+      )
+      totalY = 28
+    }
+
     doc.setTextColor(255, 255, 255)
     doc.setFont('BeVietnamPro', 'bold')
     doc.setFontSize(14)
-    doc.text(formatVND(orderTotal), pageWidth - margin - 5, 23, { align: 'right' })
+    doc.text(formatVND(orderTotal), pageWidth - margin - 5, totalY, { align: 'right' })
     doc.setFont('BeVietnamPro', 'normal')
     doc.setFontSize(6.7)
     doc.setTextColor(221, 214, 254)
-    doc.text(`Trang ${pageNumber}/${totalPages}`, pageWidth - margin - 5, 29, { align: 'right' })
+    doc.text(`Trang ${pageNumber}/${totalPages}`, pageWidth - margin - 5, totalY + 6, { align: 'right' })
   }
 
   drawHeader(1)

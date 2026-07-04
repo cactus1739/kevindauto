@@ -5,7 +5,7 @@ import ProductImage from './ProductImage'
 import { useUI } from '../context/ui'
 import { productsById } from '../data/products'
 import { formatVND, site } from '../data/site'
-import { quoteText, quoteTotal } from '../lib/quote'
+import { quoteText, quoteTotal, quoteSubtotal, quotePhoiNguoiDiscount } from '../lib/quote'
 
 export default function QuoteDrawer() {
   const { quote, quoteOpen, closeQuoteDrawer, setQty, removeFromQuote, clearQuote, quoteCount } = useUI()
@@ -24,6 +24,8 @@ export default function QuoteDrawer() {
   }, [quoteOpen, closeQuoteDrawer])
 
   const items = quote.map((it) => ({ ...it, product: productsById[it.id] })).filter((i) => i.product)
+  const subtotal = quoteSubtotal(quote)
+  const { freeQty, discountAmount } = quotePhoiNguoiDiscount(quote)
   const total = quoteTotal(quote)
 
   const copyList = async () => {
@@ -176,8 +178,20 @@ export default function QuoteDrawer() {
 
                 {/* Footer */}
                 <div className="border-t border-white/10 p-5">
-                  <div className="mb-3 flex items-center justify-between">
+                  <div className="mb-1 flex items-center justify-between">
                     <span className="text-sm text-slate-400">Tạm tính</span>
+                    <span className="text-sm text-slate-300 tabular">{formatVND(subtotal)}</span>
+                  </div>
+                  {freeQty > 0 && (
+                    <div className="mb-1 flex items-center justify-between">
+                      <span className="text-sm text-cyan2-400">🎁 Ưu đãi phôi người (cứ 11 tặng 1)</span>
+                      <span className="text-sm font-semibold text-cyan2-400 tabular">
+                        -{freeQty} phôi (-{formatVND(discountAmount)})
+                      </span>
+                    </div>
+                  )}
+                  <div className="mb-3 flex items-center justify-between border-t border-white/10 pt-2">
+                    <span className="text-sm font-semibold text-white">Thành tiền</span>
                     <span className="font-display text-xl font-extrabold text-gradient tabular">{formatVND(total)}</span>
                   </div>
                   <p className="mb-3 text-xs text-slate-400">
