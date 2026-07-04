@@ -156,7 +156,7 @@ export default function GalleryPage() {
                 <article
                   key={`${product.id}-${index}`}
                   id={`gallery-product-${index}`}
-                  className="group min-w-0 scroll-mt-36"
+                  className="group min-w-0 scroll-mt-36 [content-visibility:auto] [contain-intrinsic-size:0_320px]"
                 >
                   <div className="relative overflow-hidden rounded-[18px] bg-[#deddda] shadow-[0_2px_10px_rgba(20,20,30,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(20,20,30,0.18)] sm:rounded-[22px]">
                     <button
@@ -169,6 +169,8 @@ export default function GalleryPage() {
                         <img
                           src={product.image}
                           alt={product.name}
+                          width={300}
+                          height={400}
                           loading="lazy"
                           decoding="async"
                           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
