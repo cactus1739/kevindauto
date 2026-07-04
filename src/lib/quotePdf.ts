@@ -95,114 +95,114 @@ export async function downloadQuotePdf(quote: QuoteItem[]) {
 
   const pageWidth = doc.internal.pageSize.getWidth()
   const pageHeight = doc.internal.pageSize.getHeight()
-  const margin = 14
+  const margin = 12
   const contentWidth = pageWidth - margin * 2
-  const rowHeight = 36
-  const bottomLimit = pageHeight - 20
+  const columns = 3
+  const rows = 5
+  const itemsPerPage = columns * rows
+  const columnGap = 3
+  const rowGap = 3
+  const cardWidth = (contentWidth - columnGap * (columns - 1)) / columns
+  const cardHeight = 41
+  const gridStartY = 45
   const totalQuantity = items.reduce((sum, item) => sum + item.qty, 0)
+  const orderTotal = quoteTotal(quote)
+  const totalPages = Math.ceil(items.length / itemsPerPage)
   const generatedAt = new Intl.DateTimeFormat('vi-VN', {
     dateStyle: 'long',
     timeStyle: 'short',
   }).format(new Date())
 
-  const drawHeader = (continued = false) => {
+  const drawHeader = (pageNumber: number) => {
     doc.setFillColor(15, 10, 28)
-    doc.rect(0, 0, pageWidth, continued ? 29 : 45, 'F')
+    doc.rect(0, 0, pageWidth, 39, 'F')
     doc.setTextColor(244, 63, 94)
     doc.setFont('BeVietnamPro', 'bold')
-    doc.setFontSize(11)
-    doc.text(site.brand, margin, 12)
-
-    if (continued) {
-      doc.setTextColor(255, 255, 255)
-      doc.setFontSize(16)
-      doc.text('BÁO GIÁ SẢN PHẨM — TIẾP THEO', margin, 22)
-      return 35
-    }
-
+    doc.setFontSize(10)
+    doc.text(site.brand, margin, 10)
     doc.setTextColor(255, 255, 255)
-    doc.setFontSize(22)
-    doc.text('BÁO GIÁ SẢN PHẨM', margin, 24)
+    doc.setFontSize(17)
+    doc.text('BÁO GIÁ SẢN PHẨM', margin, 20)
     doc.setFont('BeVietnamPro', 'normal')
-    doc.setFontSize(8.5)
+    doc.setFontSize(7.5)
     doc.setTextColor(203, 213, 225)
-    doc.text(site.tagline, margin, 32)
-    doc.text(`${site.phone}  •  ${site.email}`, margin, 38)
-    doc.text(generatedAt, pageWidth - margin, 12, { align: 'right' })
+    doc.text(`${items.length} mẫu • ${totalQuantity} sản phẩm • ${generatedAt}`, margin, 27)
+    doc.text(`${site.phone}  •  ${site.email}`, margin, 33)
 
-    doc.setTextColor(71, 85, 105)
-    doc.setFontSize(8.5)
-    doc.text(
-      `${items.length} mẫu • ${totalQuantity} sản phẩm • Giá dưới đây là tạm tính`,
-      margin,
-      52,
-    )
-    return 59
+    const totalBoxWidth = 62
+    const totalBoxX = pageWidth - margin - totalBoxWidth
+    doc.setFillColor(76, 29, 149)
+    doc.roundedRect(totalBoxX, 6, totalBoxWidth, 27, 3, 3, 'F')
+    doc.setTextColor(221, 214, 254)
+    doc.setFontSize(7.5)
+    doc.text('TẠM TÍNH', totalBoxX + 5, 13)
+    doc.setTextColor(255, 255, 255)
+    doc.setFont('BeVietnamPro', 'bold')
+    doc.setFontSize(14)
+    doc.text(formatVND(orderTotal), pageWidth - margin - 5, 23, { align: 'right' })
+    doc.setFont('BeVietnamPro', 'normal')
+    doc.setFontSize(6.7)
+    doc.setTextColor(221, 214, 254)
+    doc.text(`Trang ${pageNumber}/${totalPages}`, pageWidth - margin - 5, 29, { align: 'right' })
   }
 
-  let y = drawHeader()
+  drawHeader(1)
 
   for (let index = 0; index < items.length; index += 1) {
     const { product, qty } = items[index]
     if (!product) continue
 
-    if (y + rowHeight > bottomLimit) {
+    if (index > 0 && index % itemsPerPage === 0) {
       doc.addPage()
-      y = drawHeader(true)
+      drawHeader(Math.floor(index / itemsPerPage) + 1)
     }
 
-    doc.setFillColor(index % 2 === 0 ? 249 : 255, index % 2 === 0 ? 250 : 255, 251)
+    const slot = index % itemsPerPage
+    const column = slot % columns
+    const row = Math.floor(slot / columns)
+    const x = margin + column * (cardWidth + columnGap)
+    const y = gridStartY + row * (cardHeight + rowGap)
+
+    doc.setFillColor(255, 255, 255)
     doc.setDrawColor(226, 232, 240)
-    doc.roundedRect(margin, y, contentWidth, rowHeight - 2, 2.5, 2.5, 'FD')
+    doc.roundedRect(x, y, cardWidth, cardHeight, 2.5, 2.5, 'FD')
 
     const imageData = await imageToJpeg(product.image)
     if (imageData) {
-      doc.addImage(imageData, 'JPEG', margin + 2.5, y + 2.5, 29, 29, undefined, 'FAST')
+      doc.addImage(imageData, 'JPEG', x + 2.5, y + 2.5, 24, 24, undefined, 'FAST')
     } else {
       doc.setFillColor(241, 245, 249)
-      doc.roundedRect(margin + 2.5, y + 2.5, 29, 29, 2, 2, 'F')
+      doc.roundedRect(x + 2.5, y + 2.5, 24, 24, 2, 2, 'F')
       doc.setFont('BeVietnamPro', 'bold')
-      doc.setFontSize(8)
+      doc.setFontSize(7)
       doc.setTextColor(148, 163, 184)
-      doc.text(product.code, margin + 17, y + 18, { align: 'center' })
+      doc.text(product.code, x + 14.5, y + 15, { align: 'center' })
     }
 
-    const textX = margin + 35
+    const textX = x + 29
     doc.setFont('BeVietnamPro', 'bold')
-    doc.setFontSize(10)
+    doc.setFontSize(7.5)
     doc.setTextColor(15, 23, 42)
-    const titleLines = doc.splitTextToSize(product.name, 87).slice(0, 2)
-    doc.text(titleLines, textX, y + 8)
+    const titleLines = doc.splitTextToSize(product.name, cardWidth - 31).slice(0, 3)
+    doc.text(titleLines, textX, y + 5, { lineHeightFactor: 1.12 })
 
     doc.setFont('BeVietnamPro', 'normal')
-    doc.setFontSize(8.3)
+    doc.setFontSize(6.7)
     doc.setTextColor(100, 116, 139)
-    doc.text(`Mã ${product.code}`, textX, y + 20)
-    doc.text(`${formatVND(product.price)} × ${qty}`, textX, y + 27)
+    doc.text(`Mã ${product.code}`, textX, y + 17.5)
+    doc.text(`${formatVND(product.price)} × ${qty}`, textX, y + 23.5)
 
+    doc.setFillColor(248, 250, 252)
+    doc.roundedRect(x + 2.5, y + 29, cardWidth - 5, 9.5, 1.5, 1.5, 'F')
+    doc.setFont('BeVietnamPro', 'normal')
+    doc.setFontSize(6.5)
+    doc.setTextColor(100, 116, 139)
+    doc.text(`SL ${qty}`, x + 5, y + 35)
     doc.setFont('BeVietnamPro', 'bold')
-    doc.setFontSize(10)
+    doc.setFontSize(8.3)
     doc.setTextColor(225, 29, 72)
-    doc.text(formatVND(product.price * qty), pageWidth - margin - 3, y + 18, { align: 'right' })
-
-    y += rowHeight
+    doc.text(formatVND(product.price * qty), x + cardWidth - 5, y + 35, { align: 'right' })
   }
-
-  if (y + 31 > bottomLimit) {
-    doc.addPage()
-    y = drawHeader(true)
-  }
-
-  doc.setFillColor(76, 29, 149)
-  doc.roundedRect(margin, y + 2, contentWidth, 23, 3, 3, 'F')
-  doc.setTextColor(221, 214, 254)
-  doc.setFont('BeVietnamPro', 'normal')
-  doc.setFontSize(9)
-  doc.text('TẠM TÍNH', margin + 6, y + 11)
-  doc.setTextColor(255, 255, 255)
-  doc.setFont('BeVietnamPro', 'bold')
-  doc.setFontSize(16)
-  doc.text(formatVND(quoteTotal(quote)), pageWidth - margin - 6, y + 16, { align: 'right' })
 
   const pageCount = doc.getNumberOfPages()
   for (let page = 1; page <= pageCount; page += 1) {

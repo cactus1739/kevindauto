@@ -1,14 +1,17 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { ArrowLeft, Check, ClipboardPlus, Image, Search, X } from 'lucide-react'
+import { ArrowLeft, Check, ClipboardPlus, Hash, Image, Search, X } from 'lucide-react'
 import { categories, categoryLabel, products, type Category } from '../data/products'
 import { useUI } from '../context/ui'
 
 const PAGE_SIZE = 60
+const CODE_JUMPS = Array.from({ length: 45 }, (_, index) => 4400 - index * 100)
 
 export default function GalleryPage() {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState<Category | 'all'>('all')
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+  const [pendingJumpIndex, setPendingJumpIndex] = useState<number | null>(null)
+  const [codeRailOpen, setCodeRailOpen] = useState(false)
   const loadMoreRef = useRef<HTMLDivElement>(null)
   const { openProduct, toggleQuote, inQuote } = useUI()
 
@@ -26,7 +29,10 @@ export default function GalleryPage() {
       .sort((a, b) => Number(b.code) - Number(a.code))
   }, [category, query])
 
-  useEffect(() => setVisibleCount(PAGE_SIZE), [category, query])
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+    setPendingJumpIndex(null)
+  }, [category, query])
 
   useEffect(() => {
     const target = loadMoreRef.current
@@ -44,6 +50,30 @@ export default function GalleryPage() {
   }, [filteredProducts.length, visibleCount])
 
   const visibleProducts = filteredProducts.slice(0, visibleCount)
+
+  useEffect(() => {
+    if (pendingJumpIndex === null || pendingJumpIndex >= visibleCount) return
+
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(`gallery-product-${pendingJumpIndex}`)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+      setPendingJumpIndex(null)
+      setCodeRailOpen(false)
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [pendingJumpIndex, visibleCount])
+
+  const jumpToCode = (code: number) => {
+    if (filteredProducts.length === 0) return
+
+    const matchingIndex = filteredProducts.findIndex((product) => Number(product.code) <= code)
+    const targetIndex = matchingIndex >= 0 ? matchingIndex : filteredProducts.length - 1
+    setVisibleCount((count) => Math.max(count, targetIndex + 1))
+    setPendingJumpIndex(targetIndex)
+  }
 
   return (
     <main className="min-h-screen bg-[#f6f5f2] text-ink-950">
@@ -96,6 +126,17 @@ export default function GalleryPage() {
         </div>
       </header>
 
+      <CodeRail onJump={jumpToCode} open={codeRailOpen} />
+      <button
+        type="button"
+        onClick={() => setCodeRailOpen((open) => !open)}
+        className="fixed bottom-20 right-3 z-50 grid h-12 w-12 place-items-center rounded-full bg-ink-950 text-white shadow-xl md:hidden"
+        aria-label={codeRailOpen ? 'Đóng thanh chọn mã' : 'Mở thanh chọn mã'}
+        aria-expanded={codeRailOpen}
+      >
+        {codeRailOpen ? <X className="h-5 w-5" /> : <Hash className="h-5 w-5" />}
+      </button>
+
       <section className="mx-auto max-w-[1720px] px-3 pb-20 pt-7 sm:px-5 lg:px-7" aria-label="Thư viện sản phẩm">
         <div className="mb-7 px-1 text-center">
           <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-600">Khám phá bằng hình ảnh</p>
@@ -112,12 +153,16 @@ export default function GalleryPage() {
             {visibleProducts.map((product, index) => {
               const selected = inQuote(product.id)
               return (
-                <article key={`${product.id}-${index}`} className="group min-w-0">
+                <article
+                  key={`${product.id}-${index}`}
+                  id={`gallery-product-${index}`}
+                  className="group min-w-0 scroll-mt-36"
+                >
                   <div className="relative overflow-hidden rounded-[18px] bg-[#deddda] shadow-[0_2px_10px_rgba(20,20,30,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(20,20,30,0.18)] sm:rounded-[22px]">
                     <button
                       type="button"
                       onClick={() => openProduct(product)}
-                      className="block w-full"
+                      className="block aspect-[3/4] w-full overflow-hidden"
                       aria-label={`Xem ${product.name}`}
                     >
                       {product.image ? (
@@ -126,10 +171,10 @@ export default function GalleryPage() {
                           alt={product.name}
                           loading="lazy"
                           decoding="async"
-                          className="h-auto w-full transition duration-500 group-hover:scale-[1.025]"
+                          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
                         />
                       ) : (
-                        <div className="grid aspect-[4/5] place-items-center bg-slate-200 text-slate-400">
+                        <div className="grid h-full w-full place-items-center bg-slate-200 text-slate-400">
                           <Image className="h-10 w-10" />
                         </div>
                       )}
@@ -199,6 +244,34 @@ export default function GalleryPage() {
         )}
       </section>
     </main>
+  )
+}
+
+function CodeRail({ onJump, open }: { onJump: (code: number) => void; open: boolean }) {
+  return (
+    <aside
+      className={`fixed bottom-36 right-3 top-36 z-30 w-[58px] flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/90 py-2 shadow-xl backdrop-blur-xl md:flex ${
+        open ? 'flex' : 'hidden'
+      }`}
+      aria-label="Chọn nhanh theo mã sản phẩm"
+    >
+      <span className="mb-1 px-1 text-center text-[9px] font-extrabold uppercase tracking-wider text-brand-600">
+        Mã
+      </span>
+      <div className="no-scrollbar flex flex-1 flex-col gap-1 overflow-y-auto px-1.5">
+        {CODE_JUMPS.map((code) => (
+          <button
+            key={code}
+            type="button"
+            onClick={() => onJump(code)}
+            className="h-7 shrink-0 rounded-lg text-[10px] font-extrabold tabular text-slate-500 transition hover:bg-ink-950 hover:text-white focus:bg-ink-950 focus:text-white"
+            aria-label={`Đi tới mã ${String(code).padStart(4, '0')}`}
+          >
+            {String(code).padStart(4, '0')}
+          </button>
+        ))}
+      </div>
+    </aside>
   )
 }
 
