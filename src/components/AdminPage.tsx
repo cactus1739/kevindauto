@@ -204,13 +204,13 @@ export default function AdminPage() {
               <p className="text-sm text-slate-400">Chọn 1 sản phẩm bên trái để sửa.</p>
             ) : (
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-3">
-                  <span className="h-20 w-16 shrink-0 overflow-hidden rounded-xl bg-white/10">
+                <div>
+                  <span className="mx-auto block aspect-[3/4] max-h-[420px] w-full max-w-[320px] overflow-hidden rounded-2xl bg-white/10">
                     {selected.image && (
-                      <img src={selected.image} alt="" className="h-full w-full object-cover" />
+                      <img src={selected.image} alt="" className="h-full w-full object-contain" />
                     )}
                   </span>
-                  <p className="text-xs text-slate-400">Mã {selected.code}</p>
+                  <p className="mt-2 text-center text-xs text-slate-400">Mã {selected.code}</p>
                 </div>
 
                 <label className="block">

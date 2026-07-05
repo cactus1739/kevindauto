@@ -11,6 +11,8 @@ const accents: Record<Category, Accent> = {
   xe: 'gold',
   phukien: 'violet',
   duongpho: 'cyan',
+  movie: 'violet',
+  famous: 'gold',
 }
 
 const preOrderCodes = new Set([2311, 2312, 2328, 2334, 2337, 2338, 2341, 2350, 2351])
@@ -124,6 +126,8 @@ const defaultNames: Record<Category, string> = {
   xe: 'Phương tiện diorama',
   phukien: 'Phụ kiện diorama',
   duongpho: 'Nhân vật đường phố',
+  movie: 'Nhân vật phim ảnh & manga',
+  famous: 'Nhân vật nổi tiếng',
 }
 
 function product(code: number): Product {

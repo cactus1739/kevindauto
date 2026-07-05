@@ -11,6 +11,8 @@ const accents: Record<Category, Accent> = {
   xe: 'gold',
   phukien: 'violet',
   duongpho: 'cyan',
+  movie: 'violet',
+  famous: 'gold',
 }
 
 function p(code: number, name: string, category: Category, series = 'Đời thường'): Product {

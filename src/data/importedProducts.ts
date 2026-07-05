@@ -25,6 +25,8 @@ const accentByCategory: Record<Category, Accent> = {
   xe: 'gold',
   phukien: 'violet',
   duongpho: 'cyan',
+  movie: 'violet',
+  famous: 'gold',
 }
 
 function importedProduct(

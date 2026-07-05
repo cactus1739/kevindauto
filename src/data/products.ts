@@ -21,6 +21,8 @@ export type Category =
   | 'xe'
   | 'phukien'
   | 'duongpho'
+  | 'movie'
+  | 'famous'
 
 export interface Product {
   id: string
@@ -53,6 +55,8 @@ export const categories: { id: Category; label: string }[] = [
   { id: 'xe', label: 'Xe máy/Xe đạp/Ô tô' },
   { id: 'phukien', label: 'Phụ kiện Diorama' },
   { id: 'duongpho', label: 'Đường phố - Buôn bán' },
+  { id: 'movie', label: 'Movie - Manga' },
+  { id: 'famous', label: 'Famous' },
 ]
 
 export const categoryLabel: Record<Category, string> = {
@@ -66,6 +70,8 @@ export const categoryLabel: Record<Category, string> = {
   xe: 'Xe máy/Xe đạp/Ô tô',
   phukien: 'Phụ kiện Diorama',
   duongpho: 'Đường phố - Buôn bán',
+  movie: 'Movie - Manga',
+  famous: 'Famous',
 }
 
 const ACCENT: Record<Category, Accent> = {
@@ -79,6 +85,8 @@ const ACCENT: Record<Category, Accent> = {
   xe: 'gold',
   phukien: 'violet',
   duongpho: 'cyan',
+  movie: 'violet',
+  famous: 'gold',
 }
 
 interface Opts {

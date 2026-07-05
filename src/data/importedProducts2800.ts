@@ -11,6 +11,8 @@ const accents: Record<Category, Accent> = {
   xe: 'gold',
   phukien: 'violet',
   duongpho: 'cyan',
+  movie: 'violet',
+  famous: 'gold',
 }
 
 const femaleCodes = new Set([
@@ -153,6 +155,8 @@ const defaultNames: Record<Category, string> = {
   xe: 'Phương tiện diorama',
   phukien: 'Phụ kiện diorama',
   duongpho: 'Nhân vật đường phố',
+  movie: 'Nhân vật phim ảnh & manga',
+  famous: 'Nhân vật nổi tiếng',
 }
 
 function product(code: number): Product {

@@ -1,4 +1,17 @@
-import { User, UserRound, Users, Baby, PersonStanding, Dumbbell, Bike, PawPrint, Sailboat, Store } from 'lucide-react'
+import {
+  User,
+  UserRound,
+  Users,
+  Baby,
+  PersonStanding,
+  Dumbbell,
+  Bike,
+  PawPrint,
+  Sailboat,
+  Store,
+  Clapperboard,
+  Star,
+} from 'lucide-react'
 import type { Accent, Category } from '../data/products'
 
 const accentGradient: Record<Accent, string> = {
@@ -26,6 +39,8 @@ const categoryIcon: Record<Category, typeof User> = {
   xe: Bike,
   phukien: Sailboat,
   duongpho: Store,
+  movie: Clapperboard,
+  famous: Star,
 }
 
 interface Props {
