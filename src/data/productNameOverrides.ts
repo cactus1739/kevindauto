@@ -2496,6 +2496,7 @@ export const productNameOverrides: Record<string, string[]> = {
   "2697": ["Nhân vật nam tạo dáng 2697"],
   "2698": ["Quý cô cầm cà phê và túi xách"],
   "2699": ["Quý cô áo khoác mùa đông"],
+  "2700": ["Zootopia - Cảnh sát thỏ"],
   "2800": ["Mèo thần tài trong chậu","Mèo Thần Tài may mắn"],
   "2801": ["Cụ ông khoanh tay","Cụ ông áo blouse khoanh tay"],
   "2802": ["Cầu thủ bóng đá giơ áo","Cầu thủ bóng đá kéo áo ăn mừng"],

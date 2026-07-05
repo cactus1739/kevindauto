@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowLeft, Loader2, Save, Search } from 'lucide-react'
+import { ArrowLeft, ChevronLeft, ChevronRight, Loader2, Save, Search } from 'lucide-react'
 import { categoryLabel, type Category } from '../data/products'
 
 interface AdminResult {
@@ -10,8 +10,13 @@ interface AdminResult {
   image?: string
 }
 
+const BLOCK_SIZE = 100
+const MAX_CODE = 4500
+const BLOCKS = Array.from({ length: Math.ceil(MAX_CODE / BLOCK_SIZE) }, (_, i) => i * BLOCK_SIZE)
+
 export default function AdminPage() {
   const [query, setQuery] = useState('')
+  const [rangeStart, setRangeStart] = useState<number | null>(null)
   const [results, setResults] = useState<AdminResult[]>([])
   const [loading, setLoading] = useState(false)
   const [selected, setSelected] = useState<AdminResult | null>(null)
@@ -23,7 +28,11 @@ export default function AdminPage() {
     const timer = setTimeout(async () => {
       setLoading(true)
       try {
-        const res = await fetch(`/api/admin/search?q=${encodeURIComponent(query)}`)
+        const params =
+          rangeStart !== null
+            ? `from=${rangeStart}&to=${rangeStart + BLOCK_SIZE - 1}`
+            : `q=${encodeURIComponent(query)}`
+        const res = await fetch(`/api/admin/search?${params}`)
         const data = await res.json()
         setResults(data.results ?? [])
       } catch {
@@ -33,7 +42,12 @@ export default function AdminPage() {
       }
     }, 250)
     return () => clearTimeout(timer)
-  }, [query])
+  }, [query, rangeStart])
+
+  const selectBlock = (start: number) => {
+    setQuery('')
+    setRangeStart(start)
+  }
 
   const selectProduct = (product: AdminResult) => {
     setSelected(product)
@@ -94,17 +108,61 @@ export default function AdminPage() {
           <input
             autoFocus
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setRangeStart(null)
+              setQuery(e.target.value)
+            }}
             placeholder="Tìm theo mã hoặc tên sản phẩm..."
             className="h-12 w-full rounded-2xl border border-white/10 bg-white/5 pl-12 pr-4 text-sm font-medium outline-none focus:border-brand-400"
           />
         </label>
 
+        <div className="mt-3 flex items-center gap-2">
+          <span className="shrink-0 text-xs font-semibold text-slate-400">Duyệt theo nhóm mã:</span>
+          <div className="no-scrollbar flex flex-1 gap-1.5 overflow-x-auto">
+            {BLOCKS.map((start) => (
+              <button
+                key={start}
+                type="button"
+                onClick={() => selectBlock(start)}
+                className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold tabular transition ${
+                  rangeStart === start ? 'bg-brand-500 text-white' : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                }`}
+              >
+                {String(start).padStart(4, '0')}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {rangeStart !== null && (
+          <div className="mt-2 flex items-center justify-between">
+            <button
+              type="button"
+              onClick={() => selectBlock(Math.max(0, rangeStart - BLOCK_SIZE))}
+              disabled={rangeStart === 0}
+              className="flex items-center gap-1 text-xs font-semibold text-slate-400 hover:text-white disabled:opacity-30"
+            >
+              <ChevronLeft className="h-4 w-4" /> Nhóm trước
+            </button>
+            <span className="text-xs text-slate-500">
+              Đang xem {String(rangeStart).padStart(4, '0')} - {String(rangeStart + BLOCK_SIZE - 1).padStart(4, '0')}
+            </span>
+            <button
+              type="button"
+              onClick={() => selectBlock(rangeStart + BLOCK_SIZE)}
+              className="flex items-center gap-1 text-xs font-semibold text-slate-400 hover:text-white"
+            >
+              Nhóm sau <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        )}
+
         <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="max-h-[65vh] overflow-y-auto rounded-2xl border border-white/10">
             {loading && <p className="p-4 text-sm text-slate-400">Đang tìm...</p>}
             {!loading && results.length === 0 && (
-              <p className="p-4 text-sm text-slate-400">Gõ mã hoặc tên để tìm sản phẩm.</p>
+              <p className="p-4 text-sm text-slate-400">Gõ mã/tên hoặc chọn 1 nhóm mã bên trên để bắt đầu.</p>
             )}
             <ul>
               {results.map((r) => (

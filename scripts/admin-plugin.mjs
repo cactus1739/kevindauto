@@ -103,12 +103,29 @@ export default function adminPlugin() {
           if (req.url.startsWith('/api/admin/search') && req.method === 'GET') {
             const url = new URL(req.url, 'http://localhost')
             const q = (url.searchParams.get('q') || '').trim().toLowerCase()
+            const from = url.searchParams.get('from')
+            const to = url.searchParams.get('to')
             const mod = await server.ssrLoadModule('/src/data/products.ts')
-            const list = mod.products
-              .filter((p) => !q || p.code.includes(q) || p.name.toLowerCase().includes(q))
-              .slice(0, 40)
-              .map((p) => ({ id: p.id, code: p.code, name: p.name, category: p.category, image: p.image }))
-            res.end(JSON.stringify({ ok: true, results: list }))
+
+            let list = mod.products
+            if (from !== null && to !== null) {
+              const lo = Number(from)
+              const hi = Number(to)
+              list = list
+                .filter((p) => Number(p.code) >= lo && Number(p.code) <= hi)
+                .sort((a, b) => Number(a.code) - Number(b.code))
+            } else {
+              list = list.filter((p) => !q || p.code.includes(q) || p.name.toLowerCase().includes(q)).slice(0, 100)
+            }
+
+            const results = list.map((p) => ({
+              id: p.id,
+              code: p.code,
+              name: p.name,
+              category: p.category,
+              image: p.image,
+            }))
+            res.end(JSON.stringify({ ok: true, results }))
             return
           }
 
