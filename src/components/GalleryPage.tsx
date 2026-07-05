@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { ArrowLeft, Check, ClipboardPlus, Hash, Image, Search, X } from 'lucide-react'
 import { categories, categoryLabel, products, type Category } from '../data/products'
 import { useUI } from '../context/ui'
+import { normalizeVi } from '../lib/text'
 
 const PAGE_SIZE = 60
 const CODE_JUMPS = Array.from({ length: 45 }, (_, index) => 4400 - index * 100)
@@ -16,15 +17,14 @@ export default function GalleryPage() {
   const { openProduct, toggleQuote, inQuote } = useUI()
 
   const filteredProducts = useMemo(() => {
-    const normalizedQuery = query.trim().toLocaleLowerCase('vi')
+    const normalizedQuery = normalizeVi(query.trim())
     return products
       .filter((product) => {
         if (category !== 'all' && product.category !== category) return false
         if (!normalizedQuery) return true
-        return [product.name, product.code, product.series, ...product.tags]
-          .join(' ')
-          .toLocaleLowerCase('vi')
-          .includes(normalizedQuery)
+        return normalizeVi([product.name, product.code, product.series, ...product.tags].join(' ')).includes(
+          normalizedQuery,
+        )
       })
       .sort((a, b) => Number(b.code) - Number(a.code))
   }, [category, query])
