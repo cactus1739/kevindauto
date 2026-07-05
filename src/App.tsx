@@ -15,14 +15,19 @@ import FloatingActions from './components/FloatingActions'
 import ProductModal from './components/ProductModal'
 import QuoteDrawer from './components/QuoteDrawer'
 import GalleryPage from './components/GalleryPage'
+import AdminPage from './components/AdminPage'
 
 export default function App() {
-  const isGalleryPage = window.location.pathname.replace(/\/+$/, '') === '/gallery'
+  const path = window.location.pathname.replace(/\/+$/, '')
+  const isGalleryPage = path === '/gallery'
+  const isAdminPage = path === '/admin'
 
   return (
     <MotionConfig reducedMotion="user">
       <UIProvider>
-        {isGalleryPage ? (
+        {isAdminPage ? (
+          <AdminPage />
+        ) : isGalleryPage ? (
           <>
             <GalleryPage />
             <ProductModal />
