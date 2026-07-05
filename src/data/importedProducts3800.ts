@@ -38,8 +38,12 @@ function product(code: number): Product {
   }
 }
 
+const omittedCodes = new Set([3871])
+
 function range(start: number, end: number): Product[] {
-  return Array.from({ length: end - start + 1 }, (_, index) => product(start + index))
+  return Array.from({ length: end - start + 1 }, (_, index) => start + index)
+    .filter((code) => !omittedCodes.has(code))
+    .map(product)
 }
 
 export const batch3800Products = range(3800, 3899)
