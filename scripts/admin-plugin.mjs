@@ -27,11 +27,18 @@ function saveOverride(code, override) {
     return
   }
 
+  // Object rỗng viết gọn trên 1 dòng "= {}" — mở rộng ra nhiều dòng trước khi chèn.
+  src = src.replace(
+    /export const adminOverrides: Record<string, AdminOverride> = \{\}\r?\n?/,
+    'export const adminOverrides: Record<string, AdminOverride> = {\r\n}\r\n',
+  )
+
   const lines = src.split(/\r?\n/)
   const objectStart = lines.findIndex((l) => l.includes('export const adminOverrides'))
+  const objectEnd = lines.findIndex((l, i) => i > objectStart && l.trim() === '}')
   const codeNum = Number(code)
   let insertLine = -1
-  for (let i = objectStart + 1; i < lines.length; i++) {
+  for (let i = objectStart + 1; i < objectEnd; i++) {
     const km = lines[i].match(/^\s*"(\d+)":/)
     if (km && Number(km[1]) > codeNum) {
       insertLine = i
@@ -39,14 +46,7 @@ function saveOverride(code, override) {
     }
   }
   const newLine = '  "' + code + '": ' + value + ','
-  if (insertLine === -1) {
-    // không tìm thấy mã lớn hơn — chèn trước dòng "}" đóng object (dòng cuối file)
-    let closeIdx = lines.length - 1
-    while (closeIdx > objectStart && lines[closeIdx].trim() !== '}') closeIdx--
-    lines.splice(closeIdx, 0, newLine)
-  } else {
-    lines.splice(insertLine, 0, newLine)
-  }
+  lines.splice(insertLine === -1 ? objectEnd : insertLine, 0, newLine)
   fs.writeFileSync(overridesPath, lines.join('\r\n'))
 }
 
@@ -84,6 +84,7 @@ export default function adminPlugin() {
               name: p.name,
               category: p.category,
               tags: p.tags,
+              price: p.price,
               image: p.image,
             }))
             res.end(JSON.stringify({ ok: true, results }))
@@ -102,14 +103,15 @@ export default function adminPlugin() {
             const name = String(body.name || '').trim()
             const category = String(body.category || '').trim()
             const tags = Array.isArray(body.tags) ? body.tags.map((t) => String(t).trim()).filter(Boolean) : []
+            const price = Number(body.price)
 
-            if (!code || !name || !category) {
+            if (!code || !name || !category || !Number.isFinite(price) || price <= 0) {
               res.statusCode = 400
-              res.end(JSON.stringify({ ok: false, error: 'Thiếu mã, tên hoặc danh mục' }))
+              res.end(JSON.stringify({ ok: false, error: 'Thiếu mã, tên, danh mục hoặc giá không hợp lệ' }))
               return
             }
 
-            saveOverride(code, { name, category, tags })
+            saveOverride(code, { name, category, tags, price })
             server.moduleGraph.invalidateAll()
             res.end(JSON.stringify({ ok: true }))
             return

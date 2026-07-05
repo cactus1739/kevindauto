@@ -3478,6 +3478,7 @@ function applyAdminOverrides(items: Product[]): Product[] {
     const name = override.name ?? product.name
     const category = override.category ?? product.category
     const tags = override.tags ?? product.tags
+    const price = override.price ?? product.price
     const nameChanged = name !== product.name
     const lowerName = name.charAt(0).toLocaleLowerCase('vi') + name.slice(1)
 
@@ -3486,6 +3487,7 @@ function applyAdminOverrides(items: Product[]): Product[] {
       name,
       category,
       tags,
+      price,
       accent: ACCENT[category],
       description: nameChanged
         ? `Mô hình ${lowerName} với tạo hình rõ nét, phù hợp trưng bày và dựng diorama.`

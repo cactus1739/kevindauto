@@ -8,6 +8,7 @@ export interface AdminOverride {
   name?: string
   category?: Category
   tags?: string[]
+  price?: number
 }
 
 export const adminOverrides: Record<string, AdminOverride> = {}

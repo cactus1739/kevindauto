@@ -8,6 +8,7 @@ interface AdminResult {
   name: string
   category: Category
   tags: string[]
+  price: number
   image?: string
 }
 
@@ -24,6 +25,7 @@ export default function AdminPage() {
   const [editName, setEditName] = useState('')
   const [editCategory, setEditCategory] = useState<Category>('nam')
   const [editTags, setEditTags] = useState('')
+  const [editPrice, setEditPrice] = useState('')
   const [saving, setSaving] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -57,12 +59,19 @@ export default function AdminPage() {
     setEditName(product.name)
     setEditCategory(product.category)
     setEditTags(product.tags.join(', '))
+    setEditPrice(String(product.price))
     setSaving('idle')
     setErrorMsg('')
   }
 
   const save = async () => {
     if (!selected || !editName.trim()) return
+    const price = Number(editPrice)
+    if (!Number.isFinite(price) || price <= 0) {
+      setSaving('error')
+      setErrorMsg('Giá không hợp lệ')
+      return
+    }
     setSaving('saving')
     setErrorMsg('')
     const tags = editTags
@@ -73,12 +82,12 @@ export default function AdminPage() {
       const res = await fetch('/api/admin/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: selected.code, name: editName.trim(), category: editCategory, tags }),
+        body: JSON.stringify({ code: selected.code, name: editName.trim(), category: editCategory, tags, price }),
       })
       const data = await res.json()
       if (data.ok) {
         setSaving('saved')
-        const updated = { ...selected, name: editName.trim(), category: editCategory, tags }
+        const updated = { ...selected, name: editName.trim(), category: editCategory, tags, price }
         setSelected(updated)
         setResults((prev) => prev.map((r) => (r.id === selected.id ? updated : r)))
       } else {
@@ -205,7 +214,7 @@ export default function AdminPage() {
             ) : (
               <div className="flex flex-col gap-4">
                 <div>
-                  <span className="mx-auto block aspect-[3/4] max-h-[420px] w-full max-w-[320px] overflow-hidden rounded-2xl bg-white/10">
+                  <span className="mx-auto block aspect-[3/4] max-h-[294px] w-full max-w-[224px] overflow-hidden rounded-2xl bg-white/10">
                     {selected.image && (
                       <img src={selected.image} alt="" className="h-full w-full object-contain" />
                     )}
@@ -245,6 +254,18 @@ export default function AdminPage() {
                     value={editTags}
                     onChange={(e) => setEditTags(e.target.value)}
                     placeholder="vd: nữ, streetwear, cô gái đội mũ"
+                    className="h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm outline-none focus:border-brand-400"
+                  />
+                </label>
+
+                <label className="block">
+                  <span className="mb-1.5 block text-xs font-semibold text-slate-300">Giá (₫)</span>
+                  <input
+                    type="number"
+                    min={0}
+                    step={1000}
+                    value={editPrice}
+                    onChange={(e) => setEditPrice(e.target.value)}
                     className="h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm outline-none focus:border-brand-400"
                   />
                 </label>
