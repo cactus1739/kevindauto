@@ -5,6 +5,7 @@
 // ============================================================================
 import { importedProducts } from './importedProducts'
 import { productNameOverrides } from './productNameOverrides'
+import { adminOverrides } from './adminOverrides'
 
 
 export type Accent = 'brand' | 'cyan' | 'gold' | 'violet'
@@ -3454,9 +3455,37 @@ function dedupeImportedAgainstStatic(imported: Product[], curated: Product[]): P
 // đã có tên biên tập tay sẵn nên KHÔNG áp override, tránh ghi đè nhầm khi 2 nguồn trùng mã.
 const namedImportedProducts = applyProductNameOverrides(importedProducts)
 
-export const products: Product[] = [
+const mergedProducts: Product[] = [
   ...dedupeImportedAgainstStatic(namedImportedProducts, staticProducts),
   ...staticProducts,
 ]
+
+// Lớp ghi đè cuối cùng từ trang quản trị /admin (chỉ chạy local) — sửa tên/danh mục/tag
+// mà không cần biết sản phẩm gốc từ staticProducts hay importedProducts.
+function applyAdminOverrides(items: Product[]): Product[] {
+  return items.map((product) => {
+    const override = adminOverrides[String(Number(product.code))]
+    if (!override) return product
+
+    const name = override.name ?? product.name
+    const category = override.category ?? product.category
+    const tags = override.tags ?? product.tags
+    const nameChanged = name !== product.name
+    const lowerName = name.charAt(0).toLocaleLowerCase('vi') + name.slice(1)
+
+    return {
+      ...product,
+      name,
+      category,
+      tags,
+      accent: ACCENT[category],
+      description: nameChanged
+        ? `Mô hình ${lowerName} với tạo hình rõ nét, phù hợp trưng bày và dựng diorama.`
+        : product.description,
+    }
+  })
+}
+
+export const products: Product[] = applyAdminOverrides(mergedProducts)
 
 export const productsById = Object.fromEntries(products.map((p) => [p.id, p]))

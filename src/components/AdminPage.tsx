@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft, ChevronLeft, ChevronRight, Loader2, Save, Search } from 'lucide-react'
-import { categoryLabel, type Category } from '../data/products'
+import { categories, categoryLabel, type Category } from '../data/products'
 
 interface AdminResult {
   id: string
   code: string
   name: string
   category: Category
+  tags: string[]
   image?: string
 }
 
@@ -21,6 +22,8 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false)
   const [selected, setSelected] = useState<AdminResult | null>(null)
   const [editName, setEditName] = useState('')
+  const [editCategory, setEditCategory] = useState<Category>('nam')
+  const [editTags, setEditTags] = useState('')
   const [saving, setSaving] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -52,6 +55,8 @@ export default function AdminPage() {
   const selectProduct = (product: AdminResult) => {
     setSelected(product)
     setEditName(product.name)
+    setEditCategory(product.category)
+    setEditTags(product.tags.join(', '))
     setSaving('idle')
     setErrorMsg('')
   }
@@ -60,17 +65,22 @@ export default function AdminPage() {
     if (!selected || !editName.trim()) return
     setSaving('saving')
     setErrorMsg('')
+    const tags = editTags
+      .split(',')
+      .map((t) => t.trim())
+      .filter(Boolean)
     try {
-      const res = await fetch('/api/admin/rename', {
+      const res = await fetch('/api/admin/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: selected.code, name: editName.trim() }),
+        body: JSON.stringify({ code: selected.code, name: editName.trim(), category: editCategory, tags }),
       })
       const data = await res.json()
       if (data.ok) {
         setSaving('saved')
-        setSelected({ ...selected, name: editName.trim() })
-        setResults((prev) => prev.map((r) => (r.id === selected.id ? { ...r, name: editName.trim() } : r)))
+        const updated = { ...selected, name: editName.trim(), category: editCategory, tags }
+        setSelected(updated)
+        setResults((prev) => prev.map((r) => (r.id === selected.id ? updated : r)))
       } else {
         setSaving('error')
         setErrorMsg(data.error || 'Có lỗi xảy ra')
@@ -117,9 +127,9 @@ export default function AdminPage() {
           />
         </label>
 
-        <div className="mt-3 flex items-center gap-2">
-          <span className="shrink-0 text-xs font-semibold text-slate-400">Duyệt theo nhóm mã:</span>
-          <div className="no-scrollbar flex flex-1 gap-1.5 overflow-x-auto">
+        <div className="mt-3">
+          <span className="mb-1.5 block text-xs font-semibold text-slate-400">Duyệt theo nhóm mã:</span>
+          <div className="flex flex-wrap gap-1.5">
             {BLOCKS.map((start) => (
               <button
                 key={start}
@@ -191,7 +201,7 @@ export default function AdminPage() {
 
           <div className="rounded-2xl border border-white/10 p-5">
             {!selected ? (
-              <p className="text-sm text-slate-400">Chọn 1 sản phẩm bên trái để sửa tên.</p>
+              <p className="text-sm text-slate-400">Chọn 1 sản phẩm bên trái để sửa.</p>
             ) : (
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
@@ -200,10 +210,7 @@ export default function AdminPage() {
                       <img src={selected.image} alt="" className="h-full w-full object-cover" />
                     )}
                   </span>
-                  <div>
-                    <p className="text-xs text-slate-400">Mã {selected.code}</p>
-                    <p className="text-xs text-slate-400">{categoryLabel[selected.category]}</p>
-                  </div>
+                  <p className="text-xs text-slate-400">Mã {selected.code}</p>
                 </div>
 
                 <label className="block">
@@ -211,6 +218,33 @@ export default function AdminPage() {
                   <input
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
+                    className="h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm outline-none focus:border-brand-400"
+                  />
+                </label>
+
+                <label className="block">
+                  <span className="mb-1.5 block text-xs font-semibold text-slate-300">Danh mục</span>
+                  <select
+                    value={editCategory}
+                    onChange={(e) => setEditCategory(e.target.value as Category)}
+                    className="h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm outline-none focus:border-brand-400"
+                  >
+                    {categories.map((c) => (
+                      <option key={c.id} value={c.id} className="bg-ink-900">
+                        {c.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="block">
+                  <span className="mb-1.5 block text-xs font-semibold text-slate-300">
+                    Tag (cách nhau bằng dấu phẩy)
+                  </span>
+                  <input
+                    value={editTags}
+                    onChange={(e) => setEditTags(e.target.value)}
+                    placeholder="vd: nữ, streetwear, cô gái đội mũ"
                     className="h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm outline-none focus:border-brand-400"
                   />
                 </label>
@@ -226,9 +260,7 @@ export default function AdminPage() {
                 </button>
 
                 {saving === 'saved' && (
-                  <p className="text-sm text-cyan2-400">
-                    Đã lưu vào file dữ liệu. Tag/mô tả cũng được tự cập nhật khớp tên mới.
-                  </p>
+                  <p className="text-sm text-cyan2-400">Đã lưu vào file dữ liệu.</p>
                 )}
                 {saving === 'error' && <p className="text-sm text-brand-300">Lỗi: {errorMsg}</p>}
               </div>
