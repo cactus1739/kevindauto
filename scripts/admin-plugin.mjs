@@ -7,6 +7,13 @@ import path from 'node:path'
 const root = process.cwd()
 const overridesPath = path.join(root, 'src/data/adminOverrides.ts')
 
+// Cache-bust để ssrLoadModule luôn đọc lại nội dung mới nhất trên đĩa, thay vì gọi
+// server.moduleGraph.invalidateAll() — cách đó lan HMR/reload lên cả trang /admin đang mở,
+// làm mất trạng thái form đang sửa dở.
+function freshProductsUrl() {
+  return '/src/data/products.ts?t=' + Date.now()
+}
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = ''
@@ -65,7 +72,7 @@ export default function adminPlugin() {
             const q = (url.searchParams.get('q') || '').trim().toLowerCase()
             const from = url.searchParams.get('from')
             const to = url.searchParams.get('to')
-            const mod = await server.ssrLoadModule('/src/data/products.ts')
+            const mod = await server.ssrLoadModule(freshProductsUrl())
 
             let list = mod.products
             if (from !== null && to !== null) {
@@ -92,7 +99,7 @@ export default function adminPlugin() {
           }
 
           if (req.url === '/api/admin/categories' && req.method === 'GET') {
-            const mod = await server.ssrLoadModule('/src/data/products.ts')
+            const mod = await server.ssrLoadModule(freshProductsUrl())
             res.end(JSON.stringify({ ok: true, categories: mod.categories }))
             return
           }
@@ -112,7 +119,11 @@ export default function adminPlugin() {
             }
 
             saveOverride(code, { name, category, tags, price })
-            server.moduleGraph.invalidateAll()
+            // adminOverrides.ts bị bỏ qua khỏi watcher (xem vite.config.ts) nên Vite không tự
+            // biết file vừa đổi — chỉ báo lại riêng module này để lần đọc kế tiếp lấy dữ liệu
+            // mới, KHÔNG dùng invalidateAll() vì nó lan HMR/reload lên cả trang đang mở.
+            const overrideMod = await server.moduleGraph.getModuleByUrl('/src/data/adminOverrides.ts')
+            if (overrideMod) server.moduleGraph.invalidateModule(overrideMod)
             res.end(JSON.stringify({ ok: true }))
             return
           }

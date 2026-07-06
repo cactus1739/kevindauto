@@ -11,4 +11,8 @@ export interface AdminOverride {
   price?: number
 }
 
-export const adminOverrides: Record<string, AdminOverride> = {}
+export const adminOverrides: Record<string, AdminOverride> = {
+  "300": {"name":"Nữ quần jean áo cổ cao","category":"nu","tags":["nữ","Jean","đứng"],"price":30000},
+  "4449": {"name":"Thuyền camel động cơ","category":"phukien","tags":["phụ kiện","phụ kiện","thuyền cam động cơ","camel","xuồng","offroad"],"price":60000},
+  "4451": {"name":"Cô gái cầm ly cà phê street style","category":"nu","tags":["nữ","streetwear","cô gái cầm ly cà phê street style"],"price":30000},
+}
