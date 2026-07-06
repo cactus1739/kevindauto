@@ -19,6 +19,7 @@ const BLOCKS = Array.from({ length: Math.ceil(MAX_CODE / BLOCK_SIZE) }, (_, i) =
 export default function AdminPage() {
   const [query, setQuery] = useState('')
   const [rangeStart, setRangeStart] = useState<number | null>(null)
+  const [filterCategory, setFilterCategory] = useState<Category | 'all'>('all')
   const [results, setResults] = useState<AdminResult[]>([])
   const [loading, setLoading] = useState(false)
   const [selected, setSelected] = useState<AdminResult | null>(null)
@@ -37,7 +38,8 @@ export default function AdminPage() {
           rangeStart !== null
             ? `from=${rangeStart}&to=${rangeStart + BLOCK_SIZE - 1}`
             : `q=${encodeURIComponent(query)}`
-        const res = await fetch(`/api/admin/search?${params}`)
+        const categoryParam = filterCategory !== 'all' ? `&category=${filterCategory}` : ''
+        const res = await fetch(`/api/admin/search?${params}${categoryParam}`)
         const data = await res.json()
         setResults(data.results ?? [])
       } catch {
@@ -47,7 +49,7 @@ export default function AdminPage() {
       }
     }, 250)
     return () => clearTimeout(timer)
-  }, [query, rangeStart])
+  }, [query, rangeStart, filterCategory])
 
   const selectBlock = (start: number) => {
     setQuery('')
@@ -135,6 +137,33 @@ export default function AdminPage() {
             className="h-12 w-full rounded-2xl border border-white/10 bg-white/5 pl-12 pr-4 text-sm font-medium outline-none focus:border-brand-400"
           />
         </label>
+
+        <div className="mt-3">
+          <span className="mb-1.5 block text-xs font-semibold text-slate-400">Lọc theo danh mục:</span>
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              onClick={() => setFilterCategory('all')}
+              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition ${
+                filterCategory === 'all' ? 'bg-brand-500 text-white' : 'bg-white/5 text-slate-300 hover:bg-white/10'
+              }`}
+            >
+              Tất cả
+            </button>
+            {categories.map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => setFilterCategory(c.id)}
+                className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition ${
+                  filterCategory === c.id ? 'bg-brand-500 text-white' : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                }`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="mt-3">
           <span className="mb-1.5 block text-xs font-semibold text-slate-400">Duyệt theo nhóm mã:</span>

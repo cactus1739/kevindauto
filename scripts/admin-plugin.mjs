@@ -72,9 +72,12 @@ export default function adminPlugin() {
             const q = (url.searchParams.get('q') || '').trim().toLowerCase()
             const from = url.searchParams.get('from')
             const to = url.searchParams.get('to')
+            const category = (url.searchParams.get('category') || '').trim()
             const mod = await server.ssrLoadModule(freshProductsUrl())
 
             let list = mod.products
+            if (category) list = list.filter((p) => p.category === category)
+
             if (from !== null && to !== null) {
               const lo = Number(from)
               const hi = Number(to)
