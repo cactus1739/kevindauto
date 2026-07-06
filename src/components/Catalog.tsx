@@ -93,6 +93,11 @@ export default function Catalog() {
     if (!codeListQuery && sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price)
     else if (!codeListQuery && sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price)
     else if (!codeListQuery && sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating || b.reviews - a.reviews)
+    // Mặc định "Liên quan / Nổi bật" khi chưa gõ tìm kiếm: ưu tiên mẫu mới nhất (mã lớn hơn =
+    // mới thêm gần đây) thay vì giữ nguyên thứ tự dữ liệu gốc (vốn để hàng cũ lên đầu).
+    else if (!codeListQuery && sort === 'featured' && !query.trim()) {
+      list = [...list].sort((a, b) => Number(b.code) - Number(a.code))
+    }
 
     return list
   }, [filter, query, sort, selected])
