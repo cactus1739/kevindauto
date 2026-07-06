@@ -26,6 +26,7 @@ export const adminOverrides: Record<string, AdminOverride> = {
   "304": {"name":"Nữ vest công sở điện thoại","category":"nu","tags":["nữ","công sở","điện thoại","vest","túi xách"],"price":30000},
   "305": {"name":"Nữ quần jean sơ mi","category":"nu","tags":["nữ","jean"],"price":30000},
   "306": {"name":"Nữ áo khoác lông","category":"nu","tags":["nữ","áo khoác dài","thời trang","lông","mắt kính"],"price":30000},
+  "1229": {"name":"Woody - Toy story","category":"movie","tags":["mascot","cao bồi","chibi","đồ chơi","woody","toy","story"],"price":30000},
   "1527": {"name":"Robot Buzz - Toy story","category":"movie","tags":["robot","phi hành","đồ chơi","toy","story","buzz"],"price":30000},
   "4405": {"name":"Nam bóng rổ đứng nghỉ","category":"thethao","tags":["thể thao","sport","nam","bóng rổ","basketball"],"price":30000},
   "4406": {"name":"Nam trọc đầu uống Coca","category":"nam","tags":["nam","đời thường","trọc","uống","coca","gangster","gang","ngồi"],"price":30000},
