@@ -13,6 +13,7 @@ const accents: Record<Category, Accent> = {
   duongpho: 'cyan',
   movie: 'violet',
   famous: 'gold',
+  cartoon: 'brand',
 }
 
 const animalCodes = new Set([2700, 2701, 2702, 2703, 2704, 2705, 2706, 2707, 2708, 2713, 2714, 2715, 2716, 2717, 2718, 2758, 2785])

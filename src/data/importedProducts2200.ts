@@ -13,6 +13,7 @@ const accents: Record<Category, Accent> = {
   duongpho: 'cyan',
   movie: 'violet',
   famous: 'gold',
+  cartoon: 'brand',
 }
 
 const preOrderCodes = new Set([2211, 2224, 2228, 2229, 2230, 2233, 2234, 2235, 2236, 2237, 2238, 2292, 2293])

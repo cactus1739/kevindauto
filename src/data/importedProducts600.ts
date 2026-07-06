@@ -13,6 +13,7 @@ const accents: Record<Category, Accent> = {
   duongpho: 'cyan',
   movie: 'violet',
   famous: 'gold',
+  cartoon: 'brand',
 }
 
 function p(code: number, name: string, category: Category, series = 'Đời thường'): Product {

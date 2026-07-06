@@ -23,6 +23,7 @@ export type Category =
   | 'duongpho'
   | 'movie'
   | 'famous'
+  | 'cartoon'
 
 export interface Product {
   id: string
@@ -51,12 +52,13 @@ export const categories: { id: Category; label: string }[] = [
   { id: 'treem', label: 'Trẻ em' },
   { id: 'caotuoi', label: 'Người cao tuổi' },
   { id: 'thethao', label: 'Thể thao' },
-  { id: 'dongvat', label: 'Động vật & Chibi' },
+  { id: 'dongvat', label: 'Động vật' },
   { id: 'xe', label: 'Xe máy/Xe đạp/Ô tô' },
   { id: 'phukien', label: 'Phụ kiện Diorama' },
   { id: 'duongpho', label: 'Đường phố - Buôn bán' },
   { id: 'movie', label: 'Movie - Manga' },
   { id: 'famous', label: 'Famous' },
+  { id: 'cartoon', label: 'Hoạt hình - Cartoon' },
 ]
 
 export const categoryLabel: Record<Category, string> = {
@@ -66,12 +68,13 @@ export const categoryLabel: Record<Category, string> = {
   treem: 'Trẻ em',
   caotuoi: 'Người cao tuổi',
   thethao: 'Thể thao',
-  dongvat: 'Động vật & Chibi',
+  dongvat: 'Động vật',
   xe: 'Xe máy/Xe đạp/Ô tô',
   phukien: 'Phụ kiện Diorama',
   duongpho: 'Đường phố - Buôn bán',
   movie: 'Movie - Manga',
   famous: 'Famous',
+  cartoon: 'Hoạt hình - Cartoon',
 }
 
 const ACCENT: Record<Category, Accent> = {
@@ -87,6 +90,7 @@ const ACCENT: Record<Category, Accent> = {
   duongpho: 'cyan',
   movie: 'violet',
   famous: 'gold',
+  cartoon: 'brand',
 }
 
 interface Opts {

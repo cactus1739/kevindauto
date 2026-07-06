@@ -11,6 +11,7 @@ import {
   Store,
   Clapperboard,
   Star,
+  Smile,
 } from 'lucide-react'
 import type { Accent, Category } from '../data/products'
 
@@ -41,6 +42,7 @@ const categoryIcon: Record<Category, typeof User> = {
   duongpho: Store,
   movie: Clapperboard,
   famous: Star,
+  cartoon: Smile,
 }
 
 interface Props {
