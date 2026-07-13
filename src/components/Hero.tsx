@@ -76,7 +76,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.05 }}
             className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            Mô hình đỉnh cao
+            Phôi mô hình
             <br />
             cho dân <span className="text-gradient">sưu tầm thứ thiệt</span>
           </motion.h1>
