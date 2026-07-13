@@ -2018,8 +2018,6 @@ export const productNameOverrides: Record<string, string[]> = {
   "2213": ["Quý ông vest bỏ tay túi"],
   "2214": ["Người đàn ông lớn tuổi đứng thẳng"],
   "2215": ["Nữ công sở cầm máy tính bảng"],
-  "2216": ["Tượng đầu sói chạm khắc"],
-  "2217": ["Tượng đầu lâu cơ khí"],
   "2218": ["Nữ kiếm sĩ chống kiếm"],
   "2219": ["Nhiếp ảnh gia quỳ chụp hình"],
   "2220": ["Vị vua già chống gậy"],
