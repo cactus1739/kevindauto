@@ -37,6 +37,11 @@ const artists = [
     avatar: '/artists/mai-trinh.webp',
     facebook: 'https://www.facebook.com/lam.decem',
   },
+  {
+    name: 'Hiếu Minh Nguyễn',
+    avatar: '/artists/hieu-minh-nguyen.webp',
+    facebook: 'https://www.facebook.com/phungngochieu.hieu',
+  },
 ]
 
 const communities = [
