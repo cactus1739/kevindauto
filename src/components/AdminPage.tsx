@@ -17,6 +17,7 @@ const MAX_CODE = 4799
 const BLOCKS = Array.from({ length: Math.ceil(MAX_CODE / BLOCK_SIZE) }, (_, i) => i * BLOCK_SIZE)
 
 export default function AdminPage() {
+  const isDev = import.meta.env.DEV
   const [query, setQuery] = useState('')
   const [rangeStart, setRangeStart] = useState<number | null>(null)
   const [filterCategory, setFilterCategory] = useState<Category | 'all'>('all')
@@ -31,6 +32,7 @@ export default function AdminPage() {
   const [errorMsg, setErrorMsg] = useState('')
 
   useEffect(() => {
+    if (!isDev) return
     const timer = setTimeout(async () => {
       setLoading(true)
       try {
@@ -123,6 +125,23 @@ export default function AdminPage() {
         </div>
       </header>
 
+      {!isDev ? (
+        <div className="mx-auto max-w-4xl px-4 py-6">
+          <div className="rounded-2xl border border-brand-400/30 bg-brand-500/10 p-6 text-center">
+            <p className="text-sm font-semibold text-white">
+              Bạn đang mở trang này trên web thật (kevindauto.com).
+            </p>
+            <p className="mt-2 text-sm text-slate-300">
+              Trang quản trị chỉ hoạt động khi chạy <code className="text-brand-300">npm run dev</code> ngay trên máy
+              — web thật là hosting tĩnh, không có backend để đọc/ghi dữ liệu sản phẩm.
+            </p>
+            <p className="mt-3 text-xs text-slate-400">
+              Mở terminal trong thư mục dự án, chạy <code className="text-brand-300">npm run dev</code>, rồi vào{' '}
+              <code className="text-brand-300">http://localhost:5173/admin</code>.
+            </p>
+          </div>
+        </div>
+      ) : (
       <div className="mx-auto max-w-4xl px-4 py-6">
         <label className="relative block">
           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
@@ -318,6 +337,7 @@ export default function AdminPage() {
           </div>
         </div>
       </div>
+      )}
     </main>
   )
 }
