@@ -46,7 +46,7 @@ export function quoteTotal(items: QuoteItem[]): number {
 }
 
 /**
- * Nội dung copy gửi shop qua Zalo/Messenger: CHỈ mã sản phẩm, mỗi mã 1 dòng, xếp từ nhỏ
+ * Nội dung copy gửi shop qua Zalo/Messenger: CHỈ mã sản phẩm 4 chữ số, mỗi mã 1 dòng, xếp từ nhỏ
  * tới lớn. Mẫu đặt nhiều cái thì mã được lặp lại theo số lượng để shop vẫn biết số lượng.
  */
 export function quoteText(items: QuoteItem[]): string {
@@ -56,5 +56,9 @@ export function quoteText(items: QuoteItem[]): string {
     if (!p) continue
     for (let i = 0; i < it.qty; i++) codes.push(Number(p.code))
   }
-  return codes.sort((a, b) => a - b).join('\n')
+  // Mã luôn đủ 4 chữ số (1 → 0001, 61 → 0061) cho thống nhất.
+  return codes
+    .sort((a, b) => a - b)
+    .map((code) => String(code).padStart(4, '0'))
+    .join('\n')
 }
