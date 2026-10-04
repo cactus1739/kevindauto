@@ -13,7 +13,7 @@ interface AdminResult {
 }
 
 const BLOCK_SIZE = 100
-const MAX_CODE = 4799
+const MAX_CODE = 4999
 const BLOCKS = Array.from({ length: Math.ceil(MAX_CODE / BLOCK_SIZE) }, (_, i) => i * BLOCK_SIZE)
 
 export default function AdminPage() {

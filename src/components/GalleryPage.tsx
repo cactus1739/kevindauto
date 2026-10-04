@@ -5,7 +5,7 @@ import { useUI } from '../context/ui'
 import { normalizeVi } from '../lib/text'
 
 const PAGE_SIZE = 60
-const CODE_JUMPS = Array.from({ length: 48 }, (_, index) => 4700 - index * 100)
+const CODE_JUMPS = Array.from({ length: 50 }, (_, index) => 4900 - index * 100)
 
 export default function GalleryPage() {
   const [query, setQuery] = useState('')
