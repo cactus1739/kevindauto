@@ -60,5 +60,6 @@ export function quoteText(items: QuoteItem[]): string {
   return codes
     .sort((a, b) => a - b)
     .map((code) => String(code).padStart(4, '0'))
-    .join('\n')
+    // \r\n: xuống dòng kiểu Windows — dán vào Zalo PC/web hay ô nhập trên Windows vẫn giữ mỗi mã 1 dòng.
+    .join('\r\n')
 }
