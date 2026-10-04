@@ -5,7 +5,7 @@ import ProductImage from './ProductImage'
 import { useUI } from '../context/ui'
 import { productsById } from '../data/products'
 import { formatVND, site } from '../data/site'
-import { quoteText, quoteTotal, quoteSubtotal, quotePhoiNguoiDiscount } from '../lib/quote'
+import { quoteText, quoteHtml, quoteTotal, quoteSubtotal, quotePhoiNguoiDiscount } from '../lib/quote'
 
 export default function QuoteDrawer() {
   const { quote, quoteOpen, closeQuoteDrawer, setQty, removeFromQuote, clearQuote, quoteCount } = useUI()
@@ -28,10 +28,22 @@ export default function QuoteDrawer() {
   const total = quoteTotal(quote)
 
   const copyList = async () => {
+    const text = quoteText(quote)
     try {
-      await navigator.clipboard.writeText(quoteText(quote))
+      // Ghi kèm bản HTML để nơi dán nhận mỗi mã là 1 đoạn riêng (Enter thật); nơi chỉ nhận
+      // chữ thường thì dùng bản text.
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          'text/plain': new Blob([text], { type: 'text/plain' }),
+          'text/html': new Blob([quoteHtml(quote)], { type: 'text/html' }),
+        }),
+      ])
     } catch {
-      /* bỏ qua nếu trình duyệt chặn clipboard */
+      try {
+        await navigator.clipboard.writeText(text)
+      } catch {
+        /* bỏ qua nếu trình duyệt chặn clipboard */
+      }
     }
   }
 

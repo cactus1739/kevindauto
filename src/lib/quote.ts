@@ -49,7 +49,7 @@ export function quoteTotal(items: QuoteItem[]): number {
  * Nội dung copy gửi shop qua Zalo/Messenger: CHỈ mã sản phẩm 4 chữ số, mỗi mã 1 dòng, xếp từ nhỏ
  * tới lớn. Mẫu đặt nhiều cái thì mã được lặp lại theo số lượng để shop vẫn biết số lượng.
  */
-export function quoteText(items: QuoteItem[]): string {
+export function quoteCodes(items: QuoteItem[]): string[] {
   const codes: number[] = []
   for (const it of items) {
     const p = productsById[it.id]
@@ -57,9 +57,18 @@ export function quoteText(items: QuoteItem[]): string {
     for (let i = 0; i < it.qty; i++) codes.push(Number(p.code))
   }
   // Mã luôn đủ 4 chữ số (1 → 0001, 61 → 0061) cho thống nhất.
-  return codes
-    .sort((a, b) => a - b)
-    .map((code) => String(code).padStart(4, '0'))
-    // \r\n: xuống dòng kiểu Windows — dán vào Zalo PC/web hay ô nhập trên Windows vẫn giữ mỗi mã 1 dòng.
-    .join('\r\n')
+  return codes.sort((a, b) => a - b).map((code) => String(code).padStart(4, '0'))
+}
+
+/** Bản chữ thường: \r\n là xuống dòng kiểu Windows. */
+export function quoteText(items: QuoteItem[]): string {
+  return quoteCodes(items).join('\r\n')
+}
+
+/**
+ * Bản HTML: mỗi mã là 1 đoạn <p> riêng — dán vào Zalo, Word, Google Docs… sẽ thành các đoạn
+ * như bấm Enter thật, thay vì ngắt dòng mềm kiểu Shift+Enter của bản chữ thường.
+ */
+export function quoteHtml(items: QuoteItem[]): string {
+  return quoteCodes(items).map((code) => `<p>${code}</p>`).join('')
 }
