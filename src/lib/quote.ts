@@ -60,9 +60,12 @@ export function quoteCodes(items: QuoteItem[]): string[] {
   return codes.sort((a, b) => a - b).map((code) => String(code).padStart(4, '0'))
 }
 
-/** Bản chữ thường: \r\n là xuống dòng kiểu Windows. */
+/**
+ * Bản chữ thường: các mã cách nhau 1 dòng trống. Notion (và trình soạn kiểu Markdown) chỉ tách
+ * thành khối/đoạn riêng khi gặp dòng trống — xuống dòng đơn bị coi là ngắt dòng mềm (Shift+Enter).
+ */
 export function quoteText(items: QuoteItem[]): string {
-  return quoteCodes(items).join('\r\n')
+  return quoteCodes(items).join('\n\n')
 }
 
 /**
