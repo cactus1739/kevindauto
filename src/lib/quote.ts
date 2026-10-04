@@ -1,5 +1,4 @@
 import { productsById, type Category } from '../data/products'
-import { formatVND, site } from '../data/site'
 import type { QuoteItem } from '../context/ui'
 
 /** Danh mục tính là "phôi người" — được hưởng ưu đãi cứ 11 cái tặng 1 (không áp dụng cho
@@ -46,27 +45,16 @@ export function quoteTotal(items: QuoteItem[]): number {
   return quoteSubtotal(items) - quotePhoiNguoiDiscount(items).discountAmount
 }
 
-/** Soạn nội dung báo giá để gửi shop qua Zalo/Messenger. */
+/**
+ * Nội dung copy gửi shop qua Zalo/Messenger: CHỈ mã sản phẩm, mỗi mã 1 dòng, xếp từ nhỏ
+ * tới lớn. Mẫu đặt nhiều cái thì mã được lặp lại theo số lượng để shop vẫn biết số lượng.
+ */
 export function quoteText(items: QuoteItem[]): string {
-  const lines = items
-    .map((it, idx) => {
-      const p = productsById[it.id]
-      if (!p) return ''
-      return `${idx + 1}. [${p.code}] ${p.name} x${it.qty} = ${formatVND(p.price * it.qty)}`
-    })
-    .filter(Boolean)
-
-  const subtotal = quoteSubtotal(items)
-  const { freeQty, discountAmount } = quotePhoiNguoiDiscount(items)
-  const discountLine =
-    freeQty > 0
-      ? `\nƯu đãi phôi người (cứ 11 tặng 1): -${freeQty} phôi = -${formatVND(discountAmount)}`
-      : ''
-
-  return (
-    `Chào ${site.brand}, mình muốn báo giá ${items.length} mẫu:\n` +
-    lines.join('\n') +
-    `\n\nTạm tính: ${formatVND(subtotal)}${discountLine}` +
-    `\nThành tiền: ${formatVND(subtotal - discountAmount)}\n(Gửi từ website kevindauto.com)`
-  )
+  const codes: number[] = []
+  for (const it of items) {
+    const p = productsById[it.id]
+    if (!p) continue
+    for (let i = 0; i < it.qty; i++) codes.push(Number(p.code))
+  }
+  return codes.sort((a, b) => a - b).join('\n')
 }
