@@ -49,7 +49,7 @@ function importedProduct(
     name,
     category,
     series,
-    price: 30000,
+    price: 25000,
     material: 'Resin 3D cao cấp',
     rating: 5,
     reviews: 20 + (code % 30),

@@ -19,7 +19,7 @@ Khong dat anh moi vao cac thu muc so dang co trong `import/`. Day la anh nguon c
 
 ## Quy uoc mac dinh
 
-- Gia: 30.000 VND.
+- Gia: 25.000 VND.
 - Chat lieu: Resin 3D cao cap.
 - Trang thai: Con hang.
 - San pham moi hien thi truoc san pham cu.

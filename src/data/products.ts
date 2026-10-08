@@ -1,7 +1,7 @@
 // ============================================================================
 //  DỮ LIỆU SẢN PHẨM — Mô hình người (figure) & phụ kiện KEVIN ĐẦU TO
 //  Ảnh nằm ở /public/products/sp-<mã>.webp (cắt từ catalog gốc).
-//  Giá đang để đồng giá 30.000₫ — chỉnh tay lại trong từng dòng nếu cần.
+//  Giá đang để đồng giá 25.000₫ — chỉnh tay lại trong từng dòng nếu cần.
 // ============================================================================
 import { importedProducts } from './importedProducts'
 import { productNameOverrides } from './productNameOverrides'
@@ -103,7 +103,7 @@ interface Opts {
   highlights?: string[]
 }
 
-// Hàm dựng sản phẩm gọn — đồng giá 30.000₫, ảnh & accent tự suy ra theo mã/danh mục.
+// Hàm dựng sản phẩm gọn — đồng giá 25.000₫, ảnh & accent tự suy ra theo mã/danh mục.
 function p(
   code: number,
   name: string,
@@ -119,7 +119,7 @@ function p(
     name,
     category,
     series,
-    price: 30000,
+    price: 25000,
     material: opts.material ?? 'Resin 3D cao cấp',
     rating: opts.rating ?? 5,
     reviews: opts.reviews ?? 40 + (code % 160),
