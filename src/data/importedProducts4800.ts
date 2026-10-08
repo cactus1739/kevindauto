@@ -16,7 +16,7 @@ const accents: Record<Category, Accent> = {
   cartoon: 'brand',
 }
 
-function p(code: number, name: string, category: Category, series = 'Đời thường', price = 30000): Product {
+function p(code: number, name: string, category: Category, series = 'Đời thường', price = 25000): Product {
   const normalizedName = name.charAt(0).toLocaleLowerCase('vi') + name.slice(1)
   return {
     id: `sp-${code}`,
@@ -199,11 +199,11 @@ export const batch4952Products: Product[] = [
   p(4954, 'Chú chó hoạt hình đứng bốn chân', 'cartoon', 'Hoạt hình', 20000),
   p(4955, 'Chú chó hoạt hình ngồi', 'cartoon', 'Hoạt hình', 20000),
   p(4956, 'Chàng trai hoạt hình ôm chú chó sợ hãi', 'cartoon', 'Hoạt hình', 45000),
-  p(4957, 'Chàng trai hoạt hình gầy mặc áo phông', 'cartoon', 'Hoạt hình', 30000),
-  p(4958, 'Chàng trai hoạt hình tóc rối đứng cười', 'cartoon', 'Hoạt hình', 30000),
-  p(4959, 'Chàng trai hoạt hình quàng khăn cổ', 'cartoon', 'Hoạt hình', 30000),
-  p(4960, 'Cô gái hoạt hình đeo kính mặc áo len', 'cartoon', 'Hoạt hình', 30000),
-  p(4961, 'Cô gái hoạt hình chống hông mặc đầm ngắn', 'cartoon', 'Hoạt hình', 30000),
+  p(4957, 'Chàng trai hoạt hình gầy mặc áo phông', 'cartoon', 'Hoạt hình', 25000),
+  p(4958, 'Chàng trai hoạt hình tóc rối đứng cười', 'cartoon', 'Hoạt hình', 25000),
+  p(4959, 'Chàng trai hoạt hình quàng khăn cổ', 'cartoon', 'Hoạt hình', 25000),
+  p(4960, 'Cô gái hoạt hình đeo kính mặc áo len', 'cartoon', 'Hoạt hình', 25000),
+  p(4961, 'Cô gái hoạt hình chống hông mặc đầm ngắn', 'cartoon', 'Hoạt hình', 25000),
   p(4962, 'Xe van hoạt hình trên đế đá', 'cartoon', 'Hoạt hình', 120000),
   p(4965, 'Nam mặc kimono khoanh tay', 'nam', 'Độc đáo'),
   p(4966, 'Nữ áo vest ngồi vắt chân', 'nu', 'Gợi cảm'),
